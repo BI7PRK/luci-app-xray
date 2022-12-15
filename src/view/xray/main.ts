@@ -51,7 +51,7 @@ return L.view.extend<SectionItem[][]>({
   render: function ([inboundSections = [], outBoundSections = []] = []) {
     const m = new form.Map(
       "xray",
-      "%s - %s".format(_("xray"), _("Global Settings")),
+      "%s - %s".format(_("XRay"), _("Global Settings")),
       "<p>%s</p><p>%s</p>".format(
         _("A platform for building proxies to bypass network restrictions."),
         _("For more information, please visit: %s").format(
@@ -84,7 +84,7 @@ return L.view.extend<SectionItem[][]>({
     o = s.option(
       form.Value,
       "xray_file",
-      _("xray file"),
+       file"),
       _("Set the xray executable file path.")
     );
     o.datatype = "file";
@@ -94,7 +94,7 @@ return L.view.extend<SectionItem[][]>({
     o = s.option(
       form.Value,
       "asset_location",
-      _("xray asset location"),
+       asset location"),
       _(
         "Directory where geoip.dat and geosite.dat files are, default: same directory as xray file."
       )

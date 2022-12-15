@@ -20,7 +20,7 @@ return L.view.extend<SectionItem[]>({
   render: function (dnsServers = []) {
     const m = new form.Map(
       "xray",
-      "%s - %s".format(_("xray"), _("DNS")),
+      "%s - %s".format(_("XRay"), _("DNS")),
       _("Details: %s").format(
         '<a href="https://www.xray.com/en/configuration/dns.html#dnsobject" target="_blank">DnsObject</a>'
       )

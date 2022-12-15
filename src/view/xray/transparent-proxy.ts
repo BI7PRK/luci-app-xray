@@ -132,7 +132,7 @@ return L.view.extend<[SectionItem[], SectionItem[]]>({
   render: function (dokodemoDoorPorts = []) {
     const m = new form.Map(
       "xray",
-      "%s - %s".format(_("xray"), _("Transparent Proxy"))
+      "%s - %s".format(_("XRay"), _("Transparent Proxy"))
     );
 
     const s = m.section(

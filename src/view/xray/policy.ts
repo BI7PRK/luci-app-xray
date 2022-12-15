@@ -20,7 +20,7 @@ return L.view.extend<SectionItem[]>({
   render: function (policyLevels = []) {
     const m = new form.Map(
       "xray",
-      "%s - %s".format(_("xray"), _("Policy")),
+      "%s - %s".format(_("XRay"), _("Policy")),
       _("Details: %s").format(
         '<a href="https://www.xray.com/en/configuration/policy.html#policyobject" target="_blank">PolicyObject</a>'
       )

@@ -1264,20 +1264,20 @@ msgstr ""
 #: package/htdocs/luci-static/resources/view/xray/routing.js:21
 #: package/htdocs/luci-static/resources/view/xray/transparent-proxy.js:140
 #: package/luasrc/controller/xray.lua:13
-msgid "xray"
+msgid "XRay"
 msgstr ""
 
 #: package/htdocs/luci-static/resources/view/xray/main.js:51
-msgid "xray asset location"
+msgid "XRay asset location"
 msgstr ""
 
 #: package/htdocs/luci-static/resources/view/xray/main.js:47
-msgid "xray file"
+msgid "XRay file"
 msgstr ""
 
 #: package/htdocs/luci-static/resources/view/xray/main.js:35
 #: package/root/usr/share/luci/menu.d/luci-app-xray.json:3
-msgid "xray"
+msgid "XRay"
 msgstr ""
 
 #: package/htdocs/luci-static/resources/view/xray/about.js:27

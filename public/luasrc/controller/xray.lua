@@ -10,7 +10,7 @@ function index()
 		return
 	end
 
-	entry({"admin", "services", "xray"}, firstchild(), _("xray")).dependent = false
+	entry({"admin", "services", "xray"}, firstchild(), _("XRay")).dependent = false
 
 	entry({"admin", "services", "xray", "main"}, view("xray/main"), _("Global Settings"), 10)
 

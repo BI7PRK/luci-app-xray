@@ -707,7 +707,7 @@ msgstr "日志等级"
 
 #: package/htdocs/luci-static/resources/view/xray/about.js:27
 msgid "LuCI support for xray and Xray-core."
-msgstr "xray 及 Xray-core 的 LuCI 配置界面"
+msgstr "XRay 及 Xray-core 的 LuCI 配置界面"
 
 #: package/htdocs/luci-static/resources/view/xray/outbound.js:495
 msgid "Mark"
@@ -1137,7 +1137,7 @@ msgstr "标识"
 
 #: package/htdocs/luci-static/resources/view/xray/main.js:54
 msgid "The maximum percentage of memory used by xray."
-msgstr "xray 可使用的最大内存百分比"
+msgstr "XRay 可使用的最大内存百分比"
 
 #: package/htdocs/luci-static/resources/view/xray/main.js:43
 msgid "This will restart service when config file changes."
@@ -1264,20 +1264,20 @@ msgstr "用户密钥"
 #: package/htdocs/luci-static/resources/view/xray/routing.js:21
 #: package/htdocs/luci-static/resources/view/xray/transparent-proxy.js:140
 #: package/luasrc/controller/xray.lua:13
-msgid "xray"
+msgid "XRay"
 msgstr ""
 
 #: package/htdocs/luci-static/resources/view/xray/main.js:51
-msgid "xray asset location"
-msgstr "xray 资源文件路径"
+msgid "XRay asset location"
+msgstr "XRay 资源文件路径"
 
 #: package/htdocs/luci-static/resources/view/xray/main.js:47
-msgid "xray file"
-msgstr "xray 文件"
+msgid "XRay file"
+msgstr "XRay 文件"
 
 #: package/htdocs/luci-static/resources/view/xray/main.js:35
 #: package/root/usr/share/luci/menu.d/luci-app-xray.json:3
-msgid "xray"
+msgid "XRay"
 msgstr ""
 
 #: package/htdocs/luci-static/resources/view/xray/about.js:27
@@ -1376,7 +1376,7 @@ msgstr "wget: 不支持 SSL, 请安装 %s 或 %s。"
 #~ msgstr "导入中……"
 
 #~ msgid "Invalid xray file"
-#~ msgstr "xray 文件有误"
+#~ msgstr "XRay 文件有误"
 
 #~ msgid "Invalid link"
 #~ msgstr "无效链接"

@@ -15,7 +15,7 @@ return L.view.extend({
   render: function () {
     const m = new form.Map(
       "xray",
-      "%s - %s".format(_("xray"), _("Reverse")),
+      "%s - %s".format(_("XRay"), _("Reverse")),
       _("Details: %s").format(
         '<a href="https://www.xray.com/en/configuration/reverse.html#reverseobject" target="_blank">ReverseObject</a>'
       )

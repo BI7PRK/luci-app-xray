@@ -13,7 +13,7 @@ return L.view.extend({
   render: function () {
     const m = new form.Map(
       "xray",
-      "%s - %s".format(_("xray"), _("Observatory")),
+      "%s - %s".format(_("XRay"), _("Observatory")),
       _("Details: %s").format(
         '<a href="https://www.v2fly.org/config/observatory.html#observatoryobject" target="_blank">ObservatoryObject</a>'
       )
