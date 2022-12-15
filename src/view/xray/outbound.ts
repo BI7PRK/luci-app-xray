@@ -211,7 +211,6 @@ return L.view.extend<string[]>({
               this,
               function (area: ui.Textarea) {
                 area.triggerValidation();
-
                 let val: string;
                 if (
                   !area.isValid() ||
