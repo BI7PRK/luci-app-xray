@@ -1,0 +1,1443 @@
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8\n"
+
+#: package/htdocs/luci-static/resources/view/xray/include/custom.js:88
+msgid "%s is required."
+msgstr "必须设置 %s"
+
+#: package/htdocs/luci-static/resources/view/xray/main.js:95
+msgid "<code>transport</code> field in top level configuration, JSON string"
+msgstr "配置文件中的 <code>transport</code> 项，JSON 字符串"
+
+#: package/htdocs/luci-static/resources/view/xray/main.js:96
+msgid "Enabled DNS log"
+msgstr "开启DNS查询日志"
+
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:398
+msgid "Version"
+msgstr "版本"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:399
+msgid "metadata only"
+msgstr "仅使用元数据推断"
+
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:560
+msgid "Reject Unknown SNI"
+msgstr "拒绝未知的SNI"
+
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:498
+msgid "Service name"
+msgstr "服务名称"
+
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:497
+msgid "Multi mode"
+msgstr "多模式"
+
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:496
+msgid "Idle timeout"
+msgstr "空闲超时"
+
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:475
+msgid "Health check timeout"
+msgstr "健康检查超时"
+
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:473
+msgid "Permit without stream"
+msgstr "无流许可"
+
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:472
+msgid "Initial windows size"
+msgstr "初始窗口大小"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:400
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:500
+msgid "xTLS Flow"
+msgstr "xTLS流控"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:271
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:286
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:335
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:400
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:412
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:461
+msgid "A list of HTTP headers, format: <code>header=value</code>. eg: %s"
+msgstr "HTTP Header 列表，格式：<code>header=value</code>。例如：%s"
+
+#: package/htdocs/luci-static/resources/view/xray/reverse.js:19
+msgid "A list of bridges, format: <code>tag|domain</code>. eg: %s"
+msgstr "Bridge 列表，格式：<code>tag|domain</code>。例如：%s"
+
+#: package/htdocs/luci-static/resources/view/xray/reverse.js:20
+msgid "A list of portals, format: <code>tag|domain</code>. eg: %s"
+msgstr "Portal 列表，格式：<code>tag|domain</code>。例如：%s"
+
+#: package/htdocs/luci-static/resources/view/xray/dns.js:31
+msgid "A list of static addresses, format: <code>domain|address</code>. eg: %s"
+msgstr "静态 IP 列表，格式：<code>domain|address</code>。例如：%s"
+
+#: package/htdocs/luci-static/resources/view/xray/main.js:35
+msgid "A platform for building proxies to bypass network restrictions."
+msgstr "一个用于构建网络代理的平台"
+
+#: package/htdocs/luci-static/resources/view/xray/transparent-proxy.js:168
+msgid "APNIC delegated mirror"
+msgstr "APNIC 分配列表镜像"
+
+#: package/htdocs/luci-static/resources/view/xray/dns.js:28
+msgid "Can be configured as a non-private IP address"
+msgstr "可用配置为一个非私有IP地址"
+
+#: package/htdocs/luci-static/resources/view/xray/dns.js:42
+msgid "Disable Cache"
+msgstr "禁用缓存"
+
+#: package/htdocs/luci-static/resources/view/xray/dns.js:45
+msgid "Disable Fallback"
+msgstr "禁用fallback查询"
+
+#: package/htdocs/luci-static/resources/view/xray/dns.js:46
+msgid "Disable Fallback If Match"
+msgstr "优先匹配列表fallback"
+
+#: package/htdocs/luci-static/resources/view/xray/dns.js:48
+msgid "Skip Fallback"
+msgstr "跳过Fallback查询"
+
+#: package/htdocs/luci-static/resources/view/xray/dns.js:50
+msgid "Query Strategy"
+msgstr "查询策略"
+
+#: package/htdocs/luci-static/resources/view/xray/about.js:27
+#: package/luasrc/controller/xray.lua:31
+#: package/root/usr/share/luci/menu.d/luci-app-xray.json:82
+msgid "About"
+msgstr "关于"
+
+#: package/htdocs/luci-static/resources/view/xray/main.js:60
+msgid "Access log file"
+msgstr "访问日志文件"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:86
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:155
+msgid "Account password"
+msgstr "帐户密码"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:83
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:152
+msgid "Account user"
+msgstr "账户用户名"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:32
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:182
+msgid "Add"
+msgstr "添加"
+
+#: package/htdocs/luci-static/resources/view/xray/dns.js:37
+msgid "Add DNS servers here"
+msgstr "在这里添加 DNS 服务器"
+
+#: package/htdocs/luci-static/resources/view/xray/policy.js:37
+msgid "Add policy levels here"
+msgstr "在这里添加策略等级"
+
+#: package/htdocs/luci-static/resources/view/xray/routing.js:77
+msgid "Add routing balancers here"
+msgstr "在这里添加路由负载均衡器"
+
+#: package/htdocs/luci-static/resources/view/xray/routing.js:78
+msgid "Balancer strategy"
+msgstr "负载均衡策略"
+
+#: package/htdocs/luci-static/resources/view/xray/routing.js:42
+msgid "Add routing rules here"
+msgstr "在这里添加路由规则"
+
+#: package/htdocs/luci-static/resources/view/xray/dns.js:43
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:57
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:218
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:258
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:308
+msgid "Address"
+msgstr "地址"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:57
+msgid "Address of the destination server."
+msgstr "将流量转发到此地址。"
+
+#: package/htdocs/luci-static/resources/view/xray/dns.js:41
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:39
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:189
+#: package/htdocs/luci-static/resources/view/xray/routing.js:47
+msgid "Alias"
+msgstr "别名"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:79
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:98
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:109
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:171
+msgid "All connections share this level"
+msgstr "所有连接都会使用这个用户等级"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:387
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:392
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:395
+msgid "Allocate"
+msgstr "端口分配"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:224
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:355
+msgid "Allow insecure"
+msgstr "允许不安全连接"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:227
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:358
+msgid "Allow insecure ciphers"
+msgstr "允许不安全的加密方式"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:90
+msgid "Allow transparent"
+msgstr "转发所有 HTTP 请求"
+
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:319
+msgid "Alter ID"
+msgstr ""
+
+#: package/htdocs/luci-static/resources/view/xray/routing.js:71
+msgid "Attrs"
+msgstr ""
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:145
+msgid "Auth"
+msgstr "认证方式"
+
+#: package/htdocs/luci-static/resources/view/xray/about.js:27
+msgid "Author: %s"
+msgstr "作者：%s"
+
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:327
+msgid "Auto"
+msgstr "自动"
+
+#: package/htdocs/luci-static/resources/view/xray/routing.js:74
+msgid "Balancer tag"
+msgstr "负载均衡器标识"
+
+#: package/htdocs/luci-static/resources/view/xray/routing.js:37
+msgid "Balancers"
+msgstr "负载均衡器"
+
+#: package/htdocs/luci-static/resources/view/xray/reverse.js:19
+msgid "Bridges"
+msgstr ""
+
+#: package/htdocs/luci-static/resources/view/xray/policy.js:63
+msgid "Buffer size"
+msgstr "缓存大小"
+
+#: package/htdocs/luci-static/resources/view/xray/transparent-proxy.js:173
+msgid "CHNRoute"
+msgstr ""
+
+#: package/htdocs/luci-static/resources/view/xray/transparent-proxy.js:165
+msgid "CN Direct"
+msgstr "直连 CN"
+
+#: package/htdocs/luci-static/resources/view/xray/transparent-proxy.js:166
+msgid "CN Proxy"
+msgstr "代理 CN"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:240
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:371
+msgid "Certificate file"
+msgstr "证书文件路径"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:233
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:364
+msgid "Certificate usage"
+msgstr "证书用途"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:175
+msgid "Client ID"
+msgstr "用户 ID"
+
+#: package/htdocs/luci-static/resources/view/xray/dns.js:39
+msgid "Client IP"
+msgstr "客户端IP"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:188
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:188
+msgid "Use xTLS flow"
+msgstr "使用xTLS流控"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:185
+msgid "Client User level"
+msgstr "用户等级"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:178
+msgid "Client alter ID"
+msgstr "用户 Alter ID"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:182
+msgid "Client email"
+msgstr "用户邮箱地址"
+
+#: package/htdocs/luci-static/resources/view/xray/include/custom.js:197
+msgid "Collecting data..."
+msgstr "正在收集数据..."
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:395
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:508
+msgid "Concurrency"
+msgstr "随机端口数量"
+
+#: package/htdocs/luci-static/resources/view/xray/main.js:57
+msgid "Config file"
+msgstr "配置文件"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:309
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:435
+msgid "Congestion enabled"
+msgstr "启用拥塞控制"
+
+#: package/htdocs/luci-static/resources/view/xray/policy.js:48
+msgid "Connection idle"
+msgstr "连接空闲时间"
+
+#: package/htdocs/luci-static/resources/view/xray/about.js:27
+msgid "Current Config File: %s"
+msgstr "当前配置文件：%s"
+
+#: package/htdocs/luci-static/resources/view/xray/dns.js:21
+#: package/luasrc/controller/xray.lua:21
+#: package/root/usr/share/luci/menu.d/luci-app-xray.json:42
+msgid "DNS"
+msgstr ""
+
+#: package/htdocs/luci-static/resources/view/xray/dns.js:32
+msgid "DNS Servers"
+msgstr "DNS 服务器"
+
+#: package/htdocs/luci-static/resources/view/xray/dns.js:37
+msgid "DNS server"
+msgstr "DNS 服务器"
+
+#: package/htdocs/luci-static/resources/view/xray/transparent-proxy.js:199
+msgid ""
+"DNS used for domains in direct list, format: <code>ip#port</code>. eg: %s"
+msgstr "直连列表中域名使用的 DNS，格式：<code>ip#port</code>。例如：%s"
+
+#: package/htdocs/luci-static/resources/view/xray/transparent-proxy.js:198
+msgid ""
+"DNS used for domains in proxy list, format: <code>ip#port</code>. eg: %s"
+msgstr "代理列表中域名使用的 DNS，格式：<code>ip#port</code>。例如：%s"
+
+#: package/htdocs/luci-static/resources/view/xray/main.js:66
+msgid "Debug"
+msgstr "调试"
+
+#: package/htdocs/luci-static/resources/view/xray/transparent-proxy.js:164
+msgid "Default"
+msgstr "默认"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:189
+msgid "Default alter ID"
+msgstr "默认 Alter ID"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:193
+msgid "Default user level"
+msgstr "默认用户等级"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:383
+msgid "Dest override"
+msgstr "重置指定类型"
+
+#: package/htdocs/luci-static/resources/view/xray/dns.js:21
+#: package/htdocs/luci-static/resources/view/xray/policy.js:23
+#: package/htdocs/luci-static/resources/view/xray/reverse.js:13
+#: package/htdocs/luci-static/resources/view/xray/routing.js:21
+msgid "Details: %s"
+msgstr "查看详情：%s"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:197
+msgid "Detour to"
+msgstr "转发到"
+
+#: package/htdocs/luci-static/resources/view/xray/transparent-proxy.js:199
+msgid "Direct list DNS"
+msgstr "直连列表 DNS"
+
+#: package/htdocs/luci-static/resources/view/xray/main.js:51
+msgid ""
+"Directory where geoip.dat and geosite.dat files are, default: same directory "
+"as xray file."
+msgstr "geoip.dat 和 geosite.dat 文件所在目录，默认：和 xray 文件所在目录相同"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:200
+msgid "Disable insecure encryption"
+msgstr "禁止不安全的加密方式"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:230
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:361
+msgid "Disable system root"
+msgstr "禁用系统自带的 CA 证书"
+
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:156
+msgid "Dismiss"
+msgstr "取消"
+
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:157
+msgid "min TLS version"
+msgstr "最小TLS版本"
+
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:158
+msgid "max TLS version"
+msgstr "最高TLS版本"
+
+#: package/htdocs/luci-static/resources/view/xray/routing.js:51
+msgid "Domain"
+msgstr "域名"
+
+#: package/htdocs/luci-static/resources/view/xray/routing.js:27
+msgid "Domain resolution strategy"
+msgstr "域名解析策略"
+
+#: package/htdocs/luci-static/resources/view/xray/routing.js:28
+msgid "Domain name matching algorithm"
+msgstr "域名匹配算法"
+
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:225
+msgid "Domain strategy"
+msgstr "域名策略"
+
+#: package/htdocs/luci-static/resources/view/xray/dns.js:47
+msgid "Domains"
+msgstr "域名"
+
+#: package/htdocs/luci-static/resources/view/xray/about.js:27
+msgid "Donate: %s"
+msgstr "捐助：%s"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:304
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:430
+msgid "Downlink capacity"
+msgstr "下行链路容量"
+
+#: package/htdocs/luci-static/resources/view/xray/policy.js:55
+msgid "Downlink only"
+msgstr "上行连接关闭等待时间"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:113
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:255
+msgid "Email"
+msgstr "邮箱地址"
+
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:143
+msgid "Empty field."
+msgstr "字段为空。"
+
+#: package/htdocs/luci-static/resources/view/xray/transparent-proxy.js:150
+msgid "Enable proxy on selected interfaces."
+msgstr "在选中的接口上启用代理。"
+
+#: package/htdocs/luci-static/resources/view/xray/transparent-proxy.js:143
+msgid "Enable transparent proxy on Dokodemo-door port."
+msgstr "在 Dokodemo-door 端口上启用透明代理。"
+
+#: package/htdocs/luci-static/resources/view/xray/dns.js:26
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:381
+#: package/htdocs/luci-static/resources/view/xray/main.js:41
+#: package/htdocs/luci-static/resources/view/xray/main.js:91
+#: package/htdocs/luci-static/resources/view/xray/main.js:93
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:506
+#: package/htdocs/luci-static/resources/view/xray/policy.js:28
+#: package/htdocs/luci-static/resources/view/xray/reverse.js:17
+#: package/htdocs/luci-static/resources/view/xray/routing.js:26
+msgid "Enabled"
+msgstr "已启用"
+
+#: package/htdocs/luci-static/resources/view/xray/main.js:69
+msgid "Error"
+msgstr "错误"
+
+#: package/htdocs/luci-static/resources/view/xray/main.js:72
+msgid "Error log file"
+msgstr "错误日志文件"
+
+#: package/htdocs/luci-static/resources/view/xray/dns.js:49
+msgid "Expect IPs"
+msgstr "期望 IP"
+
+#: package/htdocs/luci-static/resources/view/xray/transparent-proxy.js:193
+msgid "Extra direct list"
+msgstr "额外的直连列表"
+
+#: package/htdocs/luci-static/resources/view/xray/transparent-proxy.js:188
+msgid "Extra proxy list"
+msgstr "额外的代理列表"
+
+#: package/htdocs/luci-static/resources/view/xray/transparent-proxy.js:76
+msgid "Failed to decode data."
+msgstr "数据解码失败。"
+
+
+#: package/htdocs/luci-static/resources/view/xray/transparent-proxy.js:79
+msgid "Failed to fetch data."
+msgstr "无法获取数据"
+
+#: package/htdocs/luci-static/resources/view/xray/about.js:29
+msgid "Failed to open file."
+msgstr "无法打开文件"
+
+#: package/luasrc/controller/xray.lua:64
+msgid "Failed to request."
+msgstr "请求失败。"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:372
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:501
+msgid "False"
+msgstr "否"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:76
+msgid "Follow redirect"
+msgstr "自动转发"
+
+#: package/htdocs/luci-static/resources/view/xray/main.js:35
+msgid "For more information, please visit: %s"
+msgstr "获取更多信息，请访问：%s"
+
+#: package/htdocs/luci-static/resources/view/xray/transparent-proxy.js:183
+msgid "GFWList"
+msgstr ""
+
+#: package/htdocs/luci-static/resources/view/xray/transparent-proxy.js:167
+msgid "GFWList Proxy"
+msgstr "代理 GFWList"
+
+#: package/htdocs/luci-static/resources/view/xray/transparent-proxy.js:178
+msgid "GFWList mirror"
+msgstr "GFWList 镜像"
+
+#: package/htdocs/luci-static/resources/view/xray/transparent-proxy.js:68
+msgid "%s 更新完毕"
+msgstr ""
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:35
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:185
+msgid "General Settings"
+msgstr "常规设置"
+
+#: package/htdocs/luci-static/resources/view/xray/dns.js:29
+msgid "Visit my public IP address"
+msgstr "查看我的公网 IP 地址"
+
+#: package/htdocs/luci-static/resources/view/xray/include/custom.js:198
+msgid "Getting..."
+msgstr "获取中..."
+
+#: package/htdocs/luci-static/resources/view/xray/main.js:35
+#: package/luasrc/controller/xray.lua:15
+#: package/root/usr/share/luci/menu.d/luci-app-xray.json:18
+msgid "Global Settings"
+msgstr "全局设置"
+
+#: package/root/usr/share/rpcd/acl.d/luci-app-xray.json:3
+msgid "Grant access to LuCI app xray"
+msgstr "为 xray LuCI 分配权限"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:256
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:386
+msgid "HTTP request method"
+msgstr "HTTP 请求方式"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:252
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:383
+msgid "HTTP request version"
+msgstr "HTTP 请求版本"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:282
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:409
+msgid "HTTP response reason"
+msgstr "HTTP 响应说明"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:278
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:406
+msgid "HTTP response status"
+msgstr "HTTP 响应状态"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:274
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:403
+msgid "HTTP response version"
+msgstr "HTTP 响应版本"
+
+#: package/htdocs/luci-static/resources/view/xray/policy.js:45
+msgid "Handshake"
+msgstr "握手时间限制"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:246
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:322
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:359
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:377
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:448
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:485
+msgid "Header type"
+msgstr "头部伪装类型"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:335
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:461
+msgid "Headers"
+msgstr "HTTP 头"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:338
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:464
+msgid "Host"
+msgstr "域名"
+
+#: package/htdocs/luci-static/resources/view/xray/dns.js:31
+msgid "Hosts"
+msgstr "静态 IP 列表"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:162
+#: package/htdocs/luci-static/resources/view/xray/routing.js:53
+msgid "IP"
+msgstr ""
+
+#: package/htdocs/luci-static/resources/view/xray/transparent-proxy.js:163
+msgid ""
+"If enabled, iptables rules will be added to pre-filter traffic and then sent "
+"to xray."
+msgstr "如果启用，将会添加 iptables 规则来预先过滤流量，再发送给 xray 处理。"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:65
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:76
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:374
+msgid ""
+"If transparent proxy enabled on current inbound, this option will be ignored."
+msgstr "如果在当前入站连接上启用透明代理，此选项会被忽略。"
+
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:495
+msgid ""
+"If transparent proxy is enabled, this option is ignored and will be set to "
+"255."
+msgstr "如果启用了透明代理，此选项会被忽略，并自动设置为255。"
+
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:519
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:521
+msgid "Import"
+msgstr "导入"
+
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:116
+msgid "Imported %d links."
+msgstr "已导入 %d 条链接。"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:25
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:32
+#: package/luasrc/controller/xray.lua:17
+#: package/root/usr/share/luci/menu.d/luci-app-xray.json:26
+msgid "Inbound"
+msgstr "入站连接"
+
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:65
+#: package/htdocs/luci-static/resources/view/xray/routing.js:65
+msgid "Inbound tag"
+msgstr "入站连接标识"
+
+#: package/htdocs/luci-static/resources/view/xray/main.js:79
+msgid "Inbounds enabled"
+msgstr "启用的入站连接"
+
+#: package/htdocs/luci-static/resources/view/xray/main.js:67
+msgid "Info"
+msgstr "信息"
+
+#: package/htdocs/luci-static/resources/view/xray/include/custom.js:98
+msgid "Invalid JSON content."
+msgstr "JSON 内容验证失败。"
+
+#: package/luasrc/controller/xray.lua:43
+msgid "Invalid url"
+msgstr "无效链接"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:355
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:481
+msgid "Key"
+msgstr "密钥"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:243
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:374
+msgid "Key file"
+msgstr "密钥文件路径"
+
+#: package/htdocs/luci-static/resources/view/xray/transparent-proxy.js:150
+msgid "LAN interfaces"
+msgstr "LAN 接口"
+
+#: package/htdocs/luci-static/resources/view/xray/about.js:27
+msgid "Latest: %s"
+msgstr "最新版本：%s"
+
+#: package/htdocs/luci-static/resources/view/xray/policy.js:42
+msgid "Level"
+msgstr "等级"
+
+#: package/htdocs/luci-static/resources/view/xray/policy.js:30
+msgid "Levels"
+msgstr "等级"
+
+#: package/htdocs/luci-static/resources/view/xray/transparent-proxy.js:68
+#: package/htdocs/luci-static/resources/view/xray/transparent-proxy.js:109
+msgid "List Update"
+msgstr "列表已更新"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:41
+msgid "Listen"
+msgstr "监听地址"
+
+#: package/htdocs/luci-static/resources/view/xray/include/custom.js:113
+msgid "Listtype is required"
+msgstr "请设置列表类型。"
+
+#: package/htdocs/luci-static/resources/view/xray/transparent-proxy.js:200
+msgid "Local devices direct outbound list"
+msgstr "本地设备直接连出列表"
+
+#: package/htdocs/luci-static/resources/view/xray/main.js:64
+msgid "Log level"
+msgstr "日志等级"
+
+#: package/htdocs/luci-static/resources/view/xray/about.js:27
+msgid "LuCI support for xray and Xray-core."
+msgstr "XRay 及 Xray-core 的 LuCI 配置界面"
+
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:495
+msgid "Mark"
+msgstr "标记"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:289
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:415
+msgid "Maximum transmission unit (MTU)"
+msgstr "最大传输单元（MTU）"
+
+#: package/htdocs/luci-static/resources/view/xray/main.js:54
+msgid "Memory percentage"
+msgstr "内存百分比"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:116
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:266
+msgid "Method"
+msgstr "加密方式"
+
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:506
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:508
+msgid "Mux"
+msgstr "多路复用"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:65
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:139
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:203
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:212
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:335
+#: package/htdocs/luci-static/resources/view/xray/routing.js:58
+msgid "Network"
+msgstr "网络"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:149
+msgid "No Auth"
+msgstr "无认证"
+
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:129
+msgid "No links imported."
+msgstr "无链接导入。"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:214
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:250
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:326
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:352
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:363
+#: package/htdocs/luci-static/resources/view/xray/main.js:59
+#: package/htdocs/luci-static/resources/view/xray/main.js:70
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:210
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:330
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:346
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:381
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:452
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:478
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:489
+#: package/htdocs/luci-static/resources/view/xray/transparent-proxy.js:144
+msgid "None"
+msgstr "无"
+
+#: package/htdocs/luci-static/resources/view/xray/include/custom.js:180
+msgid "Not Running"
+msgstr "服务未运行"
+
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:126
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:134
+#: package/htdocs/luci-static/resources/view/xray/transparent-proxy.js:73
+#: package/htdocs/luci-static/resources/view/xray/transparent-proxy.js:114
+msgid "OK"
+msgstr "确定"
+
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:286
+msgid "OTA"
+msgstr ""
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:379
+msgid "Off"
+msgstr "关闭"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:136
+msgid "One Time Auth (OTA)"
+msgstr "一次性认证（OTA）"
+
+#: package/htdocs/luci-static/resources/view/xray/transparent-proxy.js:188
+#: package/htdocs/luci-static/resources/view/xray/transparent-proxy.js:193
+msgid "One address per line. Allow types: DOMAIN, IP, CIDR. eg: %s, %s, %s"
+msgstr "每行一个地址，支持的类型：域名、IP、CIDR。例如：%s、%s、%s"
+
+#: package/htdocs/luci-static/resources/view/xray/transparent-proxy.js:200
+msgid "One address per line. Allow types: IP, CIDR. eg: %s, %s"
+msgstr "每行一个地址，支持的类型：IP、CIDR。例如：%s、%s"
+
+#: package/htdocs/luci-static/resources/view/xray/transparent-proxy.js:158
+msgid "Only privileged ports"
+msgstr "仅特权端口"
+
+#: package/htdocs/luci-static/resources/view/xray/transparent-proxy.js:158
+msgid "Only redirect traffic on ports below 1024."
+msgstr "仅转发端口小于 1024 的流量。"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:197
+msgid ""
+"Optional feature to suggest client to take a detour. If specified, this "
+"inbound will instruct the outbound to use another inbound."
+msgstr "建议客户端自动绕路，指定后将指示出站连接使用另一个入站连接。"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:37
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:187
+msgid "Other Settings"
+msgstr "其他设置"
+
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:175
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:182
+#: package/luasrc/controller/xray.lua:19
+#: package/root/usr/share/luci/menu.d/luci-app-xray.json:34
+msgid "Outbound"
+msgstr "出站连接"
+
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:116
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:129
+msgid "Outbound Import"
+msgstr ""
+
+#: package/htdocs/luci-static/resources/view/xray/routing.js:73
+msgid "Outbound tag"
+msgstr "出站连接标识"
+
+#: package/htdocs/luci-static/resources/view/xray/main.js:85
+msgid "Outbounds enabled"
+msgstr "启用的出站连接"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:128
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:150
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:251
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:278
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:300
+msgid "Password"
+msgstr "密码"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:332
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:341
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:345
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:458
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:467
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:471
+msgid "Path"
+msgstr "路径"
+
+#: package/htdocs/luci-static/resources/view/xray/policy.js:23
+#: package/luasrc/controller/xray.lua:25
+#: package/root/usr/share/luci/menu.d/luci-app-xray.json:58
+msgid "Policy"
+msgstr "策略"
+
+#: package/htdocs/luci-static/resources/view/xray/policy.js:37
+msgid "Policy Level"
+msgstr "策略等级"
+
+#: package/htdocs/luci-static/resources/view/xray/dns.js:44
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:47
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:61
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:221
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:262
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:312
+#: package/htdocs/luci-static/resources/view/xray/routing.js:55
+msgid "Port"
+msgstr "端口"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:61
+msgid "Port of the destination server."
+msgstr "将流量转发到目标地址的指定端口。"
+
+#: package/htdocs/luci-static/resources/view/xray/reverse.js:20
+msgid "Portals"
+msgstr ""
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:50
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:197
+#: package/htdocs/luci-static/resources/view/xray/routing.js:66
+msgid "Protocol"
+msgstr "协议"
+
+#: package/htdocs/luci-static/resources/view/xray/transparent-proxy.js:198
+msgid "Proxy list DNS"
+msgstr "代理列表 DNS"
+
+#: package/htdocs/luci-static/resources/view/xray/transparent-proxy.js:163
+msgid "Proxy mode"
+msgstr "代理模式"
+
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:504
+msgid "Proxy settings"
+msgstr "出站代理配置"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:312
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:438
+msgid "Read buffer size"
+msgstr "读取缓冲区大小"
+
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:233
+msgid "Redirect"
+msgstr "发送到指定地址"
+
+#: package/htdocs/luci-static/resources/view/xray/transparent-proxy.js:160
+msgid "Redirect DNS"
+msgstr "转发 DNS"
+
+#: package/htdocs/luci-static/resources/view/xray/transparent-proxy.js:160
+msgid "Redirect DNS traffic to xray."
+msgstr "转发 DNS 流量到 xray。"
+
+#: package/htdocs/luci-static/resources/view/xray/transparent-proxy.js:159
+msgid "Redirect UDP"
+msgstr "转发 UDP"
+
+#: package/htdocs/luci-static/resources/view/xray/transparent-proxy.js:159
+msgid "Redirect UDP traffic to xray."
+msgstr "转发 UDP 流量到 xray。"
+
+#: package/htdocs/luci-static/resources/view/xray/transparent-proxy.js:143
+msgid "Redirect port"
+msgstr "转发端口"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:392
+msgid "Refresh"
+msgstr "随机端口刷新间隔"
+
+#: package/htdocs/luci-static/resources/view/xray/main.js:45
+msgid "Reload"
+msgstr "重载"
+
+#: package/htdocs/luci-static/resources/view/xray/main.js:43
+msgid "Reload Service"
+msgstr "重载服务"
+
+#: package/htdocs/luci-static/resources/view/xray/main.js:23
+msgid "Reload service failed with code %d"
+msgstr ""
+
+#: package/htdocs/luci-static/resources/view/xray/about.js:27
+msgid "Report Bugs: %s"
+msgstr "报告错误：%s"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:271
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:400
+msgid "Request headers"
+msgstr "请求头"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:268
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:397
+msgid "Request path"
+msgstr "请求路径"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:286
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:412
+msgid "Response headers"
+msgstr "响应头"
+
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:206
+msgid "Response type"
+msgstr "响应类型"
+
+#: package/htdocs/luci-static/resources/view/xray/reverse.js:13
+#: package/luasrc/controller/xray.lua:27
+#: package/root/usr/share/luci/menu.d/luci-app-xray.json:66
+msgid "Reverse"
+msgstr "反向代理"
+
+#: package/htdocs/luci-static/resources/view/xray/routing.js:21
+#: package/luasrc/controller/xray.lua:23
+#: package/root/usr/share/luci/menu.d/luci-app-xray.json:50
+msgid "Routing"
+msgstr "路由"
+
+#: package/htdocs/luci-static/resources/view/xray/routing.js:77
+msgid "Routing Balancer"
+msgstr "负载均衡器"
+
+#: package/htdocs/luci-static/resources/view/xray/routing.js:42
+msgid "Routing Rule"
+msgstr "路由规则"
+
+#: package/htdocs/luci-static/resources/view/xray/routing.js:32
+msgid "Rules"
+msgstr "规则"
+
+#: package/htdocs/luci-static/resources/view/xray/include/custom.js:183
+msgid "Running"
+msgstr "服务正在运行"
+
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:166
+msgid "Save"
+msgstr "保存"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:211
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:348
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:323
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:343
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:474
+msgid "Security"
+msgstr "传输层加密"
+
+#: package/htdocs/luci-static/resources/view/xray/dns.js:32
+msgid "Select DNS servers to use"
+msgstr "选择使用的 DNS 服务器"
+
+#: package/htdocs/luci-static/resources/view/xray/policy.js:30
+msgid "Select policy levels"
+msgstr "选择策略等级"
+
+#: package/htdocs/luci-static/resources/view/xray/routing.js:37
+msgid "Select routing balancers to use"
+msgstr "选择使用的路由负载均衡器"
+
+#: package/htdocs/luci-static/resources/view/xray/routing.js:32
+msgid "Select routing rules to use"
+msgstr "选择使用的路由规则"
+
+#: package/htdocs/luci-static/resources/view/xray/routing.js:82
+msgid "Selector"
+msgstr "标识匹配前缀"
+
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:191
+msgid "Send through"
+msgstr "发送 IP 地址"
+
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:240
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:289
+msgid "Server address"
+msgstr "服务器地址"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:216
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:348
+msgid "Server name"
+msgstr "服务器端证书域名"
+
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:244
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:293
+msgid "Server port"
+msgstr "服务器端口"
+
+#: package/htdocs/luci-static/resources/view/xray/main.js:47
+msgid "Set the xray executable file path."
+msgstr "设置 xray 可执行文件路径。"
+
+#: package/htdocs/luci-static/resources/view/xray/main.js:95
+msgid "Settings"
+msgstr "配置"
+
+#: package/htdocs/luci-static/resources/view/xray/transparent-proxy.js:157
+msgid "Setup redirect rules with TProxy."
+msgstr "使用 TProxy 来设置转发规则。"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:381
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:383
+msgid "Sniffing"
+msgstr "流量探测"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:384
+msgid "routeOnly"
+msgstr "仅作用于路由"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:369
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:374
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:495
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:498
+msgid "Sockopt"
+msgstr "连接选项"
+
+#: package/htdocs/luci-static/resources/view/xray/routing.js:61
+msgid "Source"
+msgstr "来源地址"
+
+#: package/htdocs/luci-static/resources/view/xray/about.js:27
+msgid "Source: %s"
+msgstr "源码：%s"
+
+#: package/htdocs/luci-static/resources/view/xray/main.js:91
+msgid "Stats"
+msgstr "统计信息"
+
+#: package/htdocs/luci-static/resources/view/xray/policy.js:36
+msgid "Stats inbound downlink"
+msgstr "入站下行流量统计"
+
+#: package/htdocs/luci-static/resources/view/xray/policy.js:35
+msgid "Stats inbound uplink"
+msgstr "入站上行流量统计"
+
+#: package/htdocs/luci-static/resources/view/xray/policy.js:61
+msgid "Stats user downlink"
+msgstr "用户上行流量统计"
+
+#: package/htdocs/luci-static/resources/view/xray/policy.js:59
+msgid "Stats user uplink"
+msgstr "用户下行流量统计"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:387
+msgid "Strategy"
+msgstr "端口分配策略"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:36
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:186
+msgid "Stream Settings"
+msgstr "数据流设置"
+
+#: package/htdocs/luci-static/resources/view/xray/policy.js:35
+#: package/htdocs/luci-static/resources/view/xray/policy.js:36
+msgid "System"
+msgstr "系统"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:369
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:498
+msgid "TCP fast open"
+msgstr "TCP 快速打开"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:374
+msgid "TProxy"
+msgstr ""
+
+#: package/htdocs/luci-static/resources/view/xray/dns.js:28
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:380
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:503
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:504
+#: package/htdocs/luci-static/resources/view/xray/routing.js:80
+msgid "Tag"
+msgstr "标识"
+
+#: package/htdocs/luci-static/resources/view/xray/main.js:54
+msgid "The maximum percentage of memory used by xray."
+msgstr "XRay 可使用的最大内存百分比"
+
+#: package/htdocs/luci-static/resources/view/xray/main.js:43
+msgid "This will restart service when config file changes."
+msgstr "如果配置文件发生变化，此操作会重启服务"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:71
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:93
+msgid "Time limit for inbound data(seconds)"
+msgstr "入站数据的时间限制（秒）"
+
+#: package/htdocs/luci-static/resources/view/xray/include/custom.js:128
+msgid "Time: %s"
+msgstr "时间：%s"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:71
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:93
+msgid "Timeout"
+msgstr "超时时间"
+
+#: package/htdocs/luci-static/resources/view/xray/include/custom.js:128
+msgid "Total: %s"
+msgstr "总数：%s"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:294
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:420
+msgid "Transmission time interval (TTI)"
+msgstr "传输时间间隔（TTI）"
+
+#: package/htdocs/luci-static/resources/view/xray/transparent-proxy.js:140
+#: package/luasrc/controller/xray.lua:29
+#: package/root/usr/share/luci/menu.d/luci-app-xray.json:74
+msgid "Transparent Proxy"
+msgstr "透明代理"
+
+#: package/htdocs/luci-static/resources/view/xray/main.js:93
+#: package/htdocs/luci-static/resources/view/xray/main.js:95
+msgid "Transport"
+msgstr "底层传输"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:373
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:502
+msgid "True"
+msgstr "是"
+
+#: package/htdocs/luci-static/resources/view/xray/routing.js:49
+msgid "Type"
+msgstr "类型"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:159
+msgid "UDP"
+msgstr ""
+
+#: package/htdocs/luci-static/resources/view/xray/include/custom.js:174
+msgid "Unable to get xray version."
+msgstr "无法获取 xray 版本。"
+
+#: package/htdocs/luci-static/resources/view/xray/transparent-proxy.js:129
+msgid "Unexpected error."
+msgstr "无法预料的错误"
+
+#: package/htdocs/luci-static/resources/view/xray/include/custom.js:48
+#: package/htdocs/luci-static/resources/view/xray/include/custom.js:117
+msgid "Unknown"
+msgstr "未知"
+
+#: package/htdocs/luci-static/resources/view/xray/transparent-proxy.js:175
+#: package/htdocs/luci-static/resources/view/xray/transparent-proxy.js:185
+msgid "Update"
+msgstr "更新"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:299
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:425
+msgid "Uplink capacity"
+msgstr "上行链路容量"
+
+#: package/htdocs/luci-static/resources/view/xray/policy.js:51
+msgid "Uplink only"
+msgstr "下行连接关闭等待时间"
+
+#: package/htdocs/luci-static/resources/view/xray/transparent-proxy.js:157
+msgid "Use TProxy"
+msgstr "使用 TProxy"
+
+#: package/htdocs/luci-static/resources/view/xray/main.js:57
+msgid "Use custom config file."
+msgstr "使用自定义配置文件。"
+
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:248
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:297
+#: package/htdocs/luci-static/resources/view/xray/routing.js:63
+msgid "User"
+msgstr "用户"
+
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:316
+msgid "User ID"
+msgstr "用户 ID"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:102
+msgid "User email"
+msgstr "用户邮箱地址"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:79
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:98
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:109
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:132
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:171
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:236
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:282
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:304
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:331
+msgid "User level"
+msgstr "用户等级"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:105
+msgid "User secret"
+msgstr "用户密钥"
+
+#: package/htdocs/luci-static/resources/view/xray/about.js:27
+#: package/htdocs/luci-static/resources/view/xray/dns.js:21
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:25
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:175
+#: package/htdocs/luci-static/resources/view/xray/policy.js:23
+#: package/htdocs/luci-static/resources/view/xray/reverse.js:13
+#: package/htdocs/luci-static/resources/view/xray/routing.js:21
+#: package/htdocs/luci-static/resources/view/xray/transparent-proxy.js:140
+#: package/luasrc/controller/xray.lua:13
+msgid "XRay"
+msgstr ""
+
+#: package/htdocs/luci-static/resources/view/xray/main.js:51
+msgid "XRay asset location"
+msgstr "XRay 资源文件路径"
+
+#: package/htdocs/luci-static/resources/view/xray/main.js:47
+msgid "XRay file"
+msgstr "XRay 文件"
+
+#: package/htdocs/luci-static/resources/view/xray/main.js:35
+#: package/root/usr/share/luci/menu.d/luci-app-xray.json:3
+msgid "XRay"
+msgstr ""
+
+#: package/htdocs/luci-static/resources/view/xray/about.js:27
+#: package/htdocs/luci-static/resources/view/xray/include/custom.js:172
+msgid "Version: %s"
+msgstr "版本：%s"
+
+#: package/htdocs/luci-static/resources/view/xray/main.js:68
+msgid "Warning"
+msgstr "警告"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:329
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:366
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:455
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:492
+msgid "Wechat Video"
+msgstr "微信视频通话"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:162
+msgid ""
+"When UDP is enabled, xray needs to know the IP address of current host."
+msgstr "当 UDP 启用时，xray 需要知道当前服务器的 IP 地址。"
+
+#: package/htdocs/luci-static/resources/view/xray/inbound.js:317
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:443
+msgid "Write buffer size"
+msgstr "写入缓冲区大小"
+
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:140
+msgid "You can add multiple links at once, one link per line."
+msgstr "可一次添加多个链接，每个链接一行。"
+
+#: package/luasrc/controller/xray.lua:53
+msgctxt "libustream-openssl"
+msgid "wget: SSL support not available, please install %s or %s."
+msgstr "wget: 不支持 SSL, 请安装 %s 或 %s。"
+
+#~ msgid "An IP address for sending traffic out."
+#~ msgstr "用于发送数据的 IP 地址"
+
+#~ msgid "Any custom string"
+#~ msgstr "任意自定义字符串"
+
+#~ msgid "Inbound Tag"
+#~ msgstr "入站连接标识"
+
+#~ msgid "List updated."
+#~ msgstr "列表已更新。"
+
+#~ msgid "Outbound Tag"
+#~ msgstr "出站连接标识"
+
+#~ msgid "Please install %s or %s to enable list update."
+#~ msgstr "请安装 %s 或 %s 来启用列表更新功能。"
+
+#~ msgid "Allowed link format: <code>%s</code>"
+#~ msgstr "支持的链接格式：<code>%s</code>"
+
+#~ msgid "Buffer Size"
+#~ msgstr "缓存大小"
+
+#~ msgid "Can't get xray version"
+#~ msgstr "无法获取 xray 版本信息"
+
+#~ msgid "Close"
+#~ msgstr "关闭"
+
+#~ msgid "Connection Idle"
+#~ msgstr "连接空闲时间"
+
+#~ msgid "Edit Inbound"
+#~ msgstr "编辑入站连接"
+
+#~ msgid "Edit Outbound"
+#~ msgstr "编辑出站连接"
+
+#~ msgid "Edit Policy Level"
+#~ msgstr "编辑策略等级"
+
+#~ msgid "Edit Routing Rule"
+#~ msgstr "编辑路由规则"
+
+#~ msgid "Failed to create new section"
+#~ msgstr "创建新配置项失败"
+
+#~ msgid "Failed to save section"
+#~ msgstr "保存配置项失败"
+
+#~ msgid "Import failed"
+#~ msgstr "导入失败"
+
+#~ msgid "Import multiple vmess:// links at once. One link per line."
+#~ msgstr "可一次添加多个 vmess:// 链接，每个链接一行。"
+
+#~ msgid "Importing..."
+#~ msgstr "导入中……"
+
+#~ msgid "Invalid xray file"
+#~ msgstr "XRay 文件有误"
+
+#~ msgid "Invalid link"
+#~ msgstr "无效链接"
+
+#~ msgid "Link imported"
+#~ msgstr "链接已导入"
+
+#~ msgid "List update failed, please try again later."
+#~ msgstr "列表更新失败，请稍后重试。"
+
+#~ msgid "List updated, reload page to see detail."
+#~ msgstr "列表已更新，刷新页面查看详情。"
+
+#~ msgid "Send Through"
+#~ msgstr "发送 IP 地址"
+
+#~ msgid "Stream Network"
+#~ msgstr "数据流网络"
+
+#~ msgid "Stream settings"
+#~ msgstr "底层传输配置"
+
+#~ msgid "Submit"
+#~ msgstr "提交"
+
+#~ msgid "Total: %s, Date: %s"
+#~ msgstr "总共：%s，日期：%s"
+
+#~ msgid "Transport settings is required."
+#~ msgstr "底层传输配置是必填项。"
+
+#~ msgid "Unsupported Link"
+#~ msgstr "不支持的链接"
+
+#~ msgid "Unsupported link version"
+#~ msgstr "不支持的链接版本"
+
+#~ msgid "Updating..."
+#~ msgstr "更新中..."
+
+#: package/htdocs/luci-static/resources/view/xray/observatory.ts:99
+msgid "Observatory"
+msgstr "连接观测"
+
+#: package/htdocs/luci-static/resources/view/xray/observatory.ts:100
+msgid "ProbeURL"
+msgstr "检测地址"
+
+#: package/htdocs/luci-static/resources/view/xray/observatory.ts:101
+msgid "ProbeInterval"
+msgstr "探测间隔"
+
+
+#: package/htdocs/luci-static/resources/view/xray/observatory.ts:102
+msgid "SubjectSelector"
+msgstr "出站标识前缀"
+
+#: package/htdocs/luci-static/resources/view/xray/observatory.ts:103
+msgid "empty use the built-in value"
+msgstr "留空使用内建测试地址"
+
+#: package/htdocs/luci-static/resources/view/xray/observatory.ts:103
+msgid "A valid URL, it will be get request to testing. eg: <code>%s</code>."
+msgstr "一个有效的网址。 通过GET请求进行测试。例如 <code>%s</code>"
