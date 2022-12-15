@@ -84,7 +84,7 @@ return L.view.extend<SectionItem[][]>({
     o = s.option(
       form.Value,
       "xray_file",
-       file"),
+      _("XRay file"),
       _("Set the xray executable file path.")
     );
     o.datatype = "file";
@@ -94,7 +94,7 @@ return L.view.extend<SectionItem[][]>({
     o = s.option(
       form.Value,
       "asset_location",
-       asset location"),
+      _("XRay asset location"),
       _(
         "Directory where geoip.dat and geosite.dat files are, default: same directory as xray file."
       )
