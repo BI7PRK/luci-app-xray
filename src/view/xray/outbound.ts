@@ -238,11 +238,7 @@ return L.view.extend<string[]>({
     ]);
   },
   render: function ([localIPs = []]) {
-    const m = new form.Map(
-      "xray",
-      "%s - %s".format(_("xray"), _("Outbound"))
-    );
-
+    const m = new form.Map("xray", "%s - %s".format(_("xray"), _("Outbound")));
     const s = m.section(form.GridSection, "outbound");
     s.anonymous = true;
     s.addremove = true;
