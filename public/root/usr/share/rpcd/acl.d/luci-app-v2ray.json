@@ -1,0 +1,36 @@
+{
+  "luci-app-xray": {
+    "description": "Grant access to LuCI app xray",
+    "read": {
+      "ubus": {
+        "luci.xray": [
+          "*"
+        ]
+      },
+      "uci": [
+        "xray"
+      ],
+      "file": {
+        "/etc/xray/*": [
+          "read"
+        ],
+        "/var/etc/xray/*": [
+          "read"
+        ],
+        "/etc/init.d/xray": [
+          "exec"
+        ]
+      }
+    },
+    "write": {
+      "uci": [
+        "xray"
+      ],
+      "file": {
+        "/etc/xray/*": [
+          "write"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,98 @@
+#!/bin/sh
+#
+# Copyright 2019-2020 Xingwang Liao <kuoruan@gmail.com>
+# Licensed to the public under the MIT License.
+#
+
+# xray main
+xray=$(uci -q get xray.main)
+if [ "x$xray" != "xxray" ] ; then
+	uci -q batch <<-EOF >/dev/null
+		add xray xray
+		rename xray.@xray[-1]="main"
+		set xray.main.enabled="0"
+		commit xray
+	EOF
+fi
+
+# dns
+dns=$(uci -q get xray.main_dns)
+if [ "x$dns" != "xdns" ] ; then
+	uci -q batch <<-EOF >/dev/null
+		add xray dns
+		rename xray.@dns[-1]="main_dns"
+		set xray.main_dns.enabled="0"
+		commit xray
+	EOF
+fi
+
+# observatory
+observatory=$(uci -q get xray.main_observatory)
+if [ "x$observatory" != "xobservatory" ] ; then
+	uci -q batch <<-EOF >/dev/null
+		add xray observatory
+		rename xray.@observatory[-1]="main_observatory"
+		set xray.main_observatory.enabled="0"
+		commit xray
+	EOF
+fi
+
+# routing
+routing=$(uci -q get xray.main_routing)
+if [ "x$routing" != "xrouting" ] ; then
+	uci -q batch <<-EOF >/dev/null
+		add xray routing
+		rename xray.@routing[-1]="main_routing"
+		set xray.main_routing.enabled="0"
+		commit xray
+	EOF
+fi
+
+# policy
+policy=$(uci -q get xray.main_policy)
+if [ "x$policy" != "xpolicy" ] ; then
+	uci -q batch <<-EOF >/dev/null
+		add xray policy
+		rename xray.@policy[-1]="main_policy"
+		set xray.main_policy.enabled="0"
+		commit xray
+	EOF
+fi
+
+# reverse
+reverse=$(uci -q get xray.main_reverse)
+if [ "x$reverse" != "xreverse" ] ; then
+	uci -q batch <<-EOF >/dev/null
+		add xray reverse
+		rename xray.@reverse[-1]="main_reverse"
+		set xray.main_reverse.enabled="0"
+		commit xray
+	EOF
+fi
+
+# transparent_proxy
+transparent_proxy=$(uci -q get xray.main_transparent_proxy)
+if [ "x$transparent_proxy" != "xtransparent_proxy" ] ; then
+	uci -q batch <<-EOF >/dev/null
+		add xray transparent_proxy
+		rename xray.@transparent_proxy[-1]="main_transparent_proxy"
+		set xray.main_transparent_proxy.redirect_port=""
+		commit xray
+	EOF
+fi
+
+uci -q batch <<-EOF >/dev/null
+	delete ucitrack.@xray[-1]
+	add ucitrack xray
+	set ucitrack.@xray[-1].init=xray
+	commit ucitrack
+	delete firewall.xray
+	set firewall.xray=include
+	set firewall.xray.type=script
+	set firewall.xray.path=/etc/firewall.xray
+	set firewall.xray.family=any
+	set firewall.xray.reload=1
+	commit firewall
+EOF
+
+exit 0

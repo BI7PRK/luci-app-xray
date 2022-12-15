@@ -1,0 +1,104 @@
+{
+  "admin/services/xray": {
+    "title": "xray",
+    "action": {
+      "type": "alias",
+      "path": "admin/services/xray/main"
+    },
+    "depends": {
+      "acl": [
+        "luci-app-xray"
+      ],
+      "uci": {
+        "xray": true
+      }
+    }
+  },
+  "admin/services/xray/main": {
+    "title": "Global Settings",
+    "order": 10,
+    "action": {
+      "type": "view",
+      "path": "xray/main"
+    }
+  },
+  "admin/services/xray/inbound": {
+    "title": "Inbound",
+    "order": 20,
+    "action": {
+      "type": "view",
+      "path": "xray/inbound"
+    }
+  },
+  "admin/services/xray/outbound": {
+    "title": "Outbound",
+    "order": 30,
+    "action": {
+      "type": "view",
+      "path": "xray/outbound"
+    }
+  },
+  "admin/services/xray/dns": {
+    "title": "DNS",
+    "order": 40,
+    "action": {
+      "type": "view",
+      "path": "xray/dns"
+    }
+  },
+  "admin/services/xray/routing": {
+    "title": "Routing",
+    "order": 50,
+    "action": {
+      "type": "view",
+      "path": "xray/routing"
+    }
+  },
+  "admin/services/xray/observatory": {
+    "title": "Observatory",
+    "order": 60,
+    "action": {
+      "type": "view",
+      "path": "xray/observatory"
+    }
+  },
+  "admin/services/xray/policy": {
+    "title": "Policy",
+    "order": 70,
+    "action": {
+      "type": "view",
+      "path": "xray/policy"
+    }
+  },
+  "admin/services/xray/reverse": {
+    "title": "Reverse",
+    "order": 80,
+    "action": {
+      "type": "view",
+      "path": "xray/reverse"
+    }
+  },
+  "admin/services/xray/transparent-proxy": {
+    "title": "Transparent Proxy",
+    "order": 90,
+    "action": {
+      "type": "view",
+      "path": "xray/transparent-proxy"
+    }
+  },
+  "admin/services/xray/about": {
+    "title": "About",
+    "order": 100,
+    "action": {
+      "type": "view",
+      "path": "xray/about"
+    }
+  },
+  "admin/services/xray/request": {
+    "action": {
+      "type": "call",
+      "module": "luci.controller.xray",
+      "function": "action_request"
+    }
+  }
+}
