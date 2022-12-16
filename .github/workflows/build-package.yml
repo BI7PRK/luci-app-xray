@@ -2,7 +2,7 @@ name: Push Package Sources and Build
 on:
   push:
     branches:
-      - master
+      - main
     tags-ignore:
       - '*'
 
