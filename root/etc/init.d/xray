@@ -2335,6 +2335,8 @@ start_instance() {
 
 	test -x "$xray_file" || chmod 755 "$xray_file"
 
+	test -x "/usr/libexec/rpcd/luci.xray" || chmod 755 "/usr/libexec/rpcd/luci.xray"
+
 	local temp_config
 
 	if [ -n "$config_file" ]; then
