@@ -500,18 +500,18 @@ add_xray_redirect_rules() {
 				fi
 			)
 
-			:xray_MARK -
-			-A xray_MARK -p udp -j RETURN -m mark --mark 0xff
-			-A xray_MARK -p udp -j RETURN -m set --match-set $ipset_src_direct src
-			-A xray_MARK -p udp -j RETURN -m set --match-set $ipset_dst_direct dst
+			:XRAY_MARK -
+			-A XRAY_MARK -p udp -j RETURN -m mark --mark 0xff
+			-A XRAY_MARK -p udp -j RETURN -m set --match-set $ipset_src_direct src
+			-A XRAY_MARK -p udp -j RETURN -m set --match-set $ipset_dst_direct dst
 			$(
 				if [ "$addition" = "dns" ]; then
-					echo "-A xray_MARK -p udp --dport 53 -j MARK --set-mark 1"
+					echo "-A XRAY_MARK -p udp --dport 53 -j MARK --set-mark 1"
 				else
-					echo "-A xray_MARK -p udp -j MARK --set-mark 1"
+					echo "-A XRAY_MARK -p udp -j MARK --set-mark 1"
 				fi
 			)
-			-A OUTPUT -p udp -j xray_MARK
+			-A OUTPUT -p udp -j XRAY_MARK
 			COMMIT
 		EOF
 	fi
@@ -570,27 +570,27 @@ add_xray_tproxy_rules() {
 			fi
 		)
 
-		:xray_MASK -
-		-A xray_MASK -j RETURN -m mark --mark 0xff
-		-A xray_MASK -j RETURN -m set --match-set $ipset_src_direct src
-		-A xray_MASK -j RETURN -m set --match-set $ipset_dst_direct dst
-		-A xray_MASK -p tcp $ext_args -j MARK --set-mark 1
+		:XRAY_MASK -
+		-A XRAY_MASK -j RETURN -m mark --mark 0xff
+		-A XRAY_MASK -j RETURN -m set --match-set $ipset_src_direct src
+		-A XRAY_MASK -j RETURN -m set --match-set $ipset_dst_direct dst
+		-A XRAY_MASK -p tcp $ext_args -j MARK --set-mark 1
 		$(
 			if [ -n "$addition" ]; then
 				if [ "$addition" = "dns" ]; then
-					echo "-A xray_MASK -p udp --dport 53 -j MARK --set-mark 1"
+					echo "-A XRAY_MASK -p udp --dport 53 -j MARK --set-mark 1"
 				else
-					echo "-A xray_MASK -p udp -j MARK --set-mark 1"
+					echo "-A XRAY_MASK -p udp -j MARK --set-mark 1"
 				fi
 			fi
 		)
-		-A OUTPUT -j xray_MASK
+		-A OUTPUT -j XRAY_MASK
 		COMMIT
 	EOF
 }
 
 clear_xray_rules() {
-	iptables-save --counters | grep -v "xray" | iptables-restore --counters
+	iptables-save --counters | grep -v "XRAY" | iptables-restore --counters
 
 	while ip rule del fwmark 1 lookup 100 2>/dev/null; do true; done
 
@@ -2329,7 +2329,7 @@ start_instance() {
 	fi
 
 	if [ -z "$xray_file" ] || [ ! -s "$xray_file" ]; then
-		_err "Invalid xray file."
+		_err "Invalid core execution file."
 		return 1
 	fi
 
@@ -2439,7 +2439,7 @@ start_instance() {
 	procd_set_param respawn
 
 	if [ -n "$asset_location" ] && [ -d "$asset_location" ]; then
-		procd_set_param env xray_LOCATION_ASSET="$asset_location"
+		procd_set_param env XRAY_LOCATION_ASSET="$asset_location"
 	fi
 
 	# cat /proc/PID/limits to see if limits works
