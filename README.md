@@ -3,7 +3,7 @@
 Luci support for xray
 
 **This branch is new LuCI for OpenWrt 19.07 and later.**
-it's fork and modify the code from [link](https://github.com/BI7PRK/luci-app-v2ray) highly adapted to xray-core.
+it's fork and modify the code from [link](https://github.com/kuoruan/luci-app-v2ray) highly adapted to xray-core.
 
 
 ### Manual install
