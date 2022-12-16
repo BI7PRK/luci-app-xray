@@ -64,7 +64,7 @@ return L.view.extend<SectionItem[][]>({
       )
     );
 
-    const s = m.section(form.NamedSection, "main", "XRay");
+    const s = m.section(form.NamedSection, "main", "xray");
     s.addremove = false;
     s.anonymous = true;
 
@@ -104,7 +104,7 @@ return L.view.extend<SectionItem[][]>({
       )
     );
     o.datatype = "directory";
-    o.placeholder = "/usr/bin";
+    o.placeholder = "/usr/share/xray";
 
     o = s.option(
       form.Value,

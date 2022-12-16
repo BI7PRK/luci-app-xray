@@ -38,7 +38,7 @@ return L.view.extend<[string, string]>({
           `${process.env.LUCI_VERSION}-${process.env.LUCI_RELEASE}`
         )
       ),
-      E("p", _("Author: %s").format("Xingwang Liao & BI7PRK")),
+      E("p", _("Author: %s").format("BI7PRK")),
       E(
         "p",
         _("Source: %s").format(
@@ -51,6 +51,7 @@ return L.view.extend<[string, string]>({
           '<a href="https://github.com/BI7PRK/luci-app-xray/releases/latest" target="_blank">https://github.com/BI7PRK/luci-app-xray/releases/latest</a>'
         )
       ),
+      E("p", 'Source from: <a href="https://github.com/BI7PRK/luci-app-xray/releases/latest" target="_blank">https://github.com/BI7PRK/luci-app-xray/releases/latest</a>'),
       E("p", _("Current Config File: %s").format(configFile)),
       E(
         "pre",

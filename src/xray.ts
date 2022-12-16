@@ -43,8 +43,8 @@ return L.Class.extend({
       const sections: SectionItem[] = [];
 
       uci.sections("xray", type, function (s: uci.SectionObject) {
-        let caption: string;
-        if ((caption = s[captionKey])) {
+        let caption: string = "";
+        if (s && (caption = s[captionKey])) {
           sections.push({
             caption: caption,
             value: s[".name"],
@@ -61,7 +61,7 @@ return L.Class.extend({
 
       uci.sections("xray", "inbound", function (s: uci.SectionObject) {
         let port: string;
-        if (s["protocol"] == "dokodemo-door" && (port = s["port"])) {
+        if (s && s["protocol"] == "dokodemo-door" && (port = s["port"])) {
           let alias: string;
 
           if ((alias = s["alias"])) {

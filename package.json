@@ -1,10 +1,10 @@
 {
   "name": "luci-app-xray",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "release": "0",
   "description": "LuCI support for xray-core and v2ray-core",
   "repository": "git@github.com:BI7PRK/luci-app-xray.git",
-  "author": "Xingwang Liao <kuoruan@gmail.com>",
+  "author": "BI7PRK",
   "license": "MIT",
   "private": true,
   "scripts": {
