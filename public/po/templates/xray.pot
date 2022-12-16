@@ -370,7 +370,7 @@ msgstr ""
 #: package/htdocs/luci-static/resources/view/xray/main.js:51
 msgid ""
 "Directory where geoip.dat and geosite.dat files are, default: same directory "
-"as xray file."
+"as core file."
 msgstr ""
 
 #: package/htdocs/luci-static/resources/view/xray/inbound.js:200
@@ -706,7 +706,7 @@ msgid "Log level"
 msgstr ""
 
 #: package/htdocs/luci-static/resources/view/xray/about.js:27
-msgid "LuCI support for xray and Xray-core."
+msgid "LuCI support for xray-core and v2ray-core."
 msgstr ""
 
 #: package/htdocs/luci-static/resources/view/xray/outbound.js:495
@@ -1049,7 +1049,7 @@ msgid "Server port"
 msgstr ""
 
 #: package/htdocs/luci-static/resources/view/xray/main.js:47
-msgid "Set the xray executable file path."
+msgid "Set the core executable file path."
 msgstr ""
 
 #: package/htdocs/luci-static/resources/view/xray/main.js:95
@@ -1136,7 +1136,7 @@ msgid "Tag"
 msgstr ""
 
 #: package/htdocs/luci-static/resources/view/xray/main.js:54
-msgid "The maximum percentage of memory used by xray."
+msgid "The maximum percentage of memory used by xray-core."
 msgstr ""
 
 #: package/htdocs/luci-static/resources/view/xray/main.js:43
@@ -1191,7 +1191,7 @@ msgid "UDP"
 msgstr ""
 
 #: package/htdocs/luci-static/resources/view/xray/include/custom.js:174
-msgid "Unable to get xray version."
+msgid "Unable to get core version."
 msgstr ""
 
 #: package/htdocs/luci-static/resources/view/xray/transparent-proxy.js:129
@@ -1268,11 +1268,11 @@ msgid "XRay"
 msgstr ""
 
 #: package/htdocs/luci-static/resources/view/xray/main.js:51
-msgid "XRay asset location"
+msgid "core asset location"
 msgstr ""
 
 #: package/htdocs/luci-static/resources/view/xray/main.js:47
-msgid "XRay file"
+msgid "core file"
 msgstr ""
 
 #: package/htdocs/luci-static/resources/view/xray/main.js:35

@@ -55,12 +55,12 @@ return L.view.extend<SectionItem[][]>({
       "<p>%s</p><p>%s</p>".format(
         _("A platform for building proxies to bypass network restrictions."),
         _("For more information, please visit: %s").format(
-          '<a href="https://www.xray.com" target="_blank">https://www.xray.com</a>'
+          '<a href="https://github.com/XTLS/Xray-core" target="_blank">https://github.com/XTLS/Xray-core</a>'
         )
       )
     );
 
-    const s = m.section(form.NamedSection, "main", "xray");
+    const s = m.section(form.NamedSection, "main", "XRay");
     s.addremove = false;
     s.anonymous = true;
 
@@ -84,8 +84,8 @@ return L.view.extend<SectionItem[][]>({
     o = s.option(
       form.Value,
       "xray_file",
-      _("XRay file"),
-      _("Set the xray executable file path.")
+      _("core file"),
+      _("Set the core executable file path.")
     );
     o.datatype = "file";
     o.placeholder = "/usr/bin/xray";
@@ -96,7 +96,7 @@ return L.view.extend<SectionItem[][]>({
       "asset_location",
       _("XRay asset location"),
       _(
-        "Directory where geoip.dat and geosite.dat files are, default: same directory as xray file."
+        "Directory where geoip.dat and geosite.dat files are, default: same directory as core file."
       )
     );
     o.datatype = "directory";
@@ -106,7 +106,7 @@ return L.view.extend<SectionItem[][]>({
       form.Value,
       "mem_percentage",
       _("Memory percentage"),
-      _("The maximum percentage of memory used by xray.")
+      _("The maximum percentage of memory used by xray-core.")
     );
     o.datatype = "and(uinteger, max(100))";
     o.placeholder = "80";

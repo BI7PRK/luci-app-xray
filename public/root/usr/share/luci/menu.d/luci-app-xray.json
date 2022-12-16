@@ -1,6 +1,6 @@
 {
   "admin/services/xray": {
-    "title": "xray",
+    "title": "XRay",
     "action": {
       "type": "alias",
       "path": "admin/services/xray/main"

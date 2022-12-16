@@ -226,7 +226,7 @@ const CUSTOMRunningStatus = form.AbstractValue.extend({
         node,
         version
           ? _("Version: %s").format(version)
-          : E("em", { style: "color: red;" }, _("Unable to get xray version."))
+          : E("em", { style: "color: red;" }, _("Unable to get core version."))
       );
     });
   },
