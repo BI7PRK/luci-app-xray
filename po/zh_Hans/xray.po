@@ -370,8 +370,8 @@ msgstr "直连列表 DNS"
 #: package/htdocs/luci-static/resources/view/xray/main.js:51
 msgid ""
 "Directory where geoip.dat and geosite.dat files are, default: same directory "
-"as xray file."
-msgstr "geoip.dat 和 geosite.dat 文件所在目录，默认：和 xray 文件所在目录相同"
+"as core file."
+msgstr "geoip.dat 和 geosite.dat 文件所在目录，默认：和 core 文件所在目录相同"
 
 #: package/htdocs/luci-static/resources/view/xray/inbound.js:200
 msgid "Disable insecure encryption"
@@ -706,8 +706,8 @@ msgid "Log level"
 msgstr "日志等级"
 
 #: package/htdocs/luci-static/resources/view/xray/about.js:27
-msgid "LuCI support for xray and Xray-core."
-msgstr "XRay 及 Xray-core 的 LuCI 配置界面"
+msgid "LuCI support for xray-core and v2ray-core."
+msgstr "Xray-core 及 v2ray-core 的 LuCI 配置界面"
 
 #: package/htdocs/luci-static/resources/view/xray/outbound.js:495
 msgid "Mark"
@@ -1049,8 +1049,8 @@ msgid "Server port"
 msgstr "服务器端口"
 
 #: package/htdocs/luci-static/resources/view/xray/main.js:47
-msgid "Set the xray executable file path."
-msgstr "设置 xray 可执行文件路径。"
+msgid "Set the core executable file path."
+msgstr "设置 core 可执行文件路径。"
 
 #: package/htdocs/luci-static/resources/view/xray/main.js:95
 msgid "Settings"
@@ -1136,7 +1136,7 @@ msgid "Tag"
 msgstr "标识"
 
 #: package/htdocs/luci-static/resources/view/xray/main.js:54
-msgid "The maximum percentage of memory used by xray."
+msgid "The maximum percentage of memory used by xray-core."
 msgstr "XRay 可使用的最大内存百分比"
 
 #: package/htdocs/luci-static/resources/view/xray/main.js:43
@@ -1191,8 +1191,8 @@ msgid "UDP"
 msgstr ""
 
 #: package/htdocs/luci-static/resources/view/xray/include/custom.js:174
-msgid "Unable to get xray version."
-msgstr "无法获取 xray 版本。"
+msgid "Unable to get core version."
+msgstr "无法获取 core 版本。"
 
 #: package/htdocs/luci-static/resources/view/xray/transparent-proxy.js:129
 msgid "Unexpected error."
@@ -1254,7 +1254,6 @@ msgstr "用户等级"
 #: package/htdocs/luci-static/resources/view/xray/inbound.js:105
 msgid "User secret"
 msgstr "用户密钥"
-
 #: package/htdocs/luci-static/resources/view/xray/about.js:27
 #: package/htdocs/luci-static/resources/view/xray/dns.js:21
 #: package/htdocs/luci-static/resources/view/xray/inbound.js:25
@@ -1268,12 +1267,12 @@ msgid "XRay"
 msgstr ""
 
 #: package/htdocs/luci-static/resources/view/xray/main.js:51
-msgid "XRay asset location"
-msgstr "XRay 资源文件路径"
+msgid "core asset location"
+msgstr "core 资源文件路径"
 
 #: package/htdocs/luci-static/resources/view/xray/main.js:47
-msgid "XRay file"
-msgstr "XRay 文件"
+msgid "core file"
+msgstr "core 程序"
 
 #: package/htdocs/luci-static/resources/view/xray/main.js:35
 #: package/root/usr/share/luci/menu.d/luci-app-xray.json:3
@@ -1339,8 +1338,8 @@ msgstr "wget: 不支持 SSL, 请安装 %s 或 %s。"
 #~ msgid "Buffer Size"
 #~ msgstr "缓存大小"
 
-#~ msgid "Can't get xray version"
-#~ msgstr "无法获取 xray 版本信息"
+#~ msgid "Can't get xray-core version"
+#~ msgstr "无法获取 xray-core 版本信息"
 
 #~ msgid "Close"
 #~ msgstr "关闭"
@@ -1375,8 +1374,8 @@ msgstr "wget: 不支持 SSL, 请安装 %s 或 %s。"
 #~ msgid "Importing..."
 #~ msgstr "导入中……"
 
-#~ msgid "Invalid xray file"
-#~ msgstr "XRay 文件有误"
+#~ msgid "Invalid xray-core file"
+#~ msgstr "xray-core 文件无效"
 
 #~ msgid "Invalid link"
 #~ msgstr "无效链接"
