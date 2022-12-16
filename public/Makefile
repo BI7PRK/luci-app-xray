@@ -41,6 +41,8 @@ chmod 755 "$${IPKG_INSTROOT}/etc/init.d/xray" >/dev/null 2>&1
 ln -sf "../init.d/xray" \
 	"$${IPKG_INSTROOT}/etc/rc.d/S99xray" >/dev/null 2>&1
 
+chmod 755 "$${IPKG_INSTROOT}/usr/libexec/rpcd/luci.xray" >/dev/null 2>&1
+
 exit 0
 endef
 
