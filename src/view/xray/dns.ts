@@ -15,7 +15,11 @@
 // @ts-ignore
 return L.view.extend<SectionItem[]>({
   load: function () {
-    return xray.getSections("dns_server");
+    try {
+      return xray.getSections("dns_server");
+    } catch {
+      return [];
+    }
   },
   render: function (dnsServers = []) {
     const m = new form.Map(

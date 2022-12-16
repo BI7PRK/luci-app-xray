@@ -43,10 +43,14 @@ return L.view.extend<SectionItem[][]>({
       });
   },
   load: function () {
-    return Promise.all([
-      xray.getSections("inbound"),
-      xray.getSections("outbound"),
-    ]);
+    try {
+      return Promise.all([
+        xray.getSections("inbound"),
+        xray.getSections("outbound"),
+      ]);
+    } catch {
+      return Promise.resolve([[], []]);
+    }
   },
   render: function ([inboundSections = [], outBoundSections = []] = []) {
     const m = new form.Map(
@@ -94,7 +98,7 @@ return L.view.extend<SectionItem[][]>({
     o = s.option(
       form.Value,
       "asset_location",
-      _("XRay asset location"),
+      _("core asset location"),
       _(
         "Directory where geoip.dat and geosite.dat files are, default: same directory as core file."
       )

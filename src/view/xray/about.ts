@@ -51,18 +51,6 @@ return L.view.extend<[string, string]>({
           '<a href="https://github.com/BI7PRK/luci-app-xray/releases/latest" target="_blank">https://github.com/BI7PRK/luci-app-xray/releases/latest</a>'
         )
       ),
-      E(
-        "p",
-        _("Report Bugs: %s").format(
-          '<a href="https://github.com/kuoruan/luci-app-xray/issues" target="_blank">https://github.com/kuoruan/luci-app-xray/issues</a>'
-        )
-      ),
-      E(
-        "p",
-        _("Donate: %s").format(
-          '<a href="https://blog.kuoruan.com/donate" target="_blank">https://blog.kuoruan.com/donate</a>'
-        )
-      ),
       E("p", _("Current Config File: %s").format(configFile)),
       E(
         "pre",
