@@ -55,6 +55,8 @@ fi
 
 if [ -z "$${IPKG_INSTROOT}" ] ; then
 	rm -rf /tmp/luci-indexcache /tmp/luci-modulecache/
+
+	rm -rf /etc/init.d/xray
 fi
 
 exit 0
