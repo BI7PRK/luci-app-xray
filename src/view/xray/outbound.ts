@@ -767,7 +767,13 @@ return L.view.extend<string[]>({
     o.placeholder = "http/1.1";
 
     //uTLS
-    o = s.taboption("stream", form.ListValue, "u_tls", "uTLS");
+    o = s.taboption(
+      "stream",
+      form.ListValue,
+      "u_tls",
+      "uTLS",
+      _("Maybe support xray-core only")
+    );
     o.modalonly = true;
     o.value("", _("None"));
     o.value("chrome");

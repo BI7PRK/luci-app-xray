@@ -10,6 +10,7 @@
 "require fs";
 "require uci";
 "require ui";
+"require prism";
 // "require view";
 
 // @ts-ignore
@@ -56,13 +57,20 @@ return L.view.extend<[string, string]>({
         'Source from: <a href="https://github.com/kuoruan/luci-app-v2ray" target="_blank">https://github.com/kuoruan/luci-app-v2ray</a>'
       ),
       E("p", _("Current Config File: %s").format(configFile)),
+      // E(
+      //   "pre",
+      //   {
+      //     style:
+      //       "-moz-tab-size: 4;-o-tab-size: 4;tab-size: 4;word-break: break-all;",
+      //   },
+      //   configContent ? configContent : _("Failed to open file.")
+      // ),
       E(
         "pre",
-        {
-          style:
-            "-moz-tab-size: 4;-o-tab-size: 4;tab-size: 4;word-break: break-all;",
-        },
-        configContent ? configContent : _("Failed to open file.")
+        { style: "height:60vh; overflow:scroll;" },
+        configContent
+          ? E("code", { class: "language-json" }, configContent)
+          : _("Failed to open file.")
       ),
     ]);
   },

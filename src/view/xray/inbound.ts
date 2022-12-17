@@ -586,16 +586,6 @@ return L.view.extend<string[]>({
     o.depends("ss_security", "tls");
     o.placeholder = "http/1.1";
 
-    //uTLS
-    o = s.taboption("stream", form.ListValue, "u_tls", "uTLS");
-    o.modalonly = true;
-    o.value("", _("None"));
-    o.value("chrome");
-    o.value("firefox");
-    o.value("safari");
-    o.value("randomized");
-    o.depends("ss_security", "tls");
-
     o = s.taboption(
       "stream",
       form.Flag,

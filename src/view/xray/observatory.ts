@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright 2021 BI7PRK
+ * Copyright 2022 BI7PRK
  *
  * Licensed to the public under the MIT License.
  */
