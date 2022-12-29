@@ -388,7 +388,7 @@ msgstr "取消"
 
 #: package/htdocs/luci-static/resources/view/xray/outbound.js:157
 msgid "min TLS version"
-msgstr "最小TLS版本"
+msgstr "最低TLS版本"
 
 #: package/htdocs/luci-static/resources/view/xray/outbound.js:158
 msgid "max TLS version"
@@ -829,6 +829,10 @@ msgstr "出站连接"
 #: package/htdocs/luci-static/resources/view/xray/outbound.js:129
 msgid "Outbound Import"
 msgstr ""
+
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:139
+msgid "Maybe support xray-core only"
+msgstr "可能仅xray-core支持"
 
 #: package/htdocs/luci-static/resources/view/xray/routing.js:73
 msgid "Outbound tag"

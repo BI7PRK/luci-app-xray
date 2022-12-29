@@ -284,11 +284,8 @@ inbound_section_validate() {
 		'ss_network:or("tcp", "kcp", "ws", "http", "domainsocket", "quic")' \
 		'ss_security:or("none", "tls")' \
 		's_xtls_flow:or("none", "xtls-rprx-direct", "xtls-rprx-direct-udp443", "xtls-rprx-origin", "xtls-rprx-origin-udp443", "xtls-rprx-splice", "xtls-rprx-splice-udp443", "xtls-rprx-vision", "xtls-rprx-vision-udp443")' \
-		'min_tls_version:or("", "1.0", "1.1", "1.2", "1.3")' \
-		'max_tls_version:or("", "1.0", "1.1", "1.2", "1.3")' \
 		'ss_tls_server_name:host' \
 		'ss_tls_alpn:list(string)' \
-		'u_tls:or("", "chrome", "firefox", "safari", "randomized")' \
 		'ss_tls_rejectUnknownSni:bool:0' \
 		'ss_tls_allow_insecure:bool:0' \
 		'ss_tls_allow_insecure_ciphers:bool:0' \
@@ -1343,12 +1340,7 @@ add_inbound_setting() {
 			json_add_string "security" "$ss_security"
 			json_add_object "tlsSettings"
 		fi
-		if [ "$min_tls_version" != "" ]; then
-			json_add_string "minVersion" "$min_tls_version"
-		fi
-		if [ "$max_tls_version" != "" ]; then
-			json_add_string "maxVersion" "$max_tls_version"
-		fi
+
 		test -n "$ss_tls_server_name" &&
 			json_add_string "serverName" "$ss_tls_server_name"
 
@@ -1359,10 +1351,6 @@ add_inbound_setting() {
 				json_add_string "" "$al"
 			done
 			json_close_array # destOverride
-		fi
-
-		if [ "$u_tls" != "" ]; then
-			json_add_string "fingerprint" "$u_tls"
 		fi
 
 		test -n "$ss_tls_server_name" &&
