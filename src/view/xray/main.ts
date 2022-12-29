@@ -19,7 +19,7 @@
 return L.view.extend<SectionItem[][]>({
   handleServiceReload: function (ev: MouseEvent) {
     return fs
-      .exec("/etc/init.d/xray", ["reload"])
+      .exec("/etc/init.d/luci_xray", ["reload"])
       .then(
         L.bind(
           function (btn, res) {
