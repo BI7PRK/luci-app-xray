@@ -1691,16 +1691,23 @@ add_outbound_setting() {
 		json_close_object
 		# headers
 		if [ -n "$s_http_headers" ]; then
+			handle_header_pramas() {
+				local h="$1"
+
+				local name="$(echo "$h" | cut -d':' -f1)"
+				local value="$(echo "$h" | cut -d':' -f2)"
+
+				if [ -n "$name" ] && [ -n "$value" ]; then
+					json_add_string "$name" "$value"
+				fi
+			}
+			
+			json_add_object ""
 			json_add_object "headers"
-			local item
-			for item in $s_http_headers; do
-				local key ="$(echo "$item" | cut -d':' -f1)"
-				local value ="$(echo "$item" | cut -d':' -f2)"
-				json_add_string "$key" "$value"
-			done
+			config_list_foreach "$section" "s_http_headers" handle_header_pramas
+			json_close_object
 			json_close_object
 		fi
-
 		json_close_array  # servers
 		json_close_object # settings
 		;;
