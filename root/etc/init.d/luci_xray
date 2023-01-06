@@ -346,6 +346,7 @@ outbound_section_validate() {
 		's_http_server_port:port' \
 		's_http_account_user:string' \
 		's_http_account_pass:string' \
+		's_http_headers:list(string)' \
 		's_loopback_inboundtag:string' \
 		's_shadowsocks_email:string' \
 		's_shadowsocks_address:host' \
@@ -1688,6 +1689,17 @@ add_outbound_setting() {
 			json_close_array # users
 		fi
 		json_close_object
+		# headers
+		if [ -n "$s_http_headers" ]; then
+			json_add_object "headers"
+			local item
+			for item in $s_http_headers; do
+				local key ="$(echo "$item" | cut -d':' -f1)"
+				local value ="$(echo "$item" | cut -d':' -f2)"
+				json_add_string "$key" "$value"
+			done
+			json_close_object
+		fi
 
 		json_close_array  # servers
 		json_close_object # settings

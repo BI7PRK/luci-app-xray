@@ -26,6 +26,14 @@ msgstr "仅使用元数据推断"
 msgid "Reject Unknown SNI"
 msgstr "拒绝未知的SNI"
 
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:561
+msgid "Headers"
+msgstr "请求头"
+
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:562
+msgid "Query headers"
+msgstr "格式为 key:value"
+
 #: package/htdocs/luci-static/resources/view/xray/outbound.js:498
 msgid "Service name"
 msgstr "服务名称"
