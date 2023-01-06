@@ -26,6 +26,14 @@ msgstr ""
 msgid "Reject Unknown SNI"
 msgstr ""
 
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:561
+msgid "Headers"
+msgstr ""
+
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:562
+msgid "Query headers"
+msgstr "eg. key:value"
+
 #: package/htdocs/luci-static/resources/view/xray/outbound.js:498
 msgid "Service name"
 msgstr ""

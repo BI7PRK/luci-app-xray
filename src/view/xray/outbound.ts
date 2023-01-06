@@ -396,6 +396,16 @@ return L.view.extend<string[]>({
     o.depends("protocol", "http");
     o.password = true;
 
+    o = s.taboption(
+      "general",
+      form.DynamicList,
+      "s_http_headers",
+      "%s - %s".format("HTTP", _("Headers"))
+    );
+    o.modalonly = true;
+    o.depends("protocol", "http");
+    o.placeholder = _("Query headers");
+
     // Settings - Shadowsocks
     o = s.taboption(
       "general",
