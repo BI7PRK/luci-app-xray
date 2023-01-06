@@ -35,13 +35,16 @@ if [ -z "$${IPKG_INSTROOT}" ] ; then
 	rm -rf /tmp/luci-indexcache /tmp/luci-modulecache/
 
 	killall -HUP rpcd 2>/dev/null
+
 fi
 
-chmod 755 "$${IPKG_INSTROOT}/etc/init.d/luci_xray" >/dev/null 2>&1
+chmod 755 "/etc/init.d/luci_xray" >/dev/null 2>&1
 ln -sf "../init.d/luci_xray" \
-	"$${IPKG_INSTROOT}/etc/rc.d/S99luci_xray" >/dev/null 2>&1
+	"/etc/rc.d/S99luci_xray" >/dev/null 2>&1
 
-chmod 755 "$${IPKG_INSTROOT}/usr/libexec/rpcd/luci.xray" >/dev/null 2>&1
+chmod 755 "/usr/libexec/rpcd/luci.xray" >/dev/null 2>&1
+
+/etc/init.d/luci_xray enable
 
 exit 0
 endef

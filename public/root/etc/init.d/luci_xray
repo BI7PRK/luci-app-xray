@@ -1693,10 +1693,8 @@ add_outbound_setting() {
 		if [ -n "$s_http_headers" ]; then
 			handle_header_pramas() {
 				local h="$1"
-
 				local name="$(echo "$h" | cut -d':' -f1)"
 				local value="$(echo "$h" | cut -d':' -f2)"
-
 				if [ -n "$name" ] && [ -n "$value" ]; then
 					json_add_string "$name" "$value"
 				fi
