@@ -36,15 +36,14 @@ if [ -z "$${IPKG_INSTROOT}" ] ; then
 
 	killall -HUP rpcd 2>/dev/null
 
+	/etc/init.d/luci_xray enable
 fi
 
 chmod 755 "/etc/init.d/luci_xray" >/dev/null 2>&1
-ln -sf "../init.d/luci_xray" \
-	"/etc/rc.d/S99luci_xray" >/dev/null 2>&1
+
+ln -sf "/init.d/luci_xray"  "/etc/rc.d/S99luci_xray" >/dev/null 2>&1
 
 chmod 755 "/usr/libexec/rpcd/luci.xray" >/dev/null 2>&1
-
-/etc/init.d/luci_xray enable
 
 exit 0
 endef
@@ -52,8 +51,8 @@ endef
 define Package/$(PKG_NAME)/postrm
 #!/bin/sh
 
-if [ -s "$${IPKG_INSTROOT}/etc/rc.d/S99luci_xray" ] ; then
-	rm -f "$${IPKG_INSTROOT}/etc/rc.d/S99luci_xray"
+if [ -s "/etc/rc.d/S99luci_xray" ] ; then
+	rm -f "/etc/rc.d/S99luci_xray"
 fi
 
 if [ -z "$${IPKG_INSTROOT}" ] ; then
