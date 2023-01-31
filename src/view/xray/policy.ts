@@ -22,7 +22,7 @@ return L.view.extend<SectionItem[]>({
       "xray",
       "%s - %s".format(_("XRay"), _("Policy")),
       _("Details: %s").format(
-        '<a href="https://www.xray.com/en/configuration/policy.html#policyobject" target="_blank">PolicyObject</a>'
+        '<a href="https://xtls.github.io/config/policy.html" target="_blank">PolicyObject</a>'
       )
     );
 

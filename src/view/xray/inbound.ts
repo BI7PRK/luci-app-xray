@@ -19,7 +19,13 @@ return L.view.extend<string[]>({
     return xray.getLocalIPs();
   },
   render: function (localIPs = []) {
-    const m = new form.Map("xray", "%s - %s".format(_("XRay"), _("Inbound")));
+    const m = new form.Map(
+      "xray",
+      "%s - %s".format(_("XRay"), _("Inbound")),
+      _("Details: %s").format(
+        '<a href="https://xtls.github.io/config/inbound.html" target="_blank"> InboundObject</a>'
+      )
+    );
 
     const s = m.section(form.GridSection, "inbound");
     s.anonymous = true;

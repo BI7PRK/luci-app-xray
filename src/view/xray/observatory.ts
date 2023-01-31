@@ -32,7 +32,7 @@ return L.view.extend({
       _("ProbeURL"),
       _(
         "A valid URL, it will be get request to testing. eg: <code>%s</code>."
-      ).format("https://api.github.com/_private/browser/stats")
+      ).format("https://www.gstatic.com/generate_204")
     );
     o.placeholder = _("empty use the built-in value");
 

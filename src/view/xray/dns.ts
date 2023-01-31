@@ -26,7 +26,7 @@ return L.view.extend<SectionItem[]>({
       "xray",
       "%s - %s".format(_("XRay"), _("DNS")),
       _("Details: %s").format(
-        '<a href="https://www.xray.com/en/configuration/dns.html#dnsobject" target="_blank">DnsObject</a>'
+        '<a href="https://xtls.github.io/config/outbounds/dns.html" target="_blank">DnsObject</a>'
       )
     );
 

@@ -17,7 +17,7 @@ return L.view.extend({
       "xray",
       "%s - %s".format(_("XRay"), _("Reverse")),
       _("Details: %s").format(
-        '<a href="https://www.xray.com/en/configuration/reverse.html#reverseobject" target="_blank">ReverseObject</a>'
+        '<a href="https://xtls.github.io/config/reverse.html" target="_blank">ReverseObject</a>'
       )
     );
 
