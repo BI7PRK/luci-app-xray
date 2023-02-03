@@ -779,7 +779,7 @@ return L.view.extend<string[]>({
     //uTLS
     o = s.taboption(
       "stream",
-      form.ListValue,
+      form.Value,
       "u_tls",
       "uTLS",
       _("Maybe support xray-core only")
@@ -789,6 +789,12 @@ return L.view.extend<string[]>({
     o.value("chrome");
     o.value("firefox");
     o.value("safari");
+    o.value("ios");
+    o.value("android");
+    o.value("edge");
+    o.value("360");
+    o.value("qq");
+    o.value("random");
     o.value("randomized");
     o.depends("ss_security", "tls");
 

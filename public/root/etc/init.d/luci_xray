@@ -381,7 +381,7 @@ outbound_section_validate() {
 		'max_tls_version:or("", "1.0", "1.1", "1.2", "1.3")' \
 		'ss_tls_server_name:host' \
 		'ss_tls_alpn:list(string)' \
-		'u_tls:or("", "chrome", "firefox", "safari", "randomized")' \
+		'u_tls:string' \
 		'ss_tls_rejectUnknownSni:bool:0' \
 		'ss_tls_allow_insecure:bool:0' \
 		'ss_tls_allow_insecure_ciphers:bool:0' \
