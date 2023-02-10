@@ -4,4 +4,4 @@
 # Licensed to the public under the MIT License.
 #
 
-test -s "/etc/init.d/luci_xray" && /etc/init.d/luci_xray reload
+test -s "/etc/init.d/xray" && /etc/init.d/xray reload
