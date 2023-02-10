@@ -13,8 +13,7 @@ PKG_LICENSE:=#{license}
 PKG_MAINTAINER:=#{author}
 
 LUCI_TITLE:=#{description}
-LUCI_DEPENDS:=+jshn +ip +ipset +iptables +iptables-mod-tproxy +resolveip \
-	+dnsmasq-full
+LUCI_DEPENDS:=+jshn +ip +ipset +iptables +iptables-mod-tproxy +resolveip +dnsmasq-full
 LUCI_PKGARCH:=all
 
 define Package/$(PKG_NAME)/conffiles
@@ -35,15 +34,11 @@ if [ -z "$${IPKG_INSTROOT}" ] ; then
 	rm -rf /tmp/luci-indexcache /tmp/luci-modulecache/
 
 	killall -HUP rpcd 2>/dev/null
-
-	/etc/init.d/xray enable
 fi
 
 chmod 755 "/etc/init.d/xray" >/dev/null 2>&1
 
 ln -sf "/init.d/xray"  "/etc/rc.d/S99xray" >/dev/null 2>&1
-
-chmod 755 "/usr/libexec/rpcd/luci.xray" >/dev/null 2>&1
 
 exit 0
 endef

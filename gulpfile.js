@@ -16,8 +16,8 @@ const tsProject = ts.createProject("tsconfig.json");
 
 function clean(...paths) {
   // working in windows
-  // return child.spawn("cmd", ["/c", "del", ...paths]);
-  return child.spawn("rm", ["-rf", ...paths]);
+  return child.spawn("cmd", ["/c", "del", ...paths]);
+  // return child.spawn("rm", ["-rf", ...paths]);
 }
 
 function replaceEnvs() {
