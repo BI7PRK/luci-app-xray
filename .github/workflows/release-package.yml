@@ -71,8 +71,10 @@ jobs:
     - name: Install Dependencies
       run: |
         DEBIAN_FRONTEND=noninteractive \
-        sudo apt-get install -y ccache gettext libncurses5-dev xsltproc gcc g++ software-properties-common python3.10
-
+        sudo apt-get install -y ccache gettext libncurses5-dev xsltproc gcc g++ software-properties-common
+        sudo add-apt-repository ppa:deadsnakes/ppa
+        sudo apt-get install -y  python3.10
+        
     - name: Create Directories
       run: |
         CACHE_DIR_SDK="$(eval echo "$CACHE_DIR/sdk")"
