@@ -71,7 +71,7 @@ jobs:
     - name: Install Dependencies
       run: |
         DEBIAN_FRONTEND=noninteractive \
-        sudo apt-get install -y ccache gettext libncurses5-dev xsltproc gcc g++ python3
+        sudo apt-get install -y ccache gettext libncurses5-dev xsltproc gcc g++ python3.10
 
     - name: Create Directories
       run: |
