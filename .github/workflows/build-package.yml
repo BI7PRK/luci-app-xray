@@ -70,15 +70,15 @@ jobs:
         restore-keys: |
           openwrt-${{ env.PACKAGE_NAME }}-
 
-    - name: Set up Python 3.10
+    - name: Set up Python 3.9.16
       uses: actions/setup-python@v3
       with:
-        python-version: 3.10
+        python-version: 3.9.16
         
     - name: Install Dependencies
       run: |
         DEBIAN_FRONTEND=noninteractive \
-        sudo apt-get install -y ccache gettext libncurses5-dev xsltproc gcc g++ python3.9.16
+        sudo apt-get install -y ccache gettext libncurses5-dev xsltproc gcc g++
 
     - name: Create Directories
       run: |
