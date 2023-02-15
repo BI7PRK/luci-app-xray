@@ -71,8 +71,8 @@ jobs:
     - name: Install Dependencies
       run: |
         DEBIAN_FRONTEND=noninteractive \
-        sudo apt install -y software-properties-common \
-        sudo add-apt-repository ppa:deadsnakes/ppa \
+        sudo apt install -y software-properties-common
+        sudo add-apt-repository ppa:deadsnakes/ppa
         sudo apt-get install -y ccache gettext libncurses5-dev xsltproc gcc g++ python3.10
 
         
