@@ -854,24 +854,6 @@ return L.view.extend<string[]>({
     o.value("verify");
     o.value("issue");
 
-    // o = s.taboption(
-    //   "stream",
-    //   form.Value,
-    //   "ss_tls_cert_fiile",
-    //   "%s - %s".format("TLS", _("Certificate file"))
-    // );
-    // o.modalonly = true;
-    // o.depends("ss_security", "tls");
-
-    // o = s.taboption(
-    //   "stream",
-    //   form.Value,
-    //   "ss_tls_key_file",
-    //   "%s - %s".format("TLS", _("Key file"))
-    // );
-    // o.modalonly = true;
-    // o.depends("ss_security", "tls");
-
     // Stream Settings - TCP
     o = s.taboption(
       "stream",
@@ -1271,7 +1253,8 @@ return L.view.extend<string[]>({
       "stream",
       form.Value,
       "real_fingerprint",
-      "%s - %s".format("Reality", _("fingerprint"))
+      "%s - %s".format("Reality", _("fingerprint")),
+      _("It must support TLSv1.3")
     );
     o.modalonly = true;
     o.value("", _("None"));
@@ -1279,13 +1262,11 @@ return L.view.extend<string[]>({
     o.value("firefox");
     o.value("safari");
     o.value("ios");
-    o.value("android");
     o.value("edge");
-    o.value("360");
     o.value("qq");
     o.value("random");
     o.value("randomized");
-    o.depends("ss_security", "reality");
+    o.depends("ss_network", "reality");
 
     // Stream Settings - Socket Options
     o = s.taboption(

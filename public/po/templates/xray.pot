@@ -1352,6 +1352,10 @@ msgstr ""
 msgid "8 digit or 16 digit alphanumeric"
 msgstr ""
 
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:201
+msgid "It must support TLSv1.3"
+msgstr ""
+
 #: package/htdocs/luci-static/resources/view/xray/tools.ts:100
 msgid "Tools"
 msgstr ""

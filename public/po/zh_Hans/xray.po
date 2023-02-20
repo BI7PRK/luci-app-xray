@@ -1457,6 +1457,10 @@ msgstr "一个有效的网址。 通过GET请求进行测试。例如 <code>%s</
 msgid "8 digit or 16 digit alphanumeric"
 msgstr "8位或16位字母数字"
 
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:201
+msgid "It must support TLSv1.3"
+msgstr "必须支持TLSv1.3"
+
 #: package/htdocs/luci-static/resources/view/xray/tools.ts:100
 msgid "Tools"
 msgstr "辅助工具"
