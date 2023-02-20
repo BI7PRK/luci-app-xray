@@ -76,7 +76,7 @@ jobs:
     - name: Install Dependencies
       run: |
         DEBIAN_FRONTEND=noninteractive \
-        sudo apt-get install -y ccache gettext libncurses5-dev xsltproc gcc g++ linux-tools-generic
+        sudo apt-get install -y ccache gettext libncurses5-dev xsltproc gcc g++
 
     - name: Create Directories
       run: |
