@@ -21,6 +21,7 @@ return L.view.extend<[string, string]>({
           "border-radius: 8px; background-color: #fff; box-sizing: border-box;padding: 20px;",
       },
       [
+        E("strong", {}, "Generate a UUID"),
         E(
           "div",
           {
@@ -68,10 +69,12 @@ return L.view.extend<[string, string]>({
             ),
           ]
         ),
+        E("hr", {}, ""),
+        E("strong", {}, "Generate key pair"),
         E(
           "div",
           {
-            style: "display: flex;flex-direction: row;align-items: center;",
+            style: "display: flex;flex-direction: column;align-items: start;",
           },
           [
             E("span", {}, "publicKey: "),
@@ -84,7 +87,7 @@ return L.view.extend<[string, string]>({
               },
               ""
             ),
-            E("span", { style: "margin-left: 20px;" }, "PrivateKey: "),
+            E("span", {}, "PrivateKey: "),
             E(
               "input",
               {
