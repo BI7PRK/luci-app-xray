@@ -57,6 +57,32 @@ const callxrayVersion = rpc.declare<string>({
   },
 });
 
+const callGetUuid = rpc.declare<string>({
+  object: "luci.xray",
+  method: "xrayUuid",
+  params: ["name"],
+  expect: { "": { code: 1 } },
+  filter: function (data: any): string {
+    return data.code ? "" : data.uuid;
+  },
+});
+
+const callX25519 = rpc.declare<Object>({
+  object: "luci.xray",
+  method: "xrayX25519",
+  params: ["name"],
+  expect: { "": { code: 1 } },
+  filter: function (data: any): Object {
+    if (data.code === 0) {
+      return data;
+    }
+    return {
+      publicKey: "",
+      privateKey: "",
+    };
+  },
+});
+
 const CUSTOMTextValue = form.TextValue.extend<
   CustomTextValueProperties,
   form.TextValue
@@ -267,4 +293,6 @@ return L.Class.extend({
   TextValue: CUSTOMTextValue,
   ListStatusValue: CUSTOMListStatusValue,
   RunningStatus: CUSTOMRunningStatus,
+  CallUuid: callGetUuid,
+  CallGenKeys: callX25519,
 });

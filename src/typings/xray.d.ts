@@ -32,6 +32,8 @@ type Vmess = {
 interface Custom extends LuCI.baseclass {
   TextValue: form.TextValue & CustomTextValueProperties;
   RunningStatus: form.AbstractValue;
+  CallUuid: string;
+  CallGenKeys: string;
 }
 
 interface xray extends LuCI.baseclass {

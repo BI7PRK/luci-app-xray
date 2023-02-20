@@ -373,7 +373,7 @@ outbound_section_validate() {
 		's_vless_user_id:string' \
 		's_vless_user_encryption:or("none")' \
 		's_vless_user_level:uinteger' \
-		'ss_network:or("tcp", "kcp", "ws", "http", "domainsocket", "quic", "grpc")' \
+		'ss_network:or("tcp", "kcp", "ws", "http", "domainsocket", "quic", "grpc", "reality")' \
 		'ss_security:or("none", "tls")' \
 		'ss_xtls_enabled:bool:0' \
 		's_xtls_flow:or("none", "xtls-rprx-direct", "xtls-rprx-direct-udp443", "xtls-rprx-origin", "xtls-rprx-origin-udp443", "xtls-rprx-splice", "xtls-rprx-splice-udp443", "xtls-rprx-vision", "xtls-rprx-vision-udp443")' \
@@ -426,7 +426,15 @@ outbound_section_validate() {
 		'stream_settings:string' \
 		'proxy_settings_tag:string' \
 		'mux_enabled:bool:0' \
-		'mux_concurrency:uinteger:8'
+		'mux_concurrency:uinteger:8' \
+		'real_server_name:string' \
+		'real_shortId:string' \
+		'real_spiderX:string' \
+		'real_publicKey:string' \
+		'real_fingerprint:string' \
+		'real_xtls_flow:or("none", "xtls-rprx-vision", "xtls-rprx-vision-udp443")' \
+		
+
 }
 
 add_xray_redirect_rules() {
@@ -1786,7 +1794,12 @@ add_outbound_setting() {
 					json_add_string "flow" "$s_xtls_flow"
 				fi
 			fi
+		else
+			if [ "$ss_network" = "reality" ] && [ -n "$real_xtls_flow" ]; then
+				json_add_string "flow" "$real_xtls_flow"
+			fi
 		fi
+
 
 		json_close_object
 		json_close_array
@@ -1805,7 +1818,9 @@ add_outbound_setting() {
 		if [ "$ss_security" = "tls" ] && [ "$s_xtls_flow" != "none" ]; then
 			json_add_string "flow" "$s_xtls_flow"
 		else
-			json_add_string "flow" ""
+			if [ "$ss_network" = "reality" ] && [ -n "$real_xtls_flow" ]; then
+				json_add_string "flow" "$real_xtls_flow"
+			fi
 		fi
 		test -n "$s_vless_user_level" &&
 			json_add_int "level" "$s_vless_user_level"
@@ -1864,13 +1879,15 @@ add_outbound_setting() {
 			json_add_object "tlsSettings"
 		fi
 
+		if [ "$u_tls" != "" ]; then
+			json_add_string "fingerprint" "$u_tls"
+		fi
 		if [ "$min_tls_version" != "" ]; then
 			json_add_string "minVersion" "$min_tls_version"
 		fi
 		if [ "$max_tls_version" != "" ]; then
 			json_add_string "maxVersion" "$max_tls_version"
 		fi
-
 		test -n "$ss_tls_server_name" &&
 			json_add_string "serverName" "$ss_tls_server_name"
 		if [ -n "$ss_tls_alpn" ]; then
@@ -1881,9 +1898,7 @@ add_outbound_setting() {
 			done
 			json_close_array # destOverride
 		fi
-		if [ "$u_tls" != "" ]; then
-			json_add_string "fingerprint" "$u_tls"
-		fi
+		
 		if [ "x$ss_tls_rejectUnknownSni" = "x1" ]; then
 			json_add_boolean "rejectUnknownSni" "$ss_tls_rejectUnknownSni"
 		fi
@@ -2101,7 +2116,23 @@ add_outbound_setting() {
 			json_add_int "initial_windows_size" "$initial_windows_size"
 		json_close_object # grpcSettings
 		;;
+		# outbound REALITY
+	"reality")
+		json_add_string "security" "tcp"
+		json_add_object "realitySettings"
 
+		test -n "$real_server_name" &&
+			json_add_string "serverName" "$real_server_name"
+		test -n "$real_shortId" &&
+			json_add_string "shortId" "$real_shortId"
+		test -n "$real_spiderX" &&
+			json_add_string "spiderX" "$real_spiderX"
+		test -n "$real_publicKey" &&
+			json_add_string "publicKey" "$real_publicKey"
+		test -n "$real_fingerprint" &&
+			json_add_string "fingerprint" "$real_fingerprint"
+		json_close_object # realitySettings
+		;;
 	esac
 
 	json_add_object "sockopt"

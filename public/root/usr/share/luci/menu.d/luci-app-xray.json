@@ -94,6 +94,14 @@
       "path": "xray/about"
     }
   },
+  "admin/services/xray/tools": {
+    "title": "Tools",
+    "order": 110,
+    "action": {
+      "type": "view",
+      "path": "xray/tools"
+    }
+  },
   "admin/services/xray/request": {
     "action": {
       "type": "call",

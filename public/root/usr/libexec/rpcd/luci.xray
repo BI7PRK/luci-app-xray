@@ -34,7 +34,7 @@ get_xray_version() {
 	local file="$(uci -q get xray.main.xray_file)"
 
 	if [ ! -s "$file" ] ; then
-		echo '{ "code": 1 }'
+		echo '{ "code": 1, "message": "Empty core file" }'
 		return
 	fi
 
@@ -45,7 +45,46 @@ get_xray_version() {
 	if [ -n "$version" ] ; then
 		printf '{ "code": 0, "version": "%s" }\n' "$version"
 	else
+		echo '{ "code": 1, "message": "Empty output" }'
+	fi
+}
+
+get_xray_uuid() {
+	local file="$(uci -q get xray.main.xray_file)"
+
+	if [ ! -s "$file" ] ; then
+		echo '{ "code": 1, "message": "Empty core file" }'
+		return
+	fi
+
+	test -x "$file" || chmod +x "$file"
+
+	local uuid="$(sh -c "$file uuid 2>/dev/null | head -n1")"
+
+	if [ -n "$uuid" ] ; then
+		printf '{ "code": 0, "uuid": "%s" }\n' "$uuid"
+	else
+		echo '{ "code": 1, "message": "Empty output" }'
+	fi
+}
+# TODO
+get_xray_x25519() {
+	local file="$(uci -q get xray.main.xray_file)"
+
+	if [ ! -s "$file" ] ; then
 		echo '{ "code": 1 }'
+		return
+	fi
+
+	test -x "$file" || chmod +x "$file"
+
+	local keys="$(sh -c "$file x25519 2>/dev/null | head -n2 | cut -d' ' -f3")"
+	if [ -n "$keys" ] ; then
+		local prk="$(echo "${keys}" | head -n 1)"
+		local puk="$(echo "${keys}" | tail -n 1)"
+		printf '{ "code": 0, "privateKey": "%s", "publicKey": "%s"  }\n' "$prk" "$puk"
+	else
+		echo '{ "code": 1, "message": "Empty output" }'
 	fi
 }
 
@@ -83,6 +122,12 @@ case "$1" in
 		json_add_object "xrayVersion"
 		json_close_object
 
+		json_add_object "xrayUuid"
+		json_close_object
+
+		json_add_object "xrayX25519"
+		json_close_object
+
 		json_add_object "listStatus"
 		json_add_string "name" "String"
 		json_close_object
@@ -100,6 +145,12 @@ case "$1" in
 			;;
 			xrayVersion)
 				get_xray_version
+			;;
+			xrayUuid)
+				get_xray_uuid
+			;;
+			xrayX25519)
+				get_xray_x25519
 			;;
 			listStatus)
 				read input;

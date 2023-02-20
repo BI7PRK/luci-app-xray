@@ -1452,3 +1452,11 @@ msgstr "留空使用内建测试地址"
 #: package/htdocs/luci-static/resources/view/xray/observatory.ts:103
 msgid "A valid URL, it will be get request to testing. eg: <code>%s</code>."
 msgstr "一个有效的网址。 通过GET请求进行测试。例如 <code>%s</code>"
+
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:200
+msgid "8 digit or 16 digit alphanumeric"
+msgstr "8位或16位字母数字"
+
+#: package/htdocs/luci-static/resources/view/xray/tools.ts:100
+msgid "Tools"
+msgstr "辅助工具"

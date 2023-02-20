@@ -1348,4 +1348,10 @@ msgstr ""
 msgid "A valid URL, it will be get request to testing. eg: <code>%s</code>."
 msgstr ""
 
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:200
+msgid "8 digit or 16 digit alphanumeric"
+msgstr ""
 
+#: package/htdocs/luci-static/resources/view/xray/tools.ts:100
+msgid "Tools"
+msgstr ""
