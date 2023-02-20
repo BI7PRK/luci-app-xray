@@ -32,6 +32,8 @@ function index()
 
   entry({"admin", "services", "xray", "about"}, view("xray/about"), _("About"), 100)
 
+  entry({"admin", "services", "xray", "tools"}, view("xray/tools"), _("Tools"), 110)
+
   entry({"admin", "services", "xray", "request"}, call("action_request"))
 end
 
