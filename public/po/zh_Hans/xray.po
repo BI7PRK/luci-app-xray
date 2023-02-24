@@ -1454,12 +1454,16 @@ msgid "A valid URL, it will be get request to testing. eg: <code>%s</code>."
 msgstr "一个有效的网址。 通过GET请求进行测试。例如 <code>%s</code>"
 
 #: package/htdocs/luci-static/resources/view/xray/outbound.js:200
-msgid "8 digit or 16 digit alphanumeric"
-msgstr "8位或16位字母数字"
+msgid "The length is a multiple of 2, and the maximum length is 16 bits"
+msgstr "长度为2的倍数，长度上限为16位"
 
 #: package/htdocs/luci-static/resources/view/xray/outbound.js:201
 msgid "It must support TLSv1.3"
 msgstr "必须支持TLSv1.3"
+
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:202
+msgid "crawler path"
+msgstr "网络爬虫路径"
 
 #: package/htdocs/luci-static/resources/view/xray/tools.ts:100
 msgid "Tools"

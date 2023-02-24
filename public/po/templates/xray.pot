@@ -1349,11 +1349,15 @@ msgid "A valid URL, it will be get request to testing. eg: <code>%s</code>."
 msgstr ""
 
 #: package/htdocs/luci-static/resources/view/xray/outbound.js:200
-msgid "8 digit or 16 digit alphanumeric"
+msgid "The length is a multiple of 2, and the maximum length is 16 bits"
 msgstr ""
 
 #: package/htdocs/luci-static/resources/view/xray/outbound.js:201
 msgid "It must support TLSv1.3"
+msgstr ""
+
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:202
+msgid "crawler path"
 msgstr ""
 
 #: package/htdocs/luci-static/resources/view/xray/tools.ts:100

@@ -1225,7 +1225,7 @@ return L.view.extend<string[]>({
       form.Value,
       "real_shortId",
       "%s - %s".format("Reality", _("ShortId")),
-      _("8 digit or 16 digit alphanumeric")
+      _("The length is a multiple of 2, and the maximum length is 16 bits")
     );
     o.modalonly = true;
     o.depends("ss_network", "reality");
@@ -1234,7 +1234,8 @@ return L.view.extend<string[]>({
       "stream",
       form.Value,
       "real_spiderX",
-      "%s - %s".format("Reality", _("SpiderX"))
+      "%s - %s".format("Reality", _("SpiderX")),
+      _("crawler path")
     );
     o.modalonly = true;
     o.depends("ss_network", "reality");

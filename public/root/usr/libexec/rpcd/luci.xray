@@ -67,7 +67,7 @@ get_xray_uuid() {
 		echo '{ "code": 1, "message": "Empty output" }'
 	fi
 }
-# TODO
+
 get_xray_x25519() {
 	local file="$(uci -q get xray.main.xray_file)"
 
