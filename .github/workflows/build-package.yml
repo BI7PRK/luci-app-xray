@@ -12,7 +12,7 @@ env:
 
 jobs:
   push-and-build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     env:
       SDK_URL_PATH: https://downloads.openwrt.org/releases/21.02.0/targets/x86/64
       SDK_NAME: -sdk-21.02.0-x86-64_
@@ -71,10 +71,10 @@ jobs:
           openwrt-${{ env.PACKAGE_NAME }}-
 
     - name: Set up Python 3.9.16
-      uses: actions/setup-python@v3
+      uses: actions/setup-python@v4
       with:
         python-version: 3.9.16
-        
+
     - name: Install Dependencies
       run: |
         DEBIAN_FRONTEND=noninteractive \
