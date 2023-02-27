@@ -1362,9 +1362,6 @@ add_inbound_setting() {
 			json_close_array # destOverride
 		fi
 
-		test -n "$ss_tls_server_name" &&
-					json_add_string "serverName" "$ss_tls_server_name"
-
 		if [ "x$ss_tls_rejectUnknownSni" = "x1" ]; then
 			json_add_boolean "rejectUnknownSni" "$ss_tls_rejectUnknownSni"
 		fi
@@ -1870,8 +1867,7 @@ add_outbound_setting() {
 	#test -n "$ss_security" && \
 	case "${ss_security:-x}" in
 	"tls")
-		if ["$ss_network" = 'reality' ]; then
-
+		if [ "$ss_network" != "reality" ]; then
 			if [ "$ss_security" = "tls" ] && [ "$s_xtls_flow" != "none" ] && [ "${s_xtls_flow:10:6}" != "vision" ]; then
 				json_add_string "security" "xtls"
 				json_add_object "xtlsSettings"
@@ -1918,7 +1914,6 @@ add_outbound_setting() {
 			fi
 			json_close_array  # certificates
 			json_close_object # tlsSettings
-			
 		fi
 		;;
 
