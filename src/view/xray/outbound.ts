@@ -701,12 +701,12 @@ return L.view.extend<string[]>({
     o.value("domainsocket", "Domain Socket");
     o.value("quic", "QUIC");
     o.value("grpc", "gRPC"); // add gRPC
-    o.value("reality", "Reality"); // add reality
 
     o = s.taboption("stream", form.ListValue, "ss_security", _("Security"));
     o.modalonly = true;
     o.value("none", _("None"));
     o.value("tls", "TLS");
+    o.value("reality", "Reality");
     o.depends("ss_network", "tcp");
     o.depends("ss_network", "kcp");
     o.depends("ss_network", "ws");
@@ -733,6 +733,7 @@ return L.view.extend<string[]>({
     o.value("xtls-rprx-vision");
     o.value("xtls-rprx-vision-udp443");
     o.depends("ss_security", "tls");
+    o.depends("ss_security", "reality");
 
     // TLS Version
     o = s.taboption(
@@ -748,6 +749,7 @@ return L.view.extend<string[]>({
     o.value("1.2");
     o.value("1.3");
     o.depends("ss_security", "tls");
+    o.depends("ss_security", "reality");
 
     o = s.taboption(
       "stream",
@@ -762,16 +764,18 @@ return L.view.extend<string[]>({
     o.value("1.2");
     o.value("1.3");
     o.depends("ss_security", "tls");
+    o.depends("ss_security", "reality");
 
     // Stream Settings - TLS
     o = s.taboption(
       "stream",
       form.Value,
       "ss_tls_server_name",
-      "%s - %s".format("TLS", _("Server name"))
+      _("Server name")
     );
     o.modalonly = true;
     o.depends("ss_security", "tls");
+    o.depends("ss_security", "reality");
 
     o = s.taboption(
       "stream",
@@ -780,17 +784,11 @@ return L.view.extend<string[]>({
       "%s - %s".format("TLS", "ALPN")
     );
     o.modalonly = true;
-    o.depends("ss_security", "tls");
     o.placeholder = "http/1.1";
+    o.depends({ ss_security: "tls", ss_network: "tcp" });
 
     //uTLS
-    o = s.taboption(
-      "stream",
-      form.Value,
-      "u_tls",
-      "uTLS",
-      _("Maybe support xray-core only")
-    );
+    o = s.taboption("stream", form.Value, "u_tls", "Fingerprint");
     o.modalonly = true;
     o.value("", _("None"));
     o.value("chrome");
@@ -804,6 +802,36 @@ return L.view.extend<string[]>({
     o.value("random");
     o.value("randomized");
     o.depends("ss_security", "tls");
+    o.depends("ss_security", "reality");
+
+    o = s.taboption(
+      "stream",
+      form.Value,
+      "real_shortId",
+      "%s - %s".format("Reality", _("ShortId")),
+      _("The length is a multiple of 2, and the maximum length is 16 bits")
+    );
+    o.modalonly = true;
+    o.depends("ss_security", "reality");
+
+    o = s.taboption(
+      "stream",
+      form.Value,
+      "real_spiderX",
+      "%s - %s".format("Reality", _("SpiderX")),
+      _("crawler path")
+    );
+    o.modalonly = true;
+    o.depends("ss_security", "reality");
+
+    o = s.taboption(
+      "stream",
+      form.Value,
+      "real_publicKey",
+      "%s - %s".format("Reality", _("publicKey"))
+    );
+    o.modalonly = true;
+    o.depends("ss_security", "reality");
 
     o = s.taboption(
       "stream",
@@ -862,10 +890,10 @@ return L.view.extend<string[]>({
       "%s - %s".format("TCP", _("Header type"))
     );
     o.modalonly = true;
-    o.depends("ss_network", "tcp");
     o.value("");
     o.value("none", _("None"));
     o.value("http", "HTTP");
+    o.depends({ ss_security: "tls", ss_network: "tcp" });
 
     o = s.taboption(
       "stream",
@@ -1196,78 +1224,6 @@ return L.view.extend<string[]>({
     o.depends("ss_network", "grpc");
 
     // Stream Settings - reality
-
-    // Flows
-    o = s.taboption(
-      "stream",
-      form.ListValue,
-      "real_xtls_flow",
-      _("xTLS Flow"),
-      _("Use xTLS flow")
-    );
-    o.modalonly = true;
-    o.value("none", _("None"));
-    o.value("xtls-rprx-vision");
-    o.value("xtls-rprx-vision-udp443");
-    o.depends("ss_network", "reality");
-
-    o = s.taboption(
-      "stream",
-      form.Value,
-      "real_server_name",
-      "%s - %s".format("Reality", _("Service name"))
-    );
-    o.modalonly = true;
-    o.depends("ss_network", "reality");
-
-    o = s.taboption(
-      "stream",
-      form.Value,
-      "real_shortId",
-      "%s - %s".format("Reality", _("ShortId")),
-      _("The length is a multiple of 2, and the maximum length is 16 bits")
-    );
-    o.modalonly = true;
-    o.depends("ss_network", "reality");
-
-    o = s.taboption(
-      "stream",
-      form.Value,
-      "real_spiderX",
-      "%s - %s".format("Reality", _("SpiderX")),
-      _("crawler path")
-    );
-    o.modalonly = true;
-    o.depends("ss_network", "reality");
-
-    o = s.taboption(
-      "stream",
-      form.Value,
-      "real_publicKey",
-      "%s - %s".format("Reality", _("publicKey"))
-    );
-    o.modalonly = true;
-    o.depends("ss_network", "reality");
-
-    //uTLS
-    o = s.taboption(
-      "stream",
-      form.Value,
-      "real_fingerprint",
-      "%s - %s".format("Reality", _("fingerprint")),
-      _("It must support TLSv1.3")
-    );
-    o.modalonly = true;
-    o.value("", _("None"));
-    o.value("chrome");
-    o.value("firefox");
-    o.value("safari");
-    o.value("ios");
-    o.value("edge");
-    o.value("qq");
-    o.value("random");
-    o.value("randomized");
-    o.depends("ss_network", "reality");
 
     // Stream Settings - Socket Options
     o = s.taboption(

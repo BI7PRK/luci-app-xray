@@ -373,8 +373,8 @@ outbound_section_validate() {
 		's_vless_user_id:string' \
 		's_vless_user_encryption:or("none")' \
 		's_vless_user_level:uinteger' \
-		'ss_network:or("tcp", "kcp", "ws", "http", "domainsocket", "quic", "grpc", "reality")' \
-		'ss_security:or("none", "tls")' \
+		'ss_network:or("tcp", "kcp", "ws", "http", "domainsocket", "quic", "grpc")' \
+		'ss_security:or("none", "tls", "reality")' \
 		'ss_xtls_enabled:bool:0' \
 		's_xtls_flow:or("none", "xtls-rprx-direct", "xtls-rprx-direct-udp443", "xtls-rprx-origin", "xtls-rprx-origin-udp443", "xtls-rprx-splice", "xtls-rprx-splice-udp443", "xtls-rprx-vision", "xtls-rprx-vision-udp443")' \
 		'min_tls_version:or("", "1.0", "1.1", "1.2", "1.3")' \
@@ -431,8 +431,7 @@ outbound_section_validate() {
 		'real_shortId:string' \
 		'real_spiderX:string' \
 		'real_publicKey:string' \
-		'real_fingerprint:string' \
-		'real_xtls_flow:or("none", "xtls-rprx-vision", "xtls-rprx-vision-udp443")' \
+		'real_fingerprint:string'
 		
 
 }
@@ -1785,18 +1784,9 @@ add_outbound_setting() {
 		json_add_string "address" "$s_trojan_address"
 		json_add_int "port" "$s_trojan_port"
 		json_add_string "password" "$s_trojan_password"
-		if [ "$ss_security" = "tls" ] && [ "$s_xtls_flow" != "none" ]; then
-			if [ "$ss_network" = "tcp" ] || [ "$ss_network" = "kcp" ] || [ "$ss_network" = "domainsocket" ]; then
-				if [ -n "$s_xtls_flow" ]; then
-					json_add_string "flow" "$s_xtls_flow"
-				fi
-			fi
-		else
-			if [ "$ss_network" = "reality" ] && [ -n "$real_xtls_flow" ]; then
-				json_add_string "flow" "$real_xtls_flow"
-			fi
+		if [ "$s_xtls_flow" != "none" ]; then
+			json_add_string "flow" "$s_xtls_flow"
 		fi
-
 
 		json_close_object
 		json_close_array
@@ -1812,12 +1802,8 @@ add_outbound_setting() {
 		json_add_array "users"
 		json_add_object ""
 		json_add_string "id" "$s_vless_user_id"
-		if [ "$ss_security" = "tls" ] && [ "$s_xtls_flow" != "none" ]; then
+		if [ "$s_xtls_flow" != "none" ]; then
 			json_add_string "flow" "$s_xtls_flow"
-		else
-			if [ "$ss_network" = "reality" ] && [ -n "$real_xtls_flow" ]; then
-				json_add_string "flow" "$real_xtls_flow"
-			fi
 		fi
 		test -n "$s_vless_user_level" &&
 			json_add_int "level" "$s_vless_user_level"
@@ -1847,7 +1833,7 @@ add_outbound_setting() {
 			json_add_string "security" "$s_vmess_user_security"
 		test -n "$s_vmess_user_level" &&
 			json_add_int "level" "$s_vmess_user_level"
-		if [ "$ss_security" = "tls" ] && [ "$s_xtls_flow" != "none" ]; then
+		if [ "$s_xtls_flow" != "none" ]; then
 			json_add_string "flow" "$s_xtls_flow"
 		fi
 		json_close_object
@@ -1867,56 +1853,78 @@ add_outbound_setting() {
 	#test -n "$ss_security" && \
 	case "${ss_security:-x}" in
 	"tls")
-		if [ "$ss_network" != "reality" ]; then
-			if [ "$ss_security" = "tls" ] && [ "$s_xtls_flow" != "none" ] && [ "${s_xtls_flow:10:6}" != "vision" ]; then
-				json_add_string "security" "xtls"
-				json_add_object "xtlsSettings"
+		if [ "$ss_security" = "tls" ] && [ "$s_xtls_flow" != "none" ] && [ "${s_xtls_flow:10:6}" != "vision" ]; then
+			json_add_string "security" "xtls"
+			json_add_object "xtlsSettings"
 
-			else
-				json_add_string "security" "$ss_security"
-				json_add_object "tlsSettings"
-			fi
-
-			if [ "$u_tls" != "" ]; then
-				json_add_string "fingerprint" "$u_tls"
-			fi
-			if [ "$min_tls_version" != "" ]; then
-				json_add_string "minVersion" "$min_tls_version"
-			fi
-			if [ "$max_tls_version" != "" ]; then
-				json_add_string "maxVersion" "$max_tls_version"
-			fi
-			test -n "$ss_tls_server_name" &&
-				json_add_string "serverName" "$ss_tls_server_name"
-			if [ -n "$ss_tls_alpn" ]; then
-				json_add_array "alpn"
-				local al
-				for al in $ss_tls_alpn; do
-					json_add_string "" "$al"
-				done
-				json_close_array # destOverride
-			fi
-			
-			if [ "x$ss_tls_rejectUnknownSni" = "x1" ]; then
-				json_add_boolean "rejectUnknownSni" "$ss_tls_rejectUnknownSni"
-			fi
-			json_add_boolean "allowInsecure" "$ss_tls_allow_insecure"
-			json_add_boolean "allowInsecureCiphers" "$ss_tls_allow_insecure_ciphers"
-			json_add_boolean "disableSystemRoot" "$ss_tls_disable_system_root"
-			json_add_array "certificates"
-			if [ -n "$ss_tls_cert_fiile" ]; then
-				json_add_object ""
-				json_add_string "certificateFile" "$ss_tls_cert_fiile"
-				json_add_string "keyFile" "$ss_tls_key_file"
-				test -n "$ss_tls_cert_usage" &&
-					json_add_string "usage" "$ss_tls_cert_usage"
-				json_close_object
-			fi
-			json_close_array  # certificates
-			json_close_object # tlsSettings
+		else
+			json_add_string "security" "$ss_security"
+			json_add_object "tlsSettings"
 		fi
-		;;
 
+		if [ "$u_tls" != "" ]; then
+			json_add_string "fingerprint" "$u_tls"
+		fi
+		if [ "$min_tls_version" != "" ]; then
+			json_add_string "minVersion" "$min_tls_version"
+		fi
+		if [ "$max_tls_version" != "" ]; then
+			json_add_string "maxVersion" "$max_tls_version"
+		fi
+		test -n "$ss_tls_server_name" &&
+			json_add_string "serverName" "$ss_tls_server_name"
+		if [ -n "$ss_tls_alpn" ]; then
+			json_add_array "alpn"
+			local al
+			for al in $ss_tls_alpn; do
+				json_add_string "" "$al"
+			done
+			json_close_array # destOverride
+		fi
+		
+		if [ "x$ss_tls_rejectUnknownSni" = "x1" ]; then
+			json_add_boolean "rejectUnknownSni" "$ss_tls_rejectUnknownSni"
+		fi
+		json_add_boolean "allowInsecure" "$ss_tls_allow_insecure"
+		json_add_boolean "allowInsecureCiphers" "$ss_tls_allow_insecure_ciphers"
+		json_add_boolean "disableSystemRoot" "$ss_tls_disable_system_root"
+		json_add_array "certificates"
+		if [ -n "$ss_tls_cert_fiile" ]; then
+			json_add_object ""
+			json_add_string "certificateFile" "$ss_tls_cert_fiile"
+			json_add_string "keyFile" "$ss_tls_key_file"
+			test -n "$ss_tls_cert_usage" &&
+				json_add_string "usage" "$ss_tls_cert_usage"
+			json_close_object
+		fi
+		json_close_array  # certificates
+		json_close_object # tlsSettings
+		;;
+	"reality")
+		json_add_string "security" "$ss_security"
+		json_add_object "realitySettings"
+		test -n "$real_shortId" &&
+			json_add_string "shortId" "$real_shortId"
+
+		test -n "$real_spiderX" &&
+			json_add_string "spiderX" "$real_spiderX"
+
+		test -n "$real_publicKey" &&
+			json_add_string "publicKey" "$real_publicKey"
+
+		test -n "$u_tls" &&
+			json_add_string "fingerprint" "$u_tls"
+
+		test -n "$min_tls_version" &&
+			json_add_string "minVersion" "$min_tls_version"
+
+		test -n "$max_tls_version" &&
+			json_add_string "maxVersion" "$max_tls_version"
+
+		test -n "$ss_tls_server_name" &&
+			json_add_string "serverName" "$ss_tls_server_name"
+		json_close_object # realitySettings
+		;;
 	"*")
 		json_add_string "security" "none"
 		;;

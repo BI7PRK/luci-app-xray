@@ -1465,6 +1465,10 @@ msgstr "必须支持TLSv1.3"
 msgid "crawler path"
 msgstr "网络爬虫路径"
 
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:203
+msgid "模拟指纹"
+msgstr ""
+
 #: package/htdocs/luci-static/resources/view/xray/tools.ts:100
 msgid "Tools"
 msgstr "辅助工具"

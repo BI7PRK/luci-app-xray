@@ -1360,6 +1360,10 @@ msgstr ""
 msgid "crawler path"
 msgstr ""
 
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:203
+msgid "Fingerprint"
+msgstr ""
+
 #: package/htdocs/luci-static/resources/view/xray/tools.ts:100
 msgid "Tools"
 msgstr ""
