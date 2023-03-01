@@ -749,7 +749,6 @@ return L.view.extend<string[]>({
     o.value("1.2");
     o.value("1.3");
     o.depends("ss_security", "tls");
-    o.depends("ss_security", "reality");
 
     o = s.taboption(
       "stream",
@@ -764,7 +763,6 @@ return L.view.extend<string[]>({
     o.value("1.2");
     o.value("1.3");
     o.depends("ss_security", "tls");
-    o.depends("ss_security", "reality");
 
     // Stream Settings - TLS
     o = s.taboption(
@@ -788,7 +786,7 @@ return L.view.extend<string[]>({
     o.depends({ ss_security: "tls", ss_network: "tcp" });
 
     //uTLS
-    o = s.taboption("stream", form.Value, "u_tls", "Fingerprint");
+    o = s.taboption("stream", form.Value, "u_tls", _("Fingerprint"));
     o.modalonly = true;
     o.value("", _("None"));
     o.value("chrome");

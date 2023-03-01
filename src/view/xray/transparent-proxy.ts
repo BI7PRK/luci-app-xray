@@ -49,7 +49,7 @@ return L.view.extend<[SectionItem[], SectionItem[]]>({
       fs.write(`/etc/xray/${fileName}.txt`, data)
         .then(function () {
           ui.showModal(_("List Update"), [
-            E("p", _("%d list updated.").format(fileName)),
+            E("p", _("%s list updated.").format(fileName)),
             E(
               "div",
               { class: "right" },
@@ -110,14 +110,22 @@ return L.view.extend<[SectionItem[], SectionItem[]]>({
           return converters.extractGFWList(data);
         });
       }
-      case "chnroute":
+      case "chnroute": {
+        const delegatedMirror =
+          uci.get<string>("xray", section_id, "apnic_delegated_mirror") ||
+          "apnic";
+        const url = apnicDelegatedUrls[delegatedMirror];
+        return getData(url, "chnroute", (data) => {
+          return converters.extractCHNRoute(data, false);
+        });
+      }
       case "chnroute6": {
         const delegatedMirror =
           uci.get<string>("xray", section_id, "apnic_delegated_mirror") ||
           "apnic";
         const url = apnicDelegatedUrls[delegatedMirror];
         return getData(url, "chnroute6", (data) => {
-          return converters.extractCHNRoute(data, "chnroute6");
+          return converters.extractCHNRoute(data, true);
         });
       }
 
