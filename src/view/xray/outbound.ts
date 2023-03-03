@@ -276,6 +276,7 @@ return L.view.extend<string[]>({
     o.value("vmess", "VMess");
     o.value("vless", "VLESS"); // Add VLESS Protocol support
     o.value("loopback", "Loopback"); // Add Loopback Protocol support
+    o.value("wireguard", "WireGuard"); // Add WireGuard Protocol support
 
     // Settings Blackhole
     o = s.taboption(
@@ -687,9 +688,19 @@ return L.view.extend<string[]>({
     );
     o.modalonly = true;
     o.depends("protocol", "loopback");
-    // for (const s in inboundSections) {
-    //   o.value(s.caption, s.caption);
-    // }
+
+    // Settings WireGuard
+    o = s.taboption("general", form.Value, "wg_secretKey", _("secretKey"));
+    o.modalonly = true;
+    o.depends("protocol", "wireguard");
+
+    o = s.taboption("general", form.Value, "wg_publicKey", _("publicKey"));
+    o.modalonly = true;
+    o.depends("protocol", "wireguard");
+
+    o = s.taboption("general", form.Value, "wg_endpoint", _("Endpoint"));
+    o.modalonly = true;
+    o.depends("protocol", "wireguard");
 
     /** Stream Settings **/
     o = s.taboption("stream", form.ListValue, "ss_network", _("Network"));
@@ -724,12 +735,6 @@ return L.view.extend<string[]>({
     );
     o.modalonly = true;
     o.value("none", _("None"));
-    o.value("xtls-rprx-direct");
-    o.value("xtls-rprx-direct-udp443");
-    o.value("xtls-rprx-origin");
-    o.value("xtls-rprx-origin-udp443");
-    o.value("xtls-rprx-splice");
-    o.value("xtls-rprx-splice-udp443");
     o.value("xtls-rprx-vision");
     o.value("xtls-rprx-vision-udp443");
     o.depends("ss_security", "tls");
@@ -1220,8 +1225,6 @@ return L.view.extend<string[]>({
     o.modalonly = true;
     o.datatype = "uinteger";
     o.depends("ss_network", "grpc");
-
-    // Stream Settings - reality
 
     // Stream Settings - Socket Options
     o = s.taboption(

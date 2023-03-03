@@ -211,6 +211,18 @@ msgstr "转发所有 HTTP 请求"
 msgid "Alter ID"
 msgstr ""
 
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:320
+msgid "secretKey"
+msgstr "私钥"
+
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:321
+msgid "publicKey"
+msgstr "公钥"
+
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:322
+msgid "Endpoint"
+msgstr "站点地址"
+
 #: package/htdocs/luci-static/resources/view/xray/routing.js:71
 msgid "Attrs"
 msgstr ""

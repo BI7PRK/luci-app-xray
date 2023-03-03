@@ -211,6 +211,18 @@ msgstr ""
 msgid "Alter ID"
 msgstr ""
 
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:320
+msgid "secretKey"
+msgstr ""
+
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:321
+msgid "publicKey"
+msgstr ""
+
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:322
+msgid "Endpoint"
+msgstr ""
+
 #: package/htdocs/luci-static/resources/view/xray/routing.js:71
 msgid "Attrs"
 msgstr ""
