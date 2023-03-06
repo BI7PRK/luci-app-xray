@@ -718,12 +718,6 @@ return L.view.extend<string[]>({
     o.value("none", _("None"));
     o.value("tls", "TLS");
     o.value("reality", "Reality");
-    o.depends("ss_network", "tcp");
-    o.depends("ss_network", "kcp");
-    o.depends("ss_network", "ws");
-    o.depends("ss_network", "http");
-    o.depends("ss_network", "quic");
-    o.depends("ss_network", "grpc");
 
     // XTLS Flows
     o = s.taboption(
