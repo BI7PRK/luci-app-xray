@@ -67,10 +67,10 @@ const callGetUuid = rpc.declare<string>({
   },
 });
 
-const callX25519 = rpc.declare<Object>({
+const callX25519 = rpc.declare<Object, [string]>({
   object: "luci.xray",
   method: "xrayX25519",
-  params: ["name"],
+  params: ["i"],
   expect: { "": { code: 1 } },
   filter: function (data: any): Object {
     if (data.code === 0) {

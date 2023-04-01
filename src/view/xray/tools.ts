@@ -93,7 +93,6 @@ return L.view.extend<[string, string]>({
               {
                 style: "width: 350px",
                 id: "pv_field",
-                readonly: "readonly",
               },
               ""
             ),
@@ -102,7 +101,8 @@ return L.view.extend<[string, string]>({
               {
                 type: "button",
                 click: async () => {
-                  const keys = await custom.CallGenKeys();
+                  const privateKey = document.getElementById("pv_field").value
+                  const keys = await custom.CallGenKeys(privateKey);
                   if (keys.code !== 0) {
                     ui.showModal("Get Keys", [
                       E("p", {}, "Service exception"),
