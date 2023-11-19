@@ -34,6 +34,10 @@ msgstr ""
 msgid "Query headers"
 msgstr "eg. key:value"
 
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:563
+msgid "TCP No Delay"
+msgstr ""
+
 #: package/htdocs/luci-static/resources/view/xray/outbound.js:498
 msgid "Service name"
 msgstr ""

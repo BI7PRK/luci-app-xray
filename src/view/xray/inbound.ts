@@ -962,6 +962,17 @@ return L.view.extend<string[]>({
     o = s.taboption(
       "stream",
       form.ListValue,
+      "sockopt_tcpnodelay",
+      "%s - %s".format(_("Sockopt"), _("TCP No Delay"))
+    );
+    o.modalonly = true;
+    o.value("");
+    o.value("0", _("False"));
+    o.value("1", _("True"));
+
+    o = s.taboption(
+      "stream",
+      form.ListValue,
       "ss_sockopt_tproxy",
       "%s - %s".format(_("Sockopt"), _("TProxy")),
       _(

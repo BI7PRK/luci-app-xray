@@ -34,6 +34,10 @@ msgstr "请求头"
 msgid "Query headers"
 msgstr "格式为 key:value"
 
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:563
+msgid "TCP No Delay"
+msgstr "TCP无延迟"
+
 #: package/htdocs/luci-static/resources/view/xray/outbound.js:498
 msgid "Service name"
 msgstr "服务名称"
