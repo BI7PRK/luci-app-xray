@@ -110,9 +110,15 @@ return L.view.extend<SectionItem[]>({
     o = s2.option(form.DynamicList, "expect_ips", _("Expect IPs"));
     o.modalonly = true;
 
+    o = s2.option(form.ListValue, "sub_query", _("Query Strategy"));
+    o.value("UseIP");
+    o.value("UseIPv4");
+    o.value("UseIPv6");
+    o.default = "UseIP";
+
     o = s2.option(form.Flag, "skip_fallback", _("Skip Fallback"));
 
-    o = s2.option(form.Value, "client_ip", _("Client IP"));
+    o = s2.option(form.Value, "sub_client_ip", _("Client IP"));
     o.modalonly = true;
     o.placeholder = _("Can be configured as a non-private IP address");
 

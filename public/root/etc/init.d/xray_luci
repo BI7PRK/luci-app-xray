@@ -172,7 +172,8 @@ dns_server_section_validate() {
 		'domains:list(string)' \
 		'expect_ips:list(string)' \
 		'skip_fallback:bool:0' \
-		'client_ip:ipaddr'
+		'sub_query:or("UseIP", "UseIPv4", "UseIPv6")' \
+		'sub_client_ip:ipaddr'
 }
 
 observatory_section_validate() {
@@ -851,10 +852,14 @@ add_dns_settings() {
 						json_close_array # expectIPs
 					fi
 
+					if [ -n "$sub_query" ]; then
+						json_add_string "queryStrategy" "$sub_query"
+					fi
+					
 					json_add_boolean "skipFallback" "$skip_fallback"
 					
-					if [ -n "$client_ip" ]; then
-						json_add_string "clientIp" "$client_ip"
+					if [ -n "$sub_client_ip" ]; then
+						json_add_string "clientIp" "$sub_client_ip"
 					fi
 
 					json_close_object
