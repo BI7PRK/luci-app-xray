@@ -34,6 +34,10 @@ msgstr "请求头"
 msgid "Query headers"
 msgstr "格式为 key:value"
 
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:563
+msgid "TCP No Delay"
+msgstr "TCP无延迟"
+
 #: package/htdocs/luci-static/resources/view/xray/outbound.js:498
 msgid "Service name"
 msgstr "服务名称"
@@ -210,6 +214,18 @@ msgstr "转发所有 HTTP 请求"
 #: package/htdocs/luci-static/resources/view/xray/outbound.js:319
 msgid "Alter ID"
 msgstr ""
+
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:320
+msgid "secretKey"
+msgstr "私钥"
+
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:321
+msgid "publicKey"
+msgstr "公钥"
+
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:322
+msgid "Endpoint"
+msgstr "站点地址"
 
 #: package/htdocs/luci-static/resources/view/xray/routing.js:71
 msgid "Attrs"
@@ -1464,6 +1480,10 @@ msgstr "必须支持TLSv1.3"
 #: package/htdocs/luci-static/resources/view/xray/outbound.js:202
 msgid "crawler path"
 msgstr "网络爬虫路径"
+
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:203
+msgid "Fingerprint"
+msgstr "指纹模拟"
 
 #: package/htdocs/luci-static/resources/view/xray/tools.ts:100
 msgid "Tools"

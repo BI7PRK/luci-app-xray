@@ -17,7 +17,7 @@
         "/var/etc/xray/*": [
           "read"
         ],
-        "/etc/init.d/xray": [
+        "/etc/init.d/xray_luci": [
           "exec"
         ]
       }

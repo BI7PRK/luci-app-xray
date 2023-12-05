@@ -172,7 +172,8 @@ dns_server_section_validate() {
 		'domains:list(string)' \
 		'expect_ips:list(string)' \
 		'skip_fallback:bool:0' \
-		'client_ip:ipaddr'
+		'sub_query:or("UseIP", "UseIPv4", "UseIPv6")' \
+		'sub_client_ip:ipaddr'
 }
 
 observatory_section_validate() {
@@ -283,7 +284,7 @@ inbound_section_validate() {
 		's_vmess_disable_insecure_encryption:bool:0' \
 		'ss_network:or("tcp", "kcp", "ws", "http", "domainsocket", "quic")' \
 		'ss_security:or("none", "tls")' \
-		's_xtls_flow:or("none", "xtls-rprx-direct", "xtls-rprx-direct-udp443", "xtls-rprx-origin", "xtls-rprx-origin-udp443", "xtls-rprx-splice", "xtls-rprx-splice-udp443", "xtls-rprx-vision", "xtls-rprx-vision-udp443")' \
+		's_xtls_flow:or("none", "xtls-rprx-vision", "xtls-rprx-vision-udp443")' \
 		'ss_tls_server_name:host' \
 		'ss_tls_alpn:list(string)' \
 		'ss_tls_rejectUnknownSni:bool:0' \
@@ -319,6 +320,8 @@ inbound_section_validate() {
 		'ss_quic_key:string' \
 		'ss_quic_header_type:or("none", "srtp", "utp", "wechat-video", "dtls", "wireguard")' \
 		'ss_sockopt_tcp_fast_open:or("0", "1")' \
+		'sockopt_tcpMptcp:or("0", "1")' \
+		'sockopt_tcpnodelay:or("0", "1")' \
 		'ss_sockopt_tproxy:or("redirect", "tproxy", "off")' \
 		'tag:string' \
 		'sniffing_enabled:bool:0' \
@@ -373,10 +376,9 @@ outbound_section_validate() {
 		's_vless_user_id:string' \
 		's_vless_user_encryption:or("none")' \
 		's_vless_user_level:uinteger' \
-		'ss_network:or("tcp", "kcp", "ws", "http", "domainsocket", "quic", "grpc", "reality")' \
-		'ss_security:or("none", "tls")' \
-		'ss_xtls_enabled:bool:0' \
-		's_xtls_flow:or("none", "xtls-rprx-direct", "xtls-rprx-direct-udp443", "xtls-rprx-origin", "xtls-rprx-origin-udp443", "xtls-rprx-splice", "xtls-rprx-splice-udp443", "xtls-rprx-vision", "xtls-rprx-vision-udp443")' \
+		'ss_network:or("tcp", "kcp", "ws", "http", "domainsocket", "quic", "grpc")' \
+		'ss_security:or("none", "tls", "reality")' \
+		's_xtls_flow:or("none", "xtls-rprx-vision", "xtls-rprx-vision-udp443")' \
 		'min_tls_version:or("", "1.0", "1.1", "1.2", "1.3")' \
 		'max_tls_version:or("", "1.0", "1.1", "1.2", "1.3")' \
 		'ss_tls_server_name:host' \
@@ -423,16 +425,20 @@ outbound_section_validate() {
 		'ss_sockopt_mark:uinteger' \
 		'ss_sockopt_domain_strategy:or("", "AsIs", "UseIP", "UseIPv4", "UseIPv6")' \
 		'ss_sockopt_tcp_fast_open:or("0", "1")' \
+		'sockopt_tcpMptcp:or("0", "1")' \
+		'sockopt_tcpnodelay:or("0", "1")' \
 		'stream_settings:string' \
 		'proxy_settings_tag:string' \
 		'mux_enabled:bool:0' \
 		'mux_concurrency:uinteger:8' \
+		'wg_secretKey':string \
+		'wg_publicKey':string \
+		'wg_endpoint':string \
 		'real_server_name:string' \
 		'real_shortId:string' \
 		'real_spiderX:string' \
 		'real_publicKey:string' \
-		'real_fingerprint:string' \
-		'real_xtls_flow:or("none", "xtls-rprx-vision", "xtls-rprx-vision-udp443")' \
+		'real_fingerprint:string'
 		
 
 }
@@ -850,10 +856,14 @@ add_dns_settings() {
 						json_close_array # expectIPs
 					fi
 
+					if [ -n "$sub_query" ]; then
+						json_add_string "queryStrategy" "$sub_query"
+					fi
+					
 					json_add_boolean "skipFallback" "$skip_fallback"
 					
-					if [ -n "$client_ip" ]; then
-						json_add_string "clientIp" "$client_ip"
+					if [ -n "$sub_client_ip" ]; then
+						json_add_string "clientIp" "$sub_client_ip"
 					fi
 
 					json_close_object
@@ -1341,14 +1351,8 @@ add_inbound_setting() {
 
 	if [ "$ss_security" = "tls" ]; then
 		json_add_object "tlsSettings"
-		if [ "$s_xtls_flow" != "none" ] && [ "${s_xtls_flow:10:6}" != "vision" ]; then
-			json_add_string "security" "xtls"
-			json_add_object "xtlsSettings"
-
-		else
-			json_add_string "security" "$ss_security"
-			json_add_object "tlsSettings"
-		fi
+		json_add_string "security" "$ss_security"
+		json_add_object "tlsSettings"
 
 		test -n "$ss_tls_server_name" &&
 			json_add_string "serverName" "$ss_tls_server_name"
@@ -1361,9 +1365,6 @@ add_inbound_setting() {
 			done
 			json_close_array # destOverride
 		fi
-
-		test -n "$ss_tls_server_name" &&
-					json_add_string "serverName" "$ss_tls_server_name"
 
 		if [ "x$ss_tls_rejectUnknownSni" = "x1" ]; then
 			json_add_boolean "rejectUnknownSni" "$ss_tls_rejectUnknownSni"
@@ -1575,6 +1576,13 @@ add_inbound_setting() {
 	else
 		test -n "$ss_sockopt_tcp_fast_open" &&
 			json_add_boolean "tcpFastOpen" "$ss_sockopt_tcp_fast_open"
+
+		test -n "$sockopt_tcpMptcp" &&
+			json_add_boolean "tcpMptcp" "$sockopt_tcpMptcp"
+
+		test -n "$sockopt_tcpnodelay" &&
+			json_add_boolean "tcpNoDelay" "$sockopt_tcpnodelay"
+
 		test -n "$ss_sockopt_tproxy" &&
 			json_add_string "tproxy" "$ss_sockopt_tproxy"
 	fi
@@ -1788,18 +1796,9 @@ add_outbound_setting() {
 		json_add_string "address" "$s_trojan_address"
 		json_add_int "port" "$s_trojan_port"
 		json_add_string "password" "$s_trojan_password"
-		if [ "$ss_security" = "tls" ] && [ "$s_xtls_flow" != "none" ]; then
-			if [ "$ss_network" = "tcp" ] || [ "$ss_network" = "kcp" ] || [ "$ss_network" = "domainsocket" ]; then
-				if [ -n "$s_xtls_flow" ]; then
-					json_add_string "flow" "$s_xtls_flow"
-				fi
-			fi
-		else
-			if [ "$ss_network" = "reality" ] && [ -n "$real_xtls_flow" ]; then
-				json_add_string "flow" "$real_xtls_flow"
-			fi
+		if [ "$s_xtls_flow" != "none" ]; then
+			json_add_string "flow" "$s_xtls_flow"
 		fi
-
 
 		json_close_object
 		json_close_array
@@ -1815,12 +1814,8 @@ add_outbound_setting() {
 		json_add_array "users"
 		json_add_object ""
 		json_add_string "id" "$s_vless_user_id"
-		if [ "$ss_security" = "tls" ] && [ "$s_xtls_flow" != "none" ]; then
+		if [ "$s_xtls_flow" != "none" ]; then
 			json_add_string "flow" "$s_xtls_flow"
-		else
-			if [ "$ss_network" = "reality" ] && [ -n "$real_xtls_flow" ]; then
-				json_add_string "flow" "$real_xtls_flow"
-			fi
 		fi
 		test -n "$s_vless_user_level" &&
 			json_add_int "level" "$s_vless_user_level"
@@ -1850,7 +1845,7 @@ add_outbound_setting() {
 			json_add_string "security" "$s_vmess_user_security"
 		test -n "$s_vmess_user_level" &&
 			json_add_int "level" "$s_vmess_user_level"
-		if [ "$ss_security" = "tls" ] && [ "$s_xtls_flow" != "none" ]; then
+		if [ "$s_xtls_flow" != "none" ]; then
 			json_add_string "flow" "$s_xtls_flow"
 		fi
 		json_close_object
@@ -1859,6 +1854,17 @@ add_outbound_setting() {
 		json_close_object
 
 		json_close_array  # vnext
+		json_close_object # settings
+		;;
+	"wireguard")
+		json_add_object "settings"
+		json_add_string "secretKey" "$wg_secretKey"
+		json_add_array "peers"
+		json_add_object ""
+		json_add_string "publicKey" "$wg_publicKey"
+		json_add_string "endpoint" "$wg_endpoint"
+		json_close_object
+		json_close_array  # peers
 		json_close_object # settings
 		;;
 	esac
@@ -1870,58 +1876,72 @@ add_outbound_setting() {
 	#test -n "$ss_security" && \
 	case "${ss_security:-x}" in
 	"tls")
-		if ["$ss_network" = 'reality' ]; then
+		json_add_string "security" "$ss_security"
+		json_add_object "tlsSettings"
 
-			if [ "$ss_security" = "tls" ] && [ "$s_xtls_flow" != "none" ] && [ "${s_xtls_flow:10:6}" != "vision" ]; then
-				json_add_string "security" "xtls"
-				json_add_object "xtlsSettings"
-
-			else
-				json_add_string "security" "$ss_security"
-				json_add_object "tlsSettings"
-			fi
-
-			if [ "$u_tls" != "" ]; then
-				json_add_string "fingerprint" "$u_tls"
-			fi
-			if [ "$min_tls_version" != "" ]; then
-				json_add_string "minVersion" "$min_tls_version"
-			fi
-			if [ "$max_tls_version" != "" ]; then
-				json_add_string "maxVersion" "$max_tls_version"
-			fi
-			test -n "$ss_tls_server_name" &&
-				json_add_string "serverName" "$ss_tls_server_name"
-			if [ -n "$ss_tls_alpn" ]; then
-				json_add_array "alpn"
-				local al
-				for al in $ss_tls_alpn; do
-					json_add_string "" "$al"
-				done
-				json_close_array # destOverride
-			fi
-			
-			if [ "x$ss_tls_rejectUnknownSni" = "x1" ]; then
-				json_add_boolean "rejectUnknownSni" "$ss_tls_rejectUnknownSni"
-			fi
-			json_add_boolean "allowInsecure" "$ss_tls_allow_insecure"
-			json_add_boolean "allowInsecureCiphers" "$ss_tls_allow_insecure_ciphers"
-			json_add_boolean "disableSystemRoot" "$ss_tls_disable_system_root"
-			json_add_array "certificates"
-			if [ -n "$ss_tls_cert_fiile" ]; then
-				json_add_object ""
-				json_add_string "certificateFile" "$ss_tls_cert_fiile"
-				json_add_string "keyFile" "$ss_tls_key_file"
-				test -n "$ss_tls_cert_usage" &&
-					json_add_string "usage" "$ss_tls_cert_usage"
-				json_close_object
-			fi
-			json_close_array  # certificates
-			json_close_object # tlsSettings
-			
+		if [ "$u_tls" != "" ]; then
+			json_add_string "fingerprint" "$u_tls"
 		fi
+		if [ "$min_tls_version" != "" ]; then
+			json_add_string "minVersion" "$min_tls_version"
+		fi
+		if [ "$max_tls_version" != "" ]; then
+			json_add_string "maxVersion" "$max_tls_version"
+		fi
+		test -n "$ss_tls_server_name" &&
+			json_add_string "serverName" "$ss_tls_server_name"
+		if [ -n "$ss_tls_alpn" ]; then
+			json_add_array "alpn"
+			local al
+			for al in $ss_tls_alpn; do
+				json_add_string "" "$al"
+			done
+			json_close_array # destOverride
+		fi
+		
+		if [ "x$ss_tls_rejectUnknownSni" = "x1" ]; then
+			json_add_boolean "rejectUnknownSni" "$ss_tls_rejectUnknownSni"
+		fi
+		json_add_boolean "allowInsecure" "$ss_tls_allow_insecure"
+		json_add_boolean "allowInsecureCiphers" "$ss_tls_allow_insecure_ciphers"
+		json_add_boolean "disableSystemRoot" "$ss_tls_disable_system_root"
+		json_add_array "certificates"
+		if [ -n "$ss_tls_cert_fiile" ]; then
+			json_add_object ""
+			json_add_string "certificateFile" "$ss_tls_cert_fiile"
+			json_add_string "keyFile" "$ss_tls_key_file"
+			test -n "$ss_tls_cert_usage" &&
+				json_add_string "usage" "$ss_tls_cert_usage"
+			json_close_object
+		fi
+		json_close_array  # certificates
+		json_close_object # tlsSettings
 		;;
+	"reality")
+		json_add_string "security" "$ss_security"
+		json_add_object "realitySettings"
+		test -n "$real_shortId" &&
+			json_add_string "shortId" "$real_shortId"
 
+		test -n "$real_spiderX" &&
+			json_add_string "spiderX" "$real_spiderX"
+
+		test -n "$real_publicKey" &&
+			json_add_string "publicKey" "$real_publicKey"
+
+		test -n "$u_tls" &&
+			json_add_string "fingerprint" "$u_tls"
+
+		test -n "$min_tls_version" &&
+			json_add_string "minVersion" "$min_tls_version"
+
+		test -n "$max_tls_version" &&
+			json_add_string "maxVersion" "$max_tls_version"
+
+		test -n "$ss_tls_server_name" &&
+			json_add_string "serverName" "$ss_tls_server_name"
+		json_close_object # realitySettings
+		;;
 	"*")
 		json_add_string "security" "none"
 		;;
@@ -2140,9 +2160,9 @@ add_outbound_setting() {
 	esac
 
 	json_add_object "sockopt"
-
+	
 	if [ "$protocol" != "blackhole" ] && [ "$protocol" != "freedom" ] && [ "$protocol" != "dns" ]; then
-		test -n "ss_sockopt_domain_strategy" &&
+		test -n "$ss_sockopt_domain_strategy" &&
 			json_add_string "domainStrategy" "$ss_sockopt_domain_strategy"
 	fi
 
@@ -2156,6 +2176,15 @@ add_outbound_setting() {
 	test -n "$ss_sockopt_tcp_fast_open" &&
 		json_add_boolean "tcpFastOpen" "$ss_sockopt_tcp_fast_open"
 
+	test -n "$sockopt_tcpMptcp" &&
+		json_add_boolean "tcpMptcp" "$sockopt_tcpMptcp"
+
+	test -n "$sockopt_tcpnodelay" &&
+		json_add_boolean "tcpNoDelay" "$sockopt_tcpnodelay"
+
+	if [ "$protocol" == "wireguard" ] ; then
+		json_add_string "dialerProxy" "$proxy_settings_tag"
+	fi
 	json_close_object # sockopt
 
 	json_close_object # streamSettings
@@ -2163,7 +2192,7 @@ add_outbound_setting() {
 	test -n "$tag" &&
 		json_add_string "tag" "$tag"
 
-	if [ -n "$proxy_settings_tag" ]; then
+	if [ -n "$proxy_settings_tag" ] && [ "$protocol" != "wireguard" ]; then
 		json_add_object "proxySettings"
 		json_add_string "tag" "$proxy_settings_tag"
 		json_close_object # proxySettings
