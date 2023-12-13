@@ -101,7 +101,7 @@ return L.view.extend<[string, string]>({
               {
                 type: "button",
                 click: async () => {
-                  const privateKey = document.getElementById("pv_field").value
+                  const privateKey = document.getElementById("pv_field").value;
                   const keys = await custom.CallGenKeys(privateKey);
                   if (keys.code !== 0) {
                     ui.showModal("Get Keys", [
