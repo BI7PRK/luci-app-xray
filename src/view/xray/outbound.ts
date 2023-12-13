@@ -1359,6 +1359,32 @@ return L.view.extend<string[]>({
     o.datatype = "uinteger";
     o.placeholder = "8";
 
+    o = s.taboption(
+      "other",
+      form.Value,
+      "mux_xudpConcurrency",
+      "%s - %s".format(_("Mux"), _("XUDP Concurrency")),
+      _(
+        "Use the new XUDP aggregation tunnel to proxy UDP traffic and fill in the maximum number of concurrent sub-UoTs. Minimum value 1, maximum value 1024"
+      )
+    );
+    o.modalonly = true;
+    o.datatype = "uinteger";
+    o.placeholder = "16";
+
+    o = s.taboption(
+      "other",
+      form.ListValue,
+      "mux_xudpProxyUDP443",
+      "%s - %s".format(_("Mux"), _("XUDP ProxyUDP443")),
+      _("Controls how the Mux handles proxied UDP/443 (QUIC) traffic")
+    );
+    o.modalonly = true;
+    o.value("");
+    o.value("reject");
+    o.value("allow");
+    o.value("skip");
+
     const self = this;
     return m.render().then(function (node: Node) {
       const container = m.findElement("id", "cbi-xray-outbound");

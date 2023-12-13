@@ -435,6 +435,8 @@ outbound_section_validate() {
 		'proxy_settings_tag:string' \
 		'mux_enabled:bool:0' \
 		'mux_concurrency:uinteger:8' \
+		'mux_xudpConcurrency:and(min(-1), max(1024))' \
+		'mux_xudpProxyUDP443:or("", "reject", "allow", "skip")' \
 		'wg_secretKey':string \
 		'wg_publicKey':string \
 		'wg_endpoint':string \
@@ -2182,10 +2184,10 @@ add_outbound_setting() {
 	fi
 
 	test -n "$ss_sockopt_tcpUserTimeout" &&
-			json_add_int "tcpUserTimeout" "$ss_sockopt_tcpUserTimeout"
+		json_add_int "tcpUserTimeout" "$ss_sockopt_tcpUserTimeout"
 
-	test -n "$ss_sockopt_TCPMaxSeg" &&
-			json_add_int "tcpMaxSeg" "$ss_sockopt_tcpMaxSeg"
+	test -n "$ss_sockopt_tcpMaxSeg" &&
+		json_add_int "tcpMaxSeg" "$ss_sockopt_tcpMaxSeg"
 
 	test -n "$ss_sockopt_tcp_fast_open" &&
 		json_add_boolean "tcpFastOpen" "$ss_sockopt_tcp_fast_open"
@@ -2216,6 +2218,13 @@ add_outbound_setting() {
 		json_add_object "mux"
 		json_add_boolean "enabled" "1"
 		json_add_int "concurrency" "$mux_concurrency"
+
+		test -n "$mux_xudpConcurrency" &&
+			json_add_int "xudpConcurrency" "$mux_xudpConcurrency"
+
+		test -n "$mux_xudpProxyUDP443" &&
+			json_add_string "xudpProxyUDP443" "$mux_xudpProxyUDP443"
+
 		json_close_object # mux
 	fi
 

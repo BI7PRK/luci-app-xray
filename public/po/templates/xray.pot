@@ -22,6 +22,19 @@ msgstr ""
 msgid "metadata only"
 msgstr ""
 
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:554
+msgid "Controls how the Mux handles proxied UDP/443 (QUIC) traffic"
+msgstr ""
+
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:555
+msgid "Use the new XUDP aggregation tunnel to proxy UDP traffic and fill in the maximum number of concurrent sub-UoTs. Minimum value 1, maximum value 1024"
+msgstr ""
+
+
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:556
+msgid "XUDP Concurrency"
+msgstr ""
+
 #: package/htdocs/luci-static/resources/view/xray/outbound.js:557
 msgid "Non IP Query"
 msgstr ""
