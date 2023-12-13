@@ -60,7 +60,6 @@ return L.view.extend<string[]>({
     o = s.taboption("general", form.ListValue, "protocol", _("Protocol"));
     o.value("dokodemo-door", "Dokodemo-door");
     o.value("http", "HTTP");
-    o.value("mtproto", "MTProto");
     o.value("shadowsocks", "Shadowsocks");
     o.value("socks", "Socks");
     o.value("vmess", "VMess");
@@ -190,37 +189,6 @@ return L.view.extend<string[]>({
     );
     o.modalonly = true;
     o.depends("protocol", "http");
-    o.datatype = "uinteger";
-
-    // Settings - MTProto
-    o = s.taboption(
-      "general",
-      form.Value,
-      "s_mtproto_user_email",
-      "%s - %s".format("MTProto", _("User email"))
-    );
-    o.modalonly = true;
-    o.depends("protocol", "mtproto");
-
-    o = s.taboption(
-      "general",
-      form.Value,
-      "s_mtproto_user_secret",
-      "%s - %s".format("MTProto", _("User secret"))
-    );
-    o.modalonly = true;
-    o.depends("protocol", "mtproto");
-    o.password = true;
-
-    o = s.taboption(
-      "general",
-      form.Value,
-      "s_mtproto_user_level",
-      "%s - %s".format("MTProto", _("User level")),
-      _("All connections share this level")
-    );
-    o.modalonly = true;
-    o.depends("protocol", "mtproto");
     o.datatype = "uinteger";
 
     // Settings - Shadowsocks

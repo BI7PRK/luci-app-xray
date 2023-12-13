@@ -342,6 +342,7 @@ outbound_section_validate() {
 		's_dns_network:or("tcp", "udp")' \
 		's_dns_address:string' \
 		's_dns_port:port' \
+		's_dns_nonIPQuery:or("", "drop", "skip")' \
 		's_freedom_domain_strategy:or("AsIs", "UseIP", "UseIPv4", "UseIPv6")' \
 		's_freedom_redirect:string' \
 		's_freedom_user_level:uinteger' \
@@ -407,7 +408,8 @@ outbound_section_validate() {
 		'ss_kcp_congestion:bool:0' \
 		'ss_kcp_read_buffer_size:uinteger' \
 		'ss_kcp_write_buffer_size:uinteger' \
-		'ss_kcp_header_type:or("none", "srtp", "utp", "wechat-video", "dtls", "wireguard")' \
+		'ss_kcp_header_type:or("none", "srtp", "utp", "dns", "wechat-video", "dtls", "wireguard")' \
+		'ss_kcp_header_domain:string' \
 		'ss_websocket_path:string' \
 		'ss_websocket_headers:list(string)' \
 		'ss_http_host:list(host)' \
@@ -423,7 +425,9 @@ outbound_section_validate() {
 		'initial_windows_size:uinteger' \
 		'ss_quic_header_type:or("none", "srtp", "utp", "wechat-video", "dtls", "wireguard")' \
 		'ss_sockopt_mark:uinteger' \
-		'ss_sockopt_domain_strategy:or("", "AsIs", "UseIP", "UseIPv4", "UseIPv6")' \
+		'ss_sockopt_tcpUserTimeout:uinteger' \
+		'ss_sockopt_tcpMaxSeg:uinteger' \
+		'ss_sockopt_domain_strategy:or("", "UseIPv4v6", "UseIPv6v4", "ForceIP", "ForceIPv4", "ForceIPv6", "ForceIPv4v6", "ForceIPv6v4")' \
 		'ss_sockopt_tcp_fast_open:or("0", "1")' \
 		'sockopt_tcpMptcp:or("0", "1")' \
 		'sockopt_tcpnodelay:or("0", "1")' \
@@ -1668,6 +1672,9 @@ add_outbound_setting() {
 		test -n "$s_dns_port" &&
 			json_add_int "port" "$s_dns_port"
 
+		test -n "$s_dns_nonIPQuery" &&
+			json_add_string "nonIPQuery" "$s_dns_nonIPQuery"
+
 		json_close_object # settings
 		;;
 	"freedom")
@@ -2046,6 +2053,9 @@ add_outbound_setting() {
 		if [ -n "$ss_kcp_header_type" ]; then
 			json_add_object "header"
 			json_add_string "type" "$ss_kcp_header_type"
+			if [ -n "$ss_kcp_header_domain" ]; then
+				json_add_string "domain" "$ss_kcp_header_domain"
+			fi
 			json_close_object
 		fi
 
@@ -2161,10 +2171,8 @@ add_outbound_setting() {
 
 	json_add_object "sockopt"
 	
-	if [ "$protocol" != "blackhole" ] && [ "$protocol" != "freedom" ] && [ "$protocol" != "dns" ]; then
-		test -n "$ss_sockopt_domain_strategy" &&
-			json_add_string "domainStrategy" "$ss_sockopt_domain_strategy"
-	fi
+	test -n "$ss_sockopt_domain_strategy" &&
+		json_add_string "domainStrategy" "$ss_sockopt_domain_strategy"
 
 	if [ -n "$TRANSPARENT_PROXY_PORT" ]; then
 		json_add_int "mark" "255"
@@ -2172,6 +2180,12 @@ add_outbound_setting() {
 		test -n "$ss_sockopt_mark" &&
 			json_add_int "mark" "$ss_sockopt_mark"
 	fi
+
+	test -n "$ss_sockopt_tcpUserTimeout" &&
+			json_add_int "tcpUserTimeout" "$ss_sockopt_tcpUserTimeout"
+
+	test -n "$ss_sockopt_TCPMaxSeg" &&
+			json_add_int "tcpMaxSeg" "$ss_sockopt_tcpMaxSeg"
 
 	test -n "$ss_sockopt_tcp_fast_open" &&
 		json_add_boolean "tcpFastOpen" "$ss_sockopt_tcp_fast_open"

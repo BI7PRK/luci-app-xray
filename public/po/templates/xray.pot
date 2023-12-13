@@ -22,6 +22,18 @@ msgstr ""
 msgid "metadata only"
 msgstr ""
 
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:557
+msgid "Non IP Query"
+msgstr ""
+
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:558
+msgid "TCP Max Seg"
+msgstr ""
+
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:559
+msgid "Tcp User Timeout"
+msgstr ""
+
 #: package/htdocs/luci-static/resources/view/xray/outbound.js:560
 msgid "Reject Unknown SNI"
 msgstr ""

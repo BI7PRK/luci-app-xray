@@ -237,7 +237,13 @@ return L.view.extend<string[]>({
     ]);
   },
   render: function ([localIPs = []]) {
-    const m = new form.Map("xray", "%s - %s".format(_("XRay"), _("Outbound")));
+    const m = new form.Map(
+      "xray",
+      "%s - %s".format(_("XRay"), _("Outbound")),
+      _("Details: %s").format(
+        '<a href="https://xtls.github.io/config/outbound.html" target="_blank"> OutboundObject</a>'
+      )
+    );
     const s = m.section(form.GridSection, "outbound");
     s.anonymous = true;
     s.addremove = true;
@@ -269,7 +275,6 @@ return L.view.extend<string[]>({
     o.value("dns", "DNS");
     o.value("freedom", "Freedom");
     o.value("http", "HTTP/2");
-    o.value("mtproto", "MTProto");
     o.value("shadowsocks", "Shadowsocks");
     o.value("socks", "Socks");
     o.value("trojan", "Trojan");
@@ -323,6 +328,18 @@ return L.view.extend<string[]>({
     o.depends("protocol", "dns");
     o.datatype = "port";
 
+    o = s.taboption(
+      "general",
+      form.ListValue,
+      "s_dns_nonIPQuery",
+      "%s - %s".format("DNS", _("Non IP Query"))
+    );
+    o.depends("protocol", "dns");
+    o.modalonly = true;
+    o.value("");
+    o.value("drop");
+    o.value("skip");
+
     // Settings Freedom
     o = s.taboption(
       "general",
@@ -330,8 +347,8 @@ return L.view.extend<string[]>({
       "s_freedom_domain_strategy",
       "%s - %s".format("Freedom", _("Domain strategy"))
     );
-    o.modalonly = true;
     o.depends("protocol", "freedom");
+    o.modalonly = true;
     o.value("");
     o.value("AsIs");
     o.value("UseIP");
@@ -1066,9 +1083,19 @@ return L.view.extend<string[]>({
     o.value("none", _("None"));
     o.value("srtp", "SRTP");
     o.value("utp", "uTP");
+    o.value("dns", "DNS");
     o.value("wechat-video", _("Wechat Video"));
     o.value("dtls", "DTLS 1.2");
     o.value("wireguard", "WireGuard");
+
+    o = s.taboption(
+      "stream",
+      form.Value,
+      "ss_kcp_header_domain",
+      "%s - %s".format("mKCP", _("Fake Domain"))
+    );
+    o.modalonly = true;
+    o.depends({ ss_kcp_header_type: "dns" });
 
     // Stream Settings - WebSocket
     o = s.taboption(
@@ -1231,7 +1258,28 @@ return L.view.extend<string[]>({
       )
     );
     o.modalonly = true;
+    o.datatype = "uinteger";
     o.placeholder = "255";
+
+    o = s.taboption(
+      "stream",
+      form.Value,
+      "ss_sockopt_tcpUserTimeout",
+      "%s - %s".format(_("Sockopt"), _("Tcp User Timeout"))
+    );
+    o.datatype = "uinteger";
+    o.placeholder = "10000";
+    o.modalonly = true;
+
+    o = s.taboption(
+      "stream",
+      form.Value,
+      "ss_sockopt_tcpMaxSeg",
+      "%s - %s".format(_("Sockopt"), _("TCP Max Seg"))
+    );
+    o.datatype = "uinteger";
+    o.placeholder = "1440";
+    o.modalonly = true;
 
     o = s.taboption(
       "stream",
@@ -1265,6 +1313,23 @@ return L.view.extend<string[]>({
     o.value("");
     o.value("0", _("False"));
     o.value("1", _("True"));
+
+    o = s.taboption(
+      "stream",
+      form.ListValue,
+      "ss_sockopt_domain_strategy",
+      _("Domain Strategy")
+    );
+    o.depends({ protocol: "freedom", "!reverse": true });
+    o.modalonly = true;
+    o.value("");
+    o.value("UseIPv4v6");
+    o.value("UseIPv6v4");
+    o.value("ForceIP");
+    o.value("ForceIPv4");
+    o.value("ForceIPv6");
+    o.value("ForceIPv4v6");
+    o.value("ForceIPv6v4");
 
     /** Other Settings **/
     o = s.taboption("general", form.Value, "tag", _("Tag"));
