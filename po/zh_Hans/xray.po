@@ -22,6 +22,19 @@ msgstr "版本"
 msgid "metadata only"
 msgstr "仅使用元数据推断"
 
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:557
+msgid "Non IP Query"
+msgstr "无IP查询"
+
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:558
+msgid "TCP Max Seg"
+msgstr "最大TCP段"
+
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:559
+msgid "Tcp User Timeout"
+msgstr "TCP超时"
+
+
 #: package/htdocs/luci-static/resources/view/xray/outbound.js:560
 msgid "Reject Unknown SNI"
 msgstr "拒绝未知的SNI"
