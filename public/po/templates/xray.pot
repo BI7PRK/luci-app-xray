@@ -22,6 +22,10 @@ msgstr ""
 msgid "metadata only"
 msgstr ""
 
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:553
+msgid "QUIC proxied"
+msgstr ""
+
 #: package/htdocs/luci-static/resources/view/xray/outbound.js:554
 msgid "Controls how the Mux handles proxied UDP/443 (QUIC) traffic"
 msgstr ""

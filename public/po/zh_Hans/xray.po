@@ -22,6 +22,10 @@ msgstr "版本"
 msgid "metadata only"
 msgstr "仅使用元数据推断"
 
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:553
+msgid "QUIC proxied"
+msgstr "QUIC代理方式"
+
 #: package/htdocs/luci-static/resources/view/xray/outbound.js:554
 msgid "Controls how the Mux handles proxied UDP/443 (QUIC) traffic"
 msgstr "控制 Mux 对于被代理的 UDP/443（QUIC）流量的处理方式"
@@ -32,7 +36,7 @@ msgstr "使用新XUDP聚合隧道代理UDP流量，填写最大并发子UoT数�
 
 #: package/htdocs/luci-static/resources/view/xray/outbound.js:556
 msgid "XUDP Concurrency"
-msgstr "XUDP 聚合隧道"
+msgstr "XUDP链接数"
 
 #: package/htdocs/luci-static/resources/view/xray/outbound.js:557
 msgid "Non IP Query"

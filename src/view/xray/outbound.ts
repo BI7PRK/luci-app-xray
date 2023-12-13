@@ -1376,7 +1376,7 @@ return L.view.extend<string[]>({
       "other",
       form.ListValue,
       "mux_xudpProxyUDP443",
-      "%s - %s".format(_("Mux"), _("XUDP ProxyUDP443")),
+      "%s - %s".format(_("Mux"), _("QUIC proxied")),
       _("Controls how the Mux handles proxied UDP/443 (QUIC) traffic")
     );
     o.modalonly = true;
