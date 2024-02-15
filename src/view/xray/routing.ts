@@ -56,8 +56,8 @@ return L.view.extend<SectionItem[][]>({
       "domain_matcher",
       _("Domain name matching algorithm")
     );
+    o.value("hybrid");
     o.value("linear");
-    o.value("mph");
 
     o = s1.option(
       form.MultiValue,
@@ -146,8 +146,8 @@ return L.view.extend<SectionItem[][]>({
       _("Domain name matching algorithm")
     );
     o.value("");
+    o.value("hybrid");
     o.value("linear");
-    o.value("mph");
 
     const s3 = m.section(
       form.TypedSection,

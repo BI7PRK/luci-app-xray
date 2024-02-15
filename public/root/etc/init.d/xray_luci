@@ -188,7 +188,7 @@ routing_section_validate() {
 	uci_validate_section "$NAME" "routing" "$1" \
 		'enabled:bool:0' \
 		'domain_strategy:or("AsIs", "IPIfNonMatch", "IPOnDemand")' \
-		'domain_matcher:or("linear", "mph")' \
+		'domain_matcher:or("hybrid", "linear")' \
 		'rules:list(uci("xray", "@routing_rule"))' \
 		'balancers:list(uci("xray", "@routing_balancer"))'
 }
@@ -207,7 +207,7 @@ routing_rule_section_validate() {
 		'attrs:string' \
 		'outbound_tag:string' \
 		'balancer_tag:string' \
-		'domain_matcher_r:or("", "linear", "mph")'
+		'domain_matcher_r:or("", "hybrid", "linear")'
 }
 
 routing_balancer_section_validate() {
