@@ -48,8 +48,12 @@ config dns_server 'ali_dns_1'
 
 config observatory 'main_observatory'
 	option enabled '0'
-	option probeURL 'api.v2fly.org'
+	option probeURL 'https://www.gstatic.com/generate_204'
 	option probeInterval '10s'
+	option enableConcurrency '1'
+	option leastTimeout '15s'
+	option leastSampling '2'
+	option leastConnectivity 'http://connectivitycheck.platform.hicloud.com/generate_204'
 	option subjectSelector ''
 
 config routing 'main_routing'

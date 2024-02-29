@@ -179,8 +179,13 @@ dns_server_section_validate() {
 observatory_section_validate() {
 	uci_validate_section "$NAME" "observatory" "$1" \
 		'enabled:bool:0' \
+		'leastType:or("leastPing", "leastLoad")' \
+		'enableConcurrency:bool:0' \
 		'probeURL:string' \
 		'probeInterval:string' \
+		'leastTimeout:string' \
+		'leastSampling:uinteger:2' \
+		'leastConnectivity:string' \
 		'subjectSelector:list(string)'
 }
 
@@ -894,14 +899,34 @@ add_observatory_settings() {
 		_info "observatory disabled: $section"
 		return 0
 	fi
-
 	json_add_object "observatory"
+	if [ "$leastType" = "leastPing" ]; then
+		test -n "$probeURL" &&
+			json_add_string "probeURL" "$probeURL"
 
-	test -n "$probeURL" &&
-		json_add_string "probeURL" "$probeURL"
+		test -n "$probeInterval" &&
+			json_add_string "probeInterval" "$probeInterval"
+			
+		if [ "x$enableConcurrency" = "x1" ]; then
+			json_add_boolean "enableConcurrency" "$enableConcurrency"
+		fi
+		
+	else
+		json_add_object "pingConfig"
+		test -n "$probeURL" &&
+			json_add_string "destination" "$probeURL"
+		test -n "$probeInterval" &&
+			json_add_string "interval" "$probeInterval"
+		test -n "$leastTimeout" &&
+			json_add_string "timeout" "$leastTimeout"
+		test -n "$leastConnectivity" &&
+			json_add_string "connectivity" "$leastConnectivity"
 
-	test -n "$probeInterval" &&
-		json_add_string "probeInterval" "$probeInterval"
+		test -n "$leastSampling" &&
+			json_add_int "sampling" "$leastSampling"
+
+		json_close_object # pingConfig
+	fi
 	if [ -n "$subjectSelector" ]; then
 		json_add_array "subjectSelector"
 		local str

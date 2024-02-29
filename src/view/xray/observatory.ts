@@ -26,6 +26,10 @@ return L.view.extend({
     o = s.option(form.Flag, "enabled", _("Enabled"));
     o.rmempty = false;
 
+    o = s.option(form.ListValue, "leastType", _("least type"));
+    o.value("leastPing");
+    o.value("leastLoad");
+
     o = s.option(
       form.Value,
       "probeURL",
@@ -37,6 +41,25 @@ return L.view.extend({
     o.placeholder = _("empty use the built-in value");
 
     o = s.option(form.Value, "probeInterval", _("ProbeInterval"));
+
+    o = s.option(form.Flag, "enableConcurrency", _("Enable concurrency"));
+    o.depends("leastType", "leastPing");
+
+    o = s.option(form.Value, "leastTimeout", _("Timeout"));
+    o.depends("leastType", "leastLoad");
+
+    o = s.option(form.Value, "leastSampling", _("Sampling"));
+    o.depends("leastType", "leastLoad");
+
+    o = s.option(
+      form.Value,
+      "leastConnectivity",
+      _("Connectivity"),
+      _(
+        "A valid URL, it will be get request to testing. eg: <code>%s</code>."
+      ).format("http://connectivitycheck.platform.hicloud.com/generate_204")
+    );
+    o.depends("leastType", "leastLoad");
 
     o = s.option(form.DynamicList, "subjectSelector", _("SubjectSelector"));
 

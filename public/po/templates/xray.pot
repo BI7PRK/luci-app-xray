@@ -1412,3 +1412,19 @@ msgstr ""
 #: package/htdocs/luci-static/resources/view/xray/tools.ts:100
 msgid "Tools"
 msgstr ""
+
+#: package/htdocs/luci-static/resources/view/xray/observatory.ts:300
+msgid "least type"
+msgstr ""
+
+#: package/htdocs/luci-static/resources/view/xray/observatory.ts:301
+msgid "Enable concurrency"
+msgstr ""
+
+#: package/htdocs/luci-static/resources/view/xray/observatory.ts:301
+msgid "Connectivity"
+msgstr ""
+
+#: package/htdocs/luci-static/resources/view/xray/observatory.ts:301
+msgid "Sampling"
+msgstr ""
