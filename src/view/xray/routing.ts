@@ -163,10 +163,47 @@ return L.view.extend<SectionItem[][]>({
     o = s3.option(form.ListValue, "strategy_type", _("Balancer strategy"));
     o.value("random");
     o.value("leastPing");
+    o.value("leastLoad");
     o.modalonly = true;
 
-    o = s3.option(form.DynamicList, "selector", _("Selector"));
+    o = s3.option(
+      form.Value,
+      "probeURL",
+      _("ProbeURL"),
+      _(
+        "A valid URL, it will be get request to testing. eg: <code>%s</code>."
+      ).format("https://www.gstatic.com/generate_204")
+    );
+    o.placeholder = _("empty use the built-in value");
+    o.depends("strategy_type", "leastPing");
+    o.depends("strategy_type", "leastLoad");
 
+    o = s3.option(form.Value, "probeInterval", _("ProbeInterval"));
+    o.depends("strategy_type", "leastPing");
+    o.depends("strategy_type", "leastLoad");
+
+    o = s3.option(form.Flag, "enableConcurrency", _("Enable concurrency"));
+    o.depends("strategy_type", "leastPing");
+
+    o = s3.option(form.Value, "leastTimeout", _("Timeout"));
+    o.depends("strategy_type", "leastLoad");
+
+    o = s3.option(form.Value, "leastSampling", _("Sampling"));
+    o.depends("strategy_type", "leastLoad");
+
+    o = s3.option(
+      form.Value,
+      "leastConnectivity",
+      _("Connectivity"),
+      _(
+        "A valid URL, it will be get request to testing. eg: <code>%s</code>."
+      ).format("http://connectivitycheck.platform.hicloud.com/generate_204")
+    );
+    o.depends("strategy_type", "leastLoad");
+
+    o = s3.option(form.DynamicList, "selector", _("Selector"));
+    o.depends("strategy_type", "leastPing");
+    o.depends("strategy_type", "leastLoad");
     return m.render();
   },
 });

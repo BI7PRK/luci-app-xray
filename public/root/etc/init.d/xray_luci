@@ -176,18 +176,6 @@ dns_server_section_validate() {
 		'sub_client_ip:ipaddr'
 }
 
-observatory_section_validate() {
-	uci_validate_section "$NAME" "observatory" "$1" \
-		'enabled:bool:0' \
-		'leastType:or("leastPing", "leastLoad")' \
-		'enableConcurrency:bool:0' \
-		'probeURL:string' \
-		'probeInterval:string' \
-		'leastTimeout:string' \
-		'leastSampling:uinteger:2' \
-		'leastConnectivity:string' \
-		'subjectSelector:list(string)'
-}
 
 routing_section_validate() {
 	uci_validate_section "$NAME" "routing" "$1" \
@@ -218,8 +206,13 @@ routing_rule_section_validate() {
 routing_balancer_section_validate() {
 	uci_validate_section "$NAME" "routing_balancer" "$1" \
 		'tag:string' \
-		'strategy_type:or("random", "leastPing")' \
-		'selector:list(string)'
+		'strategy_type:or("random", "leastPing", "leastLoad")' \
+		'selector:list(string)' \
+		'probeURL:string' \
+		'probeInterval:string' \
+		'leastTimeout:string' \
+		'leastSampling:uinteger:2' \
+		'leastConnectivity:string'
 }
 
 policy_section_validate() {
@@ -889,18 +882,8 @@ add_dns_settings() {
 }
 
 add_observatory_settings() {
-	local section="${1}_observatory"
-	if ! observatory_section_validate "$section"; then
-		_err "Invalid routing config: $section, skip"
-		return 1
-	fi
-
-	if [ "x$enabled" != "x1" ]; then
-		_info "observatory disabled: $section"
-		return 0
-	fi
 	json_add_object "observatory"
-	if [ "$leastType" = "leastPing" ]; then
+	if [ "$strategy_type" = "leastPing" ]; then
 		test -n "$probeURL" &&
 			json_add_string "probeURL" "$probeURL"
 
@@ -927,10 +910,10 @@ add_observatory_settings() {
 
 		json_close_object # pingConfig
 	fi
-	if [ -n "$subjectSelector" ]; then
+	if [ -n "$selector" ]; then
 		json_add_array "subjectSelector"
 		local str
-		for str in $subjectSelector; do
+		for str in $selector; do
 			json_add_string "" "$str"
 		done
 		json_close_array # subjectSelector
@@ -1069,9 +1052,7 @@ add_routing_settings() {
 				json_add_object "strategy"
 				json_add_string "type" "$strategy_type"
 				json_close_object
-
 				json_add_array "selector"
-
 				local s
 				for s in $selector; do
 					json_add_string "" "$s"
@@ -1084,8 +1065,10 @@ add_routing_settings() {
 
 		json_close_array # balancers
 	fi
-
 	json_close_object
+	if [ -n "$balancers" ] && [ "$strategy_type" != "random" ]; then
+		add_observatory_settings "$1"
+	fi
 }
 
 add_policy_settings() {
@@ -2508,7 +2491,6 @@ start_instance() {
 		fi
 
 		add_dns_settings "$section"
-		add_observatory_settings "$section"
 		add_routing_settings "$section"
 		add_policy_settings "$section"
 		add_reverse_settings "$section"
