@@ -1,6 +1,6 @@
 {
   "name": "luci-app-xray",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "release": "0",
   "description": "LuCI support for xray-core and v2ray-core",
   "repository": "git@github.com:BI7PRK/luci-app-xray.git",
