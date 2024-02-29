@@ -22,17 +22,15 @@ function index()
 
   entry({"admin", "services", "xray", "routing"}, view("xray/routing"), _("Routing"), 50)
 
-  entry({"admin", "services", "xray", "observatory"}, view("xray/observatory"), _("Observatory"), 60)
+	entry({"admin", "services", "xray", "policy"}, view("xray/policy"), _("Policy"), 60)
 
-	entry({"admin", "services", "xray", "policy"}, view("xray/policy"), _("Policy"), 70)
+	entry({"admin", "services", "xray", "reverse"}, view("xray/reverse"), _("Reverse"), 70)
 
-	entry({"admin", "services", "xray", "reverse"}, view("xray/reverse"), _("Reverse"), 80)
+	entry({"admin", "services", "xray", "transparent-proxy"}, view("xray/transparent-proxy"), _("Transparent Proxy"), 80)
 
-	entry({"admin", "services", "xray", "transparent-proxy"}, view("xray/transparent-proxy"), _("Transparent Proxy"), 90)
+  entry({"admin", "services", "xray", "about"}, view("xray/about"), _("About"), 90)
 
-  entry({"admin", "services", "xray", "about"}, view("xray/about"), _("About"), 100)
-
-  entry({"admin", "services", "xray", "tools"}, view("xray/tools"), _("Tools"), 110)
+  entry({"admin", "services", "xray", "tools"}, view("xray/tools"), _("Tools"), 100)
 
   entry({"admin", "services", "xray", "request"}, call("action_request"))
 end
