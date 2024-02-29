@@ -28,9 +28,9 @@ function index()
 
 	entry({"admin", "services", "xray", "transparent-proxy"}, view("xray/transparent-proxy"), _("Transparent Proxy"), 80)
 
-  entry({"admin", "services", "xray", "about"}, view("xray/about"), _("About"), 90)
+  entry({"admin", "services", "xray", "tools"}, view("xray/tools"), _("Tools"), 90)
 
-  entry({"admin", "services", "xray", "tools"}, view("xray/tools"), _("Tools"), 100)
+  entry({"admin", "services", "xray", "about"}, view("xray/about"), _("About"), 100)
 
   entry({"admin", "services", "xray", "request"}, call("action_request"))
 end
