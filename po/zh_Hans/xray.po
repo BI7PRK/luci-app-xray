@@ -1517,3 +1517,19 @@ msgstr "指纹模拟"
 #: package/htdocs/luci-static/resources/view/xray/tools.ts:100
 msgid "Tools"
 msgstr "辅助工具"
+
+#: package/htdocs/luci-static/resources/view/xray/observatory.ts:300
+msgid "least type"
+msgstr "探测类型"
+
+#: package/htdocs/luci-static/resources/view/xray/observatory.ts:301
+msgid "Enable concurrency"
+msgstr "开启并发"
+
+#: package/htdocs/luci-static/resources/view/xray/observatory.ts:301
+msgid "Connectivity"
+msgstr "采样网址"
+
+#: package/htdocs/luci-static/resources/view/xray/observatory.ts:301
+msgid "Sampling"
+msgstr "采样次数"
