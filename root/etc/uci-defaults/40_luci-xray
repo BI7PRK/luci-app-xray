@@ -26,17 +26,6 @@ if [ "x$dns" != "xdns" ] ; then
 	EOF
 fi
 
-# observatory
-observatory=$(uci -q get xray.main_observatory)
-if [ "x$observatory" != "xobservatory" ] ; then
-	uci -q batch <<-EOF >/dev/null
-		add xray observatory
-		rename xray.@observatory[-1]="main_observatory"
-		set xray.main_observatory.enabled="0"
-		commit xray
-	EOF
-fi
-
 # routing
 routing=$(uci -q get xray.main_routing)
 if [ "x$routing" != "xrouting" ] ; then

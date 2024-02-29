@@ -54,17 +54,9 @@
       "path": "xray/routing"
     }
   },
-  "admin/services/xray/observatory": {
-    "title": "Observatory",
-    "order": 60,
-    "action": {
-      "type": "view",
-      "path": "xray/observatory"
-    }
-  },
   "admin/services/xray/policy": {
     "title": "Policy",
-    "order": 70,
+    "order": 60,
     "action": {
       "type": "view",
       "path": "xray/policy"
@@ -72,7 +64,7 @@
   },
   "admin/services/xray/reverse": {
     "title": "Reverse",
-    "order": 80,
+    "order": 70,
     "action": {
       "type": "view",
       "path": "xray/reverse"
@@ -80,10 +72,18 @@
   },
   "admin/services/xray/transparent-proxy": {
     "title": "Transparent Proxy",
-    "order": 90,
+    "order": 80,
     "action": {
       "type": "view",
       "path": "xray/transparent-proxy"
+    }
+  },
+  "admin/services/xray/tools": {
+    "title": "Tools",
+    "order": 90,
+    "action": {
+      "type": "view",
+      "path": "xray/tools"
     }
   },
   "admin/services/xray/about": {
@@ -92,14 +92,6 @@
     "action": {
       "type": "view",
       "path": "xray/about"
-    }
-  },
-  "admin/services/xray/tools": {
-    "title": "Tools",
-    "order": 110,
-    "action": {
-      "type": "view",
-      "path": "xray/tools"
     }
   },
   "admin/services/xray/request": {

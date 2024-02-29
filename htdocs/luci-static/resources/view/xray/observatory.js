@@ -1,7 +1,0 @@
-/**
- * @license
- * Copyright 2022 BI7PRK
- *
- * Licensed to the public under the MIT License.
- */
-"use strict";"require form";return L.view.extend({render:function(){var e,t=new form.Map("xray","%s - %s".format(_("XRay"),_("Observatory")),_("Details: %s").format('<a href="https://www.v2fly.org/config/observatory.html#observatoryobject" target="_blank">ObservatoryObject</a>')),o=t.section(form.NamedSection,"main_observatory","observatory");return o.addremove=!1,(e=o.option(form.Flag,"enabled",_("Enabled"))).rmempty=!1,(e=o.option(form.ListValue,"leastType",_("least type"))).value("leastPing"),e.value("leastLoad"),(e=o.option(form.Value,"probeURL",_("ProbeURL"),_("A valid URL, it will be get request to testing. eg: <code>%s</code>.").format("https://www.gstatic.com/generate_204"))).placeholder=_("empty use the built-in value"),e=o.option(form.Value,"probeInterval",_("ProbeInterval")),(e=o.option(form.Flag,"enableConcurrency",_("Enable concurrency"))).depends("leastType","leastPing"),(e=o.option(form.Value,"leastTimeout",_("Timeout"))).depends("leastType","leastLoad"),(e=o.option(form.Value,"leastSampling",_("Sampling"))).depends("leastType","leastLoad"),(e=o.option(form.Value,"leastConnectivity",_("Connectivity"),_("A valid URL, it will be get request to testing. eg: <code>%s</code>.").format("http://connectivitycheck.platform.hicloud.com/generate_204"))).depends("leastType","leastLoad"),e=o.option(form.DynamicList,"subjectSelector",_("SubjectSelector")),t.render()}});
