@@ -882,8 +882,8 @@ add_dns_settings() {
 }
 
 add_observatory_settings() {
-	json_add_object "observatory"
 	if [ "$strategy_type" = "leastPing" ]; then
+		json_add_object "observatory"
 		test -n "$probeURL" &&
 			json_add_string "probeURL" "$probeURL"
 
@@ -895,6 +895,7 @@ add_observatory_settings() {
 		fi
 		
 	else
+		json_add_object "burstObservatory"
 		json_add_object "pingConfig"
 		test -n "$probeURL" &&
 			json_add_string "destination" "$probeURL"
