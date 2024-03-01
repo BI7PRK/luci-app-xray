@@ -1370,7 +1370,7 @@ msgstr ""
 
 #: package/htdocs/luci-static/resources/view/xray/observatory.ts:99
 msgid "Observatory"
-msgstr "连接观测"
+msgstr ""
 
 #: package/htdocs/luci-static/resources/view/xray/observatory.ts:100
 msgid "ProbeURL"
@@ -1389,8 +1389,12 @@ msgstr ""
 msgid "empty use the built-in value"
 msgstr ""
 
-#: package/htdocs/luci-static/resources/view/xray/observatory.ts:103
-msgid "A valid URL, it will be get request to testing. eg: <code>%s</code>."
+#: package/htdocs/luci-static/resources/view/xray/observatory.ts:104
+msgid "Ping destination URL. It should return 204 on success. eg: <code>%s</code>."
+msgstr ""
+
+#: package/htdocs/luci-static/resources/view/xray/observatory.ts:105
+msgid "Check network connectivity URL. eg: <code>%s</code>."
 msgstr ""
 
 #: package/htdocs/luci-static/resources/view/xray/outbound.js:200

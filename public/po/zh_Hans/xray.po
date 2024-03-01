@@ -1494,9 +1494,13 @@ msgstr "出站标识前缀"
 msgid "empty use the built-in value"
 msgstr "留空使用内建测试地址"
 
-#: package/htdocs/luci-static/resources/view/xray/observatory.ts:103
-msgid "A valid URL, it will be get request to testing. eg: <code>%s</code>."
-msgstr "一个有效的网址。 通过GET请求进行测试。例如 <code>%s</code>"
+#: package/htdocs/luci-static/resources/view/xray/observatory.ts:104
+msgid "Ping destination URL. It should return 204 on success. eg: <code>%s</code>."
+msgstr "Ping 连接URL，判断204成功码。例如 <code>%s</code>"
+
+#: package/htdocs/luci-static/resources/view/xray/observatory.ts:105
+msgid "Check network connectivity URL. eg: <code>%s</code>."
+msgstr "检测网络连通性URL。例如 <code>%s</code>"
 
 #: package/htdocs/luci-static/resources/view/xray/outbound.js:200
 msgid "The length is a multiple of 2, and the maximum length is 16 bits"

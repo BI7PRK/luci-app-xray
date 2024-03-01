@@ -171,7 +171,7 @@ return L.view.extend<SectionItem[][]>({
       "probeURL",
       _("ProbeURL"),
       _(
-        "A valid URL, it will be get request to testing. eg: <code>%s</code>."
+        "Ping destination URL. It should return 204 on success. eg: <code>%s</code>."
       ).format("https://www.gstatic.com/generate_204")
     );
     o.placeholder = _("empty use the built-in value");
@@ -195,9 +195,9 @@ return L.view.extend<SectionItem[][]>({
       form.Value,
       "leastConnectivity",
       _("Connectivity"),
-      _(
-        "A valid URL, it will be get request to testing. eg: <code>%s</code>."
-      ).format("http://connectivitycheck.platform.hicloud.com/generate_204")
+      _("Check network connectivity URL. eg: <code>%s</code>.").format(
+        "http://connectivitycheck.platform.hicloud.com/generate_204"
+      )
     );
     o.depends("strategy_type", "leastLoad");
 
