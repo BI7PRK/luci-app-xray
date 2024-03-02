@@ -1532,7 +1532,7 @@ msgstr "开启并发"
 
 #: package/htdocs/luci-static/resources/view/xray/observatory.ts:301
 msgid "Connectivity"
-msgstr "采样网址"
+msgstr "连通性URL"
 
 #: package/htdocs/luci-static/resources/view/xray/observatory.ts:301
 msgid "Sampling"
