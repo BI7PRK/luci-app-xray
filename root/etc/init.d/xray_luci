@@ -208,6 +208,7 @@ routing_balancer_section_validate() {
 		'tag:string' \
 		'strategy_type:or("random", "leastPing", "leastLoad")' \
 		'selector:list(string)' \
+		'enableConcurrency:bool:1' \
 		'probeURL:string' \
 		'probeInterval:string' \
 		'leastTimeout:string' \
