@@ -1518,6 +1518,15 @@ msgstr "网络爬虫路径"
 msgid "Fingerprint"
 msgstr "指纹模拟"
 
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:204
+msgid "Fallback"
+msgstr "回落节点"
+
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:205
+msgid "When the balancer fails, proxy through this node."
+msgstr "当均衡器失效时，通过此节点代理。"
+
+
 #: package/htdocs/luci-static/resources/view/xray/tools.ts:100
 msgid "Tools"
 msgstr "辅助工具"

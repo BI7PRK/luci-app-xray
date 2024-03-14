@@ -204,6 +204,13 @@ return L.view.extend<SectionItem[][]>({
     o = s3.option(form.DynamicList, "selector", _("Selector"));
     o.depends("strategy_type", "leastPing");
     o.depends("strategy_type", "leastLoad");
+
+    o = s3.option(
+      form.Value,
+      "fallback_tag",
+      _("Fallback"),
+      _("When the balancer fails, proxy through this node.")
+    );
     return m.render();
   },
 });

@@ -208,6 +208,7 @@ routing_balancer_section_validate() {
 		'tag:string' \
 		'strategy_type:or("random", "leastPing", "leastLoad")' \
 		'selector:list(string)' \
+		'fallback_tag:string' \
 		'enableConcurrency:bool:1' \
 		'probeURL:string' \
 		'probeInterval:string' \
@@ -885,9 +886,10 @@ add_dns_settings() {
 add_observatory_settings() {
 	if [ "$strategy_type" = "leastPing" ]; then
 		json_add_object "observatory"
+		test -n "$fallback_tag" &&
+			json_add_string "fallbacTag" "$fallback_tag"
 		test -n "$probeURL" &&
 			json_add_string "probeURL" "$probeURL"
-
 		test -n "$probeInterval" &&
 			json_add_string "probeInterval" "$probeInterval"
 			
@@ -897,6 +899,8 @@ add_observatory_settings() {
 		
 	else
 		json_add_object "burstObservatory"
+		test -n "$fallback_tag" &&
+			json_add_string "fallbacTag" "$fallback_tag"
 		json_add_object "pingConfig"
 		test -n "$probeURL" &&
 			json_add_string "destination" "$probeURL"
@@ -1050,7 +1054,6 @@ add_routing_settings() {
 			if routing_balancer_section_validate "$bs"; then
 				json_add_object ""
 				json_add_string "tag" "$tag"
-
 				json_add_object "strategy"
 				json_add_string "type" "$strategy_type"
 				json_close_object

@@ -1413,6 +1413,15 @@ msgstr ""
 msgid "Fingerprint"
 msgstr ""
 
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:204
+msgid "Fallback"
+msgstr ""
+
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:205
+msgid "When the balancer fails, proxy through this node."
+msgstr ""
+
+
 #: package/htdocs/luci-static/resources/view/xray/tools.ts:100
 msgid "Tools"
 msgstr ""
