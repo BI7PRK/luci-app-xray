@@ -886,8 +886,6 @@ add_dns_settings() {
 add_observatory_settings() {
 	if [ "$strategy_type" = "leastPing" ]; then
 		json_add_object "observatory"
-		test -n "$fallback_tag" &&
-			json_add_string "fallbackTag" "$fallback_tag"
 		test -n "$probeURL" &&
 			json_add_string "probeURL" "$probeURL"
 		test -n "$probeInterval" &&
@@ -899,8 +897,6 @@ add_observatory_settings() {
 		
 	else
 		json_add_object "burstObservatory"
-		test -n "$fallback_tag" &&
-			json_add_string "fallbackTag" "$fallback_tag"
 		json_add_object "pingConfig"
 		test -n "$probeURL" &&
 			json_add_string "destination" "$probeURL"
@@ -1064,6 +1060,8 @@ add_routing_settings() {
 				done
 
 				json_close_array # selector
+				test -n "$fallback_tag" &&
+					json_add_string "fallbackTag" "$fallback_tag"
 				json_close_object
 			fi
 		done
