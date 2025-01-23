@@ -735,7 +735,7 @@ return L.view.extend<string[]>({
     o.value("none", _("None"));
     o.value("tls", "TLS");
     o.value("reality", "Reality");
-    o.depends({ ss_network: "xhttp", "!contains": true });
+
     // XTLS Flows
     o = s.taboption(
       "stream",

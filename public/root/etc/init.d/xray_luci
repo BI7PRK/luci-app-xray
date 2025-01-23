@@ -2191,12 +2191,8 @@ add_outbound_setting() {
 	test -n "$ss_sockopt_domain_strategy" &&
 		json_add_string "domainStrategy" "$ss_sockopt_domain_strategy"
 
-	if [ -n "$TRANSPARENT_PROXY_PORT" ]; then
-		json_add_int "mark" "255"
-	else
-		test -n "$ss_sockopt_mark" &&
-			json_add_int "mark" "$ss_sockopt_mark"
-	fi
+	test -n "$ss_sockopt_mark" &&
+		json_add_int "mark" "$ss_sockopt_mark"
 
 	test -n "$ss_sockopt_tcpUserTimeout" &&
 		json_add_int "tcpUserTimeout" "$ss_sockopt_tcpUserTimeout"
