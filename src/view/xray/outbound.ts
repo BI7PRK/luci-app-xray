@@ -725,7 +725,7 @@ return L.view.extend<string[]>({
     o.value("tcp", "TCP");
     o.value("kcp", "mKCP");
     o.value("ws", "WebSocket");
-    o.value("http", "HTTP/2");
+    o.value("xhttp", "XHttp");
     o.value("domainsocket", "Domain Socket");
     o.value("quic", "QUIC");
     o.value("grpc", "gRPC"); // add gRPC
@@ -735,7 +735,7 @@ return L.view.extend<string[]>({
     o.value("none", _("None"));
     o.value("tls", "TLS");
     o.value("reality", "Reality");
-
+    o.depends({ ss_network: "xhttp", "!contains": true });
     // XTLS Flows
     o = s.taboption(
       "stream",
@@ -798,8 +798,41 @@ return L.view.extend<string[]>({
       "%s - %s".format("TLS", "ALPN")
     );
     o.modalonly = true;
-    o.placeholder = "http/1.1";
+    o.placeholder = "h3";
     o.depends({ ss_security: "tls", ss_network: "tcp" });
+    o.depends({ ss_security: "tls", ss_network: "xhttp" });
+
+    // Stream Settings - xhttp
+    o = s.taboption(
+      "stream",
+      form.Value,
+      "ss_xhttp_host",
+      "%s - %s".format("XHTTP", _("Host"))
+    );
+    o.modalonly = true;
+    o.depends("ss_network", "xhttp");
+
+    o = s.taboption(
+      "stream",
+      form.Value,
+      "ss_xhttp_path",
+      "%s - %s".format("XHTTP", _("Path"))
+    );
+    o.modalonly = true;
+    o.depends("ss_network", "xhttp");
+    o.placeholder = "/";
+
+    o = s.taboption(
+      "stream",
+      form.ListValue,
+      "ss_xhttp_mode",
+      "%s - %s".format("XHTTP", _("Mode"))
+    );
+    o.depends("ss_network", "xhttp");
+    o.value("auto");
+    o.value("stream-one");
+    o.value("stream-up");
+    o.value("packet-up");
 
     //uTLS
     o = s.taboption("stream", form.Value, "u_tls", _("Fingerprint"));
@@ -1118,26 +1151,6 @@ return L.view.extend<string[]>({
     );
     o.modalonly = true;
     o.depends("ss_network", "ws");
-
-    // Stream Settings - HTTP/2
-    o = s.taboption(
-      "stream",
-      form.DynamicList,
-      "ss_http_host",
-      "%s - %s".format("HTTP/2", _("Host"))
-    );
-    o.modalonly = true;
-    o.depends("ss_network", "http");
-
-    o = s.taboption(
-      "stream",
-      form.Value,
-      "ss_http_path",
-      "%s - %s".format("HTTP/2", _("Path"))
-    );
-    o.modalonly = true;
-    o.depends("ss_network", "http");
-    o.placeholder = "/";
 
     // Stream Settings - Domain Socket
     o = s.taboption(

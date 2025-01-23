@@ -282,7 +282,7 @@ inbound_section_validate() {
 		's_vmess_default_user_level:uinteger' \
 		's_vmess_detour_to:string' \
 		's_vmess_disable_insecure_encryption:bool:0' \
-		'ss_network:or("tcp", "kcp", "ws", "http", "domainsocket", "quic")' \
+		'ss_network:or("tcp", "kcp", "ws", "xhttp", "domainsocket", "quic")' \
 		'ss_security:or("none", "tls")' \
 		's_xtls_flow:or("none", "xtls-rprx-vision", "xtls-rprx-vision-udp443")' \
 		'ss_tls_server_name:host' \
@@ -314,7 +314,10 @@ inbound_section_validate() {
 		'ss_websocket_path:string' \
 		'ss_websocket_headers:list(string)' \
 		'ss_http_host:list(host)' \
-		'ss_http_path:string' \
+    'ss_http_path:string' \
+    'ss_xhttp_host:string' \
+		'ss_xhttp_path:string' \
+    'ss_xhttp_mode:or("auto", "stream-one", "stream-up", "packet-up")' \
 		'ss_domainsocket_path:string' \
 		'ss_quic_security:or("aes-128-gcm", "chacha20-poly1305", "none")' \
 		'ss_quic_key:string' \
@@ -377,7 +380,7 @@ outbound_section_validate() {
 		's_vless_user_id:string' \
 		's_vless_user_encryption:or("none")' \
 		's_vless_user_level:uinteger' \
-		'ss_network:or("tcp", "kcp", "ws", "http", "domainsocket", "quic", "grpc")' \
+		'ss_network:or("tcp", "kcp", "ws", "xhttp", "domainsocket", "quic", "grpc")' \
 		'ss_security:or("none", "tls", "reality")' \
 		's_xtls_flow:or("none", "xtls-rprx-vision", "xtls-rprx-vision-udp443")' \
 		'min_tls_version:or("", "1.0", "1.1", "1.2", "1.3")' \
@@ -413,7 +416,10 @@ outbound_section_validate() {
 		'ss_websocket_path:string' \
 		'ss_websocket_headers:list(string)' \
 		'ss_http_host:list(host)' \
-		'ss_http_path:string' \
+    'ss_http_path:string' \
+    'ss_xhttp_host:string' \
+		'ss_xhttp_path:string' \
+    'ss_xhttp_mode:or("auto", "stream-one", "stream-up", "packet-up")' \
 		'ss_domainsocket_path:string' \
 		'ss_quic_security:or("aes-128-gcm", "chacha20-poly1305", "none")' \
 		'ss_quic_key:string' \
@@ -1537,24 +1543,23 @@ add_inbound_setting() {
 
 		json_close_object # wsSettings
 		;;
-	"http")
-		json_add_object "httpSettings"
+	"xhttp")
+		json_add_object "xhttpSettings"
 
-		if [ -n "$ss_http_host" ]; then
-			json_add_array "host"
-
-			local h
-			for h in $ss_http_host; do
-				json_add_string "" "$h"
-			done
-
-			json_close_array # host
+		if [ -n "$ss_xhttp_host" ]; then
+      json_add_string "host" "$ss_xhttp_host"
 		fi
 
-		test -n "$ss_http_path" &&
-			json_add_string "path" "$ss_http_path"
+		test -n "$ss_xhttp_path" &&
+			json_add_string "path" "$ss_xhttp_path"
 
-		json_close_object # httpSettings
+    if [ -n "$ss_xhttp_mode" ]; then
+			json_add_string "mode" "$ss_xhttp_mode"
+    else
+      json_add_string "mode" "auto"
+		fi
+ 
+		json_close_object # xhttpSettings
 		;;
 	"domainsocket")
 		json_add_object "dsSettings"
@@ -2100,24 +2105,23 @@ add_outbound_setting() {
 
 		json_close_object # wsSettings
 		;;
-	"http")
-		json_add_object "httpSettings"
+	"xhttp")
+		json_add_object "xhttpSettings"
 
-		if [ -n "$ss_http_host" ]; then
-			json_add_array "host"
-
-			local h
-			for h in $ss_http_host; do
-				json_add_string "" "$h"
-			done
-
-			json_close_array # host
+		if [ -n "$ss_xhttp_host" ]; then
+      json_add_string "host" "$ss_xhttp_host"
 		fi
 
-		test -n "$ss_http_path" &&
-			json_add_string "path" "$ss_http_path"
+		test -n "$ss_xhttp_path" &&
+			json_add_string "path" "$ss_xhttp_path"
 
-		json_close_object # httpSettings
+    if [ -n "$ss_xhttp_mode" ]; then
+			json_add_string "mode" "$ss_xhttp_mode"
+    else
+      json_add_string "mode" "auto"
+		fi
+
+		json_close_object # xhttpSettings
 		;;
 	"domainsocket")
 		json_add_object "dsSettings"
