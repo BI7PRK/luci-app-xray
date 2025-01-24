@@ -318,6 +318,7 @@ inbound_section_validate() {
     'ss_xhttp_host:string' \
 		'ss_xhttp_path:string' \
     'ss_xhttp_mode:or("auto", "stream-one", "stream-up", "packet-up")' \
+    'ss_xhttp_extra:string' \
 		'ss_domainsocket_path:string' \
 		'ss_quic_security:or("aes-128-gcm", "chacha20-poly1305", "none")' \
 		'ss_quic_key:string' \
@@ -420,6 +421,7 @@ outbound_section_validate() {
     'ss_xhttp_host:string' \
 		'ss_xhttp_path:string' \
     'ss_xhttp_mode:or("auto", "stream-one", "stream-up", "packet-up")' \
+    'ss_xhttp_extra:string' \
 		'ss_domainsocket_path:string' \
 		'ss_quic_security:or("aes-128-gcm", "chacha20-poly1305", "none")' \
 		'ss_quic_key:string' \
@@ -1558,7 +1560,9 @@ add_inbound_setting() {
     else
       json_add_string "mode" "auto"
 		fi
- 
+    # test -n "$ss_xhttp_extra" &&
+		# 	json_add_string "extra" $(echo $ss_xhttp_extra) 
+
 		json_close_object # xhttpSettings
 		;;
 	"domainsocket")
@@ -2120,6 +2124,8 @@ add_outbound_setting() {
     else
       json_add_string "mode" "auto"
 		fi
+    # test -n "$ss_xhttp_extra" &&
+		# 	json_add_string "extra" $(echo $ss_xhttp_extra) 
 
 		json_close_object # xhttpSettings
 		;;
@@ -2191,8 +2197,12 @@ add_outbound_setting() {
 	test -n "$ss_sockopt_domain_strategy" &&
 		json_add_string "domainStrategy" "$ss_sockopt_domain_strategy"
 
-	test -n "$ss_sockopt_mark" &&
-		json_add_int "mark" "$ss_sockopt_mark"
+	if [ -n "$TRANSPARENT_PROXY_PORT" ]; then
+		json_add_int "mark" "255"
+	else
+		test -n "$ss_sockopt_mark" &&
+			json_add_int "mark" "$ss_sockopt_mark"
+	fi
 
 	test -n "$ss_sockopt_tcpUserTimeout" &&
 		json_add_int "tcpUserTimeout" "$ss_sockopt_tcpUserTimeout"

@@ -611,16 +611,6 @@ return L.view.extend<string[]>({
     o.modalonly = true;
     o.depends("protocol", "vmess");
 
-    // o = s.taboption(
-    //   "general",
-    //   form.Value,
-    //   "s_vmess_user_alter_id",
-    //   "%s - %s".format("VMess", _("Alter ID"))
-    // );
-    // o.modalonly = true;
-    // o.depends("protocol", "vmess");
-    // o.datatype = "and(uinteger, max(65535))";
-
     o = s.taboption(
       "general",
       form.ListValue,
@@ -730,6 +720,50 @@ return L.view.extend<string[]>({
     o.value("quic", "QUIC");
     o.value("grpc", "gRPC"); // add gRPC
 
+    // Stream Settings - xhttp
+    o = s.taboption(
+      "stream",
+      form.Value,
+      "ss_xhttp_host",
+      "%s - %s".format("XHTTP", _("Host"))
+    );
+    o.modalonly = true;
+    o.depends("ss_network", "xhttp");
+
+    o = s.taboption(
+      "stream",
+      form.Value,
+      "ss_xhttp_path",
+      "%s - %s".format("XHTTP", _("Path"))
+    );
+    o.modalonly = true;
+    o.depends("ss_network", "xhttp");
+    o.placeholder = "/";
+
+    o = s.taboption(
+      "stream",
+      form.ListValue,
+      "ss_xhttp_mode",
+      "%s - %s".format("XHTTP", _("Mode"))
+    );
+    o.depends("ss_network", "xhttp");
+    o.value("auto");
+    o.value("stream-one");
+    o.value("stream-up");
+    o.value("packet-up");
+
+    o = s.taboption(
+      "stream",
+      form.TextValue,
+      "ss_xhttp_extra",
+      _("Extra Object"),
+      "暂未支持写入配置"
+    );
+    o.modalonly = true;
+    o.rows = 5;
+    o.datatype = "string";
+    o.depends("ss_network", "xhttp");
+
     o = s.taboption("stream", form.ListValue, "ss_security", _("Security"));
     o.modalonly = true;
     o.value("none", _("None"));
@@ -748,8 +782,7 @@ return L.view.extend<string[]>({
     o.value("none", _("None"));
     o.value("xtls-rprx-vision");
     o.value("xtls-rprx-vision-udp443");
-    o.depends("ss_security", "tls");
-    o.depends("ss_security", "reality");
+    o.depends({ ss_network: "tcp", ss_security: "", "!contains": true });
 
     // TLS Version
     o = s.taboption(
@@ -801,38 +834,6 @@ return L.view.extend<string[]>({
     o.placeholder = "h3";
     o.depends({ ss_security: "tls", ss_network: "tcp" });
     o.depends({ ss_security: "tls", ss_network: "xhttp" });
-
-    // Stream Settings - xhttp
-    o = s.taboption(
-      "stream",
-      form.Value,
-      "ss_xhttp_host",
-      "%s - %s".format("XHTTP", _("Host"))
-    );
-    o.modalonly = true;
-    o.depends("ss_network", "xhttp");
-
-    o = s.taboption(
-      "stream",
-      form.Value,
-      "ss_xhttp_path",
-      "%s - %s".format("XHTTP", _("Path"))
-    );
-    o.modalonly = true;
-    o.depends("ss_network", "xhttp");
-    o.placeholder = "/";
-
-    o = s.taboption(
-      "stream",
-      form.ListValue,
-      "ss_xhttp_mode",
-      "%s - %s".format("XHTTP", _("Mode"))
-    );
-    o.depends("ss_network", "xhttp");
-    o.value("auto");
-    o.value("stream-one");
-    o.value("stream-up");
-    o.value("packet-up");
 
     //uTLS
     o = s.taboption("stream", form.Value, "u_tls", _("Fingerprint"));
