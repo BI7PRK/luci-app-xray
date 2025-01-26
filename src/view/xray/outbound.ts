@@ -712,13 +712,9 @@ return L.view.extend<string[]>({
     /** Stream Settings **/
     o = s.taboption("stream", form.ListValue, "ss_network", _("Network"));
     o.value("");
-    o.value("tcp", "TCP");
-    o.value("kcp", "mKCP");
-    o.value("ws", "WebSocket");
+    o.value("raw", "RAW");
     o.value("xhttp", "XHttp");
-    o.value("domainsocket", "Domain Socket");
-    o.value("quic", "QUIC");
-    o.value("grpc", "gRPC"); // add gRPC
+    o.value("kcp", "mKCP");
 
     // Stream Settings - xhttp
     o = s.taboption(
@@ -746,6 +742,7 @@ return L.view.extend<string[]>({
       "ss_xhttp_mode",
       "%s - %s".format("XHTTP", _("Mode"))
     );
+    o.modalonly = true;
     o.depends("ss_network", "xhttp");
     o.value("auto");
     o.value("stream-one");
@@ -941,7 +938,7 @@ return L.view.extend<string[]>({
     o.value("");
     o.value("none", _("None"));
     o.value("http", "HTTP");
-    o.depends({ ss_security: "tls", ss_network: "tcp" });
+    o.depends({ ss_security: "tls", ss_network: "raw" });
 
     o = s.taboption(
       "stream",

@@ -381,7 +381,7 @@ outbound_section_validate() {
 		's_vless_user_id:string' \
 		's_vless_user_encryption:or("none")' \
 		's_vless_user_level:uinteger' \
-		'ss_network:or("tcp", "kcp", "ws", "xhttp", "domainsocket", "quic", "grpc")' \
+		'ss_network:or("raw", "xhttp", "kcp")' \
 		'ss_security:or("none", "tls", "reality")' \
 		's_xtls_flow:or("none", "xtls-rprx-vision", "xtls-rprx-vision-udp443")' \
 		'min_tls_version:or("", "1.0", "1.1", "1.2", "1.3")' \
@@ -1976,9 +1976,8 @@ add_outbound_setting() {
 		;;
 	esac
 	case "${ss_network:-x}" in
-	"tcp")
-		json_add_object "tcpSettings"
-
+	"raw")
+		json_add_object "rawSettings"
 		if [ -n "$ss_tcp_header_type" ]; then
 			json_add_object "header"
 			json_add_string "type" "$ss_tcp_header_type"
