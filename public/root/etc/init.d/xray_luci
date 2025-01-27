@@ -284,7 +284,7 @@ inbound_section_validate() {
 		's_vmess_disable_insecure_encryption:bool:0' \
 		'ss_network:or("tcp", "kcp", "ws", "xhttp", "domainsocket", "quic")' \
 		'ss_security:or("none", "tls")' \
-		's_xtls_flow:or("none", "xtls-rprx-vision", "xtls-rprx-vision-udp443")' \
+		's_xtls_flow:or("", "xtls-rprx-vision", "xtls-rprx-vision-udp443")' \
 		'ss_tls_server_name:host' \
 		'ss_tls_alpn:list(string)' \
 		'ss_tls_rejectUnknownSni:bool:0' \
@@ -383,12 +383,14 @@ outbound_section_validate() {
 		's_vless_user_level:uinteger' \
 		'ss_network:or("raw", "xhttp", "kcp")' \
 		'ss_security:or("none", "tls", "reality")' \
-		's_xtls_flow:or("none", "xtls-rprx-vision", "xtls-rprx-vision-udp443")' \
+		's_xtls_flow:or("", "xtls-rprx-vision", "xtls-rprx-vision-udp443")' \
 		'min_tls_version:or("", "1.0", "1.1", "1.2", "1.3")' \
 		'max_tls_version:or("", "1.0", "1.1", "1.2", "1.3")' \
 		'ss_tls_server_name:host' \
 		'ss_tls_alpn:list(string)' \
-		'u_tls:string' \
+		'u_tls_fingerprint:string' \
+    'real_forward_target:string' \
+    'real_protocol_xver:uinteger' \
 		'ss_tls_rejectUnknownSni:bool:0' \
 		'ss_tls_allow_insecure:bool:0' \
 		'ss_tls_allow_insecure_ciphers:bool:0' \
@@ -1825,7 +1827,7 @@ add_outbound_setting() {
 		json_add_string "address" "$s_trojan_address"
 		json_add_int "port" "$s_trojan_port"
 		json_add_string "password" "$s_trojan_password"
-		if [ "$s_xtls_flow" != "none" ]; then
+		if [ "$s_xtls_flow" != "" ]; then
 			json_add_string "flow" "$s_xtls_flow"
 		fi
 
@@ -1843,7 +1845,7 @@ add_outbound_setting() {
 		json_add_array "users"
 		json_add_object ""
 		json_add_string "id" "$s_vless_user_id"
-		if [ "$s_xtls_flow" != "none" ]; then
+		if [ "$s_xtls_flow" != "" ]; then
 			json_add_string "flow" "$s_xtls_flow"
 		fi
 		test -n "$s_vless_user_level" &&
@@ -1874,7 +1876,7 @@ add_outbound_setting() {
 			json_add_string "security" "$s_vmess_user_security"
 		test -n "$s_vmess_user_level" &&
 			json_add_int "level" "$s_vmess_user_level"
-		if [ "$s_xtls_flow" != "none" ]; then
+		if [ "$s_xtls_flow" != "" ]; then
 			json_add_string "flow" "$s_xtls_flow"
 		fi
 		json_close_object
@@ -1908,9 +1910,10 @@ add_outbound_setting() {
 		json_add_string "security" "$ss_security"
 		json_add_object "tlsSettings"
 
-		if [ "$u_tls" != "" ]; then
-			json_add_string "fingerprint" "$u_tls"
+		if [ "$u_tls_fingerprint" != "" ]; then
+			json_add_string "fingerprint" "$u_tls_fingerprint"
 		fi
+
 		if [ "$min_tls_version" != "" ]; then
 			json_add_string "minVersion" "$min_tls_version"
 		fi
@@ -1958,14 +1961,23 @@ add_outbound_setting() {
 		test -n "$real_publicKey" &&
 			json_add_string "publicKey" "$real_publicKey"
 
-		test -n "$u_tls" &&
-			json_add_string "fingerprint" "$u_tls"
+		test -n "$u_tls_fingerprint" &&
+			json_add_string "fingerprint" "$u_tls_fingerprint"
 
 		test -n "$min_tls_version" &&
 			json_add_string "minVersion" "$min_tls_version"
 
 		test -n "$max_tls_version" &&
 			json_add_string "maxVersion" "$max_tls_version"
+    
+    test -n "$real_forward_target" &&
+  	  json_add_string "target" "$real_forward_target"
+
+    if [ "$real_protocol_xver" != "" ]; then
+			json_add_int "xver" "$real_protocol_xver"
+    else
+      json_add_int "xver" "0"
+		fi
 
 		test -n "$ss_tls_server_name" &&
 			json_add_string "serverName" "$ss_tls_server_name"

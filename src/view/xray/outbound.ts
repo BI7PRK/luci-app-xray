@@ -776,10 +776,12 @@ return L.view.extend<string[]>({
       _("Use xTLS flow")
     );
     o.modalonly = true;
-    o.value("none", _("None"));
+    o.value("", _("None"));
     o.value("xtls-rprx-vision");
     o.value("xtls-rprx-vision-udp443");
-    o.depends({ ss_network: "tcp", ss_security: "", "!contains": true });
+    o.depends("ss_security", "tls");
+    o.depends("ss_security", "reality");
+    //没什么效果 o.depends({ ss_security: "none", "!contains": true });
 
     // TLS Version
     o = s.taboption(
@@ -829,11 +831,15 @@ return L.view.extend<string[]>({
     );
     o.modalonly = true;
     o.placeholder = "h3";
-    o.depends({ ss_security: "tls", ss_network: "tcp" });
-    o.depends({ ss_security: "tls", ss_network: "xhttp" });
+    o.depends({ ss_security: "tls" });
 
     //uTLS
-    o = s.taboption("stream", form.Value, "u_tls", _("Fingerprint"));
+    o = s.taboption(
+      "stream",
+      form.Value,
+      "u_tls_fingerprint",
+      _("Fingerprint")
+    );
     o.modalonly = true;
     o.value("", _("None"));
     o.value("chrome");
@@ -847,6 +853,26 @@ return L.view.extend<string[]>({
     o.value("random");
     o.value("randomized");
     o.depends("ss_security", "tls");
+    o.depends("ss_security", "reality");
+
+    o = s.taboption(
+      "stream",
+      form.Value,
+      "real_protocol_xver", //开启 PROXY protocol 发送，发送真实来源 IP 和端口给自己的网站。0 为关闭 1 或 2 表示 PROXY protocol 版本。
+      "%s - %s".format("Reality", _("xver"))
+    );
+    o.modalonly = true;
+    o.placeholder = "0";
+    o.default = "0";
+    o.depends("ss_security", "reality");
+
+    o = s.taboption(
+      "stream",
+      form.Value,
+      "real_forward_target", //转发网站目标地址或者自己的网站监听进程
+      "%s - %s".format("Reality", _("forward target"))
+    );
+    o.modalonly = true;
     o.depends("ss_security", "reality");
 
     o = s.taboption(
