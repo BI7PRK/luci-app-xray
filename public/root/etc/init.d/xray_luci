@@ -389,8 +389,6 @@ outbound_section_validate() {
 		'ss_tls_server_name:host' \
 		'ss_tls_alpn:list(string)' \
 		'u_tls_fingerprint:string' \
-    'real_forward_target:string' \
-    'real_protocol_xver:uinteger' \
 		'ss_tls_rejectUnknownSni:bool:0' \
 		'ss_tls_allow_insecure:bool:0' \
 		'ss_tls_allow_insecure_ciphers:bool:0' \
@@ -1970,15 +1968,6 @@ add_outbound_setting() {
 		test -n "$max_tls_version" &&
 			json_add_string "maxVersion" "$max_tls_version"
     
-    test -n "$real_forward_target" &&
-  	  json_add_string "target" "$real_forward_target"
-
-    if [ "$real_protocol_xver" != "" ]; then
-			json_add_int "xver" "$real_protocol_xver"
-    else
-      json_add_int "xver" "0"
-		fi
-
 		test -n "$ss_tls_server_name" &&
 			json_add_string "serverName" "$ss_tls_server_name"
 		json_close_object # realitySettings

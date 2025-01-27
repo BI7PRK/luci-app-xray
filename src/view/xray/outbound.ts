@@ -858,26 +858,6 @@ return L.view.extend<string[]>({
     o = s.taboption(
       "stream",
       form.Value,
-      "real_protocol_xver", //开启 PROXY protocol 发送，发送真实来源 IP 和端口给自己的网站。0 为关闭 1 或 2 表示 PROXY protocol 版本。
-      "%s - %s".format("Reality", _("xver"))
-    );
-    o.modalonly = true;
-    o.placeholder = "0";
-    o.default = "0";
-    o.depends("ss_security", "reality");
-
-    o = s.taboption(
-      "stream",
-      form.Value,
-      "real_forward_target", //转发网站目标地址或者自己的网站监听进程
-      "%s - %s".format("Reality", _("forward target"))
-    );
-    o.modalonly = true;
-    o.depends("ss_security", "reality");
-
-    o = s.taboption(
-      "stream",
-      form.Value,
       "real_shortId",
       "%s - %s".format("Reality", _("ShortId")),
       _("The length is a multiple of 2, and the maximum length is 16 bits")
