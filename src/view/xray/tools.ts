@@ -129,6 +129,7 @@ return L.view.extend<[string, string]>({
             ),
           ]
         ),
+        E("hr", {}, ""),
         E("strong", {}, "Generate 'mldsa65 ' keys"),
         E(
           "div",
