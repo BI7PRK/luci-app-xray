@@ -34,6 +34,7 @@ interface Custom extends LuCI.baseclass {
   RunningStatus: form.AbstractValue;
   CallUuid: string;
   CallGenKeys: string;
+  CallMldsa65: string;
 }
 
 interface xray extends LuCI.baseclass {

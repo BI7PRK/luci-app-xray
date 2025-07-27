@@ -1441,3 +1441,11 @@ msgstr ""
 #: package/htdocs/luci-static/resources/view/xray/observatory.ts:301
 msgid "Sampling"
 msgstr ""
+
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:504
+msgid "Mldsa65Seed"
+msgstr ""
+
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:505
+msgid "Additional quantum-resistant signatures on certificates"
+msgstr ""

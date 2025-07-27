@@ -1546,3 +1546,11 @@ msgstr "连通性URL"
 #: package/htdocs/luci-static/resources/view/xray/observatory.ts:301
 msgid "Sampling"
 msgstr "采样次数"
+
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:504
+msgid "Mldsa65Seed"
+msgstr "抗量子的额外签名"
+
+#: package/htdocs/luci-static/resources/view/xray/outbound.js:505
+msgid "Additional quantum-resistant signatures on certificates"
+msgstr "对证书进行抗量子的额外签名"

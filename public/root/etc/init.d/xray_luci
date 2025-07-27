@@ -450,6 +450,7 @@ outbound_section_validate() {
 		'wg_endpoint':string \
 		'real_server_name:string' \
 		'real_shortId:string' \
+    'real_mldsa65Seed:string' \
 		'real_spiderX:string' \
 		'real_publicKey:string' \
 		'real_fingerprint:string'
@@ -1952,6 +1953,10 @@ add_outbound_setting() {
 		json_add_object "realitySettings"
 		test -n "$real_shortId" &&
 			json_add_string "shortId" "$real_shortId"
+
+    #real_mldsa65Seed
+    test -n "$real_mldsa65Seed" &&
+      json_add_string "mldsa65Seed" "$real_mldsa65Seed"
 
 		test -n "$real_spiderX" &&
 			json_add_string "spiderX" "$real_spiderX"

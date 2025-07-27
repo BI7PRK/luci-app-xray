@@ -868,6 +868,16 @@ return L.view.extend<string[]>({
     o = s.taboption(
       "stream",
       form.Value,
+      "real_mldsa65Seed",
+      "%s - %s".format("Reality", _("Mldsa65Seed")),
+      _("Additional quantum-resistant signatures on certificates")
+    );
+    o.modalonly = true;
+    o.depends("ss_security", "reality");
+
+    o = s.taboption(
+      "stream",
+      form.Value,
       "real_spiderX",
       "%s - %s".format("Reality", _("SpiderX")),
       _("crawler path")

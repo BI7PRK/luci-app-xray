@@ -129,6 +129,64 @@ return L.view.extend<[string, string]>({
             ),
           ]
         ),
+        E("strong", {}, "Generate 'mldsa65 ' keys"),
+        E(
+          "div",
+          {
+            style: "display: flex;flex-direction: column;align-items: start;",
+          },
+          [
+            E("span", {}, "Seed: "),
+            E(
+              "input",
+              {
+                style: "width: 350px",
+                id: "seed_field",
+                readonly: "readonly",
+              },
+              ""
+            ),
+            E("span", {}, "Verify: "),
+            E(
+              "textarea",
+              {
+                style: "width: 80%; height:280px",
+                id: "verify_field",
+              },
+              ""
+            ),
+            E(
+              "button",
+              {
+                type: "button",
+                click: async () => {
+                  const keys = await custom.CallMldsa65();
+                  if (keys.code !== 0) {
+                    ui.showModal("Generate Keys", [
+                      E("p", {}, "Service exception"),
+                      E(
+                        "div",
+                        { class: "right" },
+                        E(
+                          "button",
+                          {
+                            class: "btn",
+                            click: ui.hideModal,
+                          },
+                          _("OK")
+                        )
+                      ),
+                    ]);
+                    return;
+                  }
+                  document.getElementById("seed_field").value = keys.seed;
+                  document.getElementById("verify_field").value = keys.verify;
+                },
+              },
+              "Generate Keys"
+            ),
+          ]
+        ),
       ]
     );
   },

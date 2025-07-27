@@ -83,6 +83,21 @@ const callX25519 = rpc.declare<Object, [string]>({
   },
 });
 
+const mldsa65Func = rpc.declare<Object, [string]>({
+  object: "luci.xray",
+  method: "xrayMldsa65",
+  expect: { "": { code: 1 } },
+  filter: function (data: any): Object {
+    if (data.code === 0) {
+      return data;
+    }
+    return {
+      seed: "",
+      verify: "",
+    };
+  },
+});
+
 const CUSTOMTextValue = form.TextValue.extend<
   CustomTextValueProperties,
   form.TextValue
@@ -295,4 +310,5 @@ return L.Class.extend({
   RunningStatus: CUSTOMRunningStatus,
   CallUuid: callGetUuid,
   CallGenKeys: callX25519,
+  CallMldsa65: mldsa65Func,
 });
