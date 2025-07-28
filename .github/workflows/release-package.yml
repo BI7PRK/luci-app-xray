@@ -217,6 +217,7 @@ jobs:
           Release of version ${{ inputs.version }} of the Luci App Xray package.
         draft: false
         prerelease: ${{ inputs.pre_release }}
+        tag_name: ${{ inputs.version }}
         files: '*.ipk'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
