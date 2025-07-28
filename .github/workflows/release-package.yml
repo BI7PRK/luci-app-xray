@@ -1,8 +1,11 @@
 name: Package Build and Release
 on:
-  push:
-    tags:
-      - '*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'NuGet package version (e.g., 1.0.0)'
+        required: true
+        type: string
 
 env:
   PACKAGE_NAME: luci-app-xray
@@ -185,7 +188,7 @@ jobs:
     - name: Build Package
       run: |
         cd "$SDK_HOME"
-
+        sed -i 's/^PKG_VERSION:=.*/PKG_VERSION:=${{ inputs.version }}/' package/$PACKAGE_NAME/Makefile
         make defconfig
         make package/${PACKAGE_NAME}/compile V=s
 
@@ -206,6 +209,11 @@ jobs:
     - name: Release and Upload Assets
       uses: softprops/action-gh-release@v1
       with:
+        release_name: "Release ${{ inputs.version }}"
+        body: |
+          Release of version ${{ inputs.version }} of the Luci App Xray package.
+        draft: false
+        prerelease: false
         files: '*.ipk'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
