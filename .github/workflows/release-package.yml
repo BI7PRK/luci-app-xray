@@ -6,6 +6,11 @@ on:
         description: 'NuGet package version (e.g., 1.0.0)'
         required: true
         type: string
+      pre_release:
+        description: 'Pre-release flag (true/false)'
+        required: false
+        default: false
+        type: boolean
 
 env:
   PACKAGE_NAME: luci-app-xray
@@ -213,7 +218,7 @@ jobs:
         body: |
           Release of version ${{ inputs.version }} of the Luci App Xray package.
         draft: false
-        prerelease: false
+        prerelease: ${{ inputs.pre_release }}
         files: '*.ipk'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
