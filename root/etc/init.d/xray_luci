@@ -284,7 +284,7 @@ inbound_section_validate() {
 		's_vmess_disable_insecure_encryption:bool:0' \
 		'ss_network:or("tcp", "kcp", "ws", "xhttp", "domainsocket", "quic")' \
 		'ss_security:or("none", "tls")' \
-		's_xtls_flow:or("none", "xtls-rprx-vision", "xtls-rprx-vision-udp443")' \
+		's_xtls_flow:or("", "xtls-rprx-vision", "xtls-rprx-vision-udp443")' \
 		'ss_tls_server_name:host' \
 		'ss_tls_alpn:list(string)' \
 		'ss_tls_rejectUnknownSni:bool:0' \
@@ -381,14 +381,14 @@ outbound_section_validate() {
 		's_vless_user_id:string' \
 		's_vless_user_encryption:or("none")' \
 		's_vless_user_level:uinteger' \
-		'ss_network:or("tcp", "kcp", "ws", "xhttp", "domainsocket", "quic", "grpc")' \
+		'ss_network:or("raw", "xhttp", "kcp")' \
 		'ss_security:or("none", "tls", "reality")' \
-		's_xtls_flow:or("none", "xtls-rprx-vision", "xtls-rprx-vision-udp443")' \
+		's_xtls_flow:or("", "xtls-rprx-vision", "xtls-rprx-vision-udp443")' \
 		'min_tls_version:or("", "1.0", "1.1", "1.2", "1.3")' \
 		'max_tls_version:or("", "1.0", "1.1", "1.2", "1.3")' \
 		'ss_tls_server_name:host' \
 		'ss_tls_alpn:list(string)' \
-		'u_tls:string' \
+		'u_tls_fingerprint:string' \
 		'ss_tls_rejectUnknownSni:bool:0' \
 		'ss_tls_allow_insecure:bool:0' \
 		'ss_tls_allow_insecure_ciphers:bool:0' \
@@ -450,6 +450,7 @@ outbound_section_validate() {
 		'wg_endpoint':string \
 		'real_server_name:string' \
 		'real_shortId:string' \
+    'real_mldsa65Verify:string' \
 		'real_spiderX:string' \
 		'real_publicKey:string' \
 		'real_fingerprint:string'
@@ -1825,7 +1826,7 @@ add_outbound_setting() {
 		json_add_string "address" "$s_trojan_address"
 		json_add_int "port" "$s_trojan_port"
 		json_add_string "password" "$s_trojan_password"
-		if [ "$s_xtls_flow" != "none" ]; then
+		if [ "$s_xtls_flow" != "" ]; then
 			json_add_string "flow" "$s_xtls_flow"
 		fi
 
@@ -1843,7 +1844,7 @@ add_outbound_setting() {
 		json_add_array "users"
 		json_add_object ""
 		json_add_string "id" "$s_vless_user_id"
-		if [ "$s_xtls_flow" != "none" ]; then
+		if [ "$s_xtls_flow" != "" ]; then
 			json_add_string "flow" "$s_xtls_flow"
 		fi
 		test -n "$s_vless_user_level" &&
@@ -1874,7 +1875,7 @@ add_outbound_setting() {
 			json_add_string "security" "$s_vmess_user_security"
 		test -n "$s_vmess_user_level" &&
 			json_add_int "level" "$s_vmess_user_level"
-		if [ "$s_xtls_flow" != "none" ]; then
+		if [ "$s_xtls_flow" != "" ]; then
 			json_add_string "flow" "$s_xtls_flow"
 		fi
 		json_close_object
@@ -1908,9 +1909,10 @@ add_outbound_setting() {
 		json_add_string "security" "$ss_security"
 		json_add_object "tlsSettings"
 
-		if [ "$u_tls" != "" ]; then
-			json_add_string "fingerprint" "$u_tls"
+		if [ "$u_tls_fingerprint" != "" ]; then
+			json_add_string "fingerprint" "$u_tls_fingerprint"
 		fi
+
 		if [ "$min_tls_version" != "" ]; then
 			json_add_string "minVersion" "$min_tls_version"
 		fi
@@ -1952,21 +1954,25 @@ add_outbound_setting() {
 		test -n "$real_shortId" &&
 			json_add_string "shortId" "$real_shortId"
 
+    #real_mldsa65Verify
+    test -n "$real_mldsa65Verify" &&
+      json_add_string "mldsa65Verify" "$real_mldsa65Verify"
+
 		test -n "$real_spiderX" &&
 			json_add_string "spiderX" "$real_spiderX"
 
 		test -n "$real_publicKey" &&
-			json_add_string "publicKey" "$real_publicKey"
+			json_add_string "password" "$real_publicKey"
 
-		test -n "$u_tls" &&
-			json_add_string "fingerprint" "$u_tls"
+		test -n "$u_tls_fingerprint" &&
+			json_add_string "fingerprint" "$u_tls_fingerprint"
 
 		test -n "$min_tls_version" &&
 			json_add_string "minVersion" "$min_tls_version"
 
 		test -n "$max_tls_version" &&
 			json_add_string "maxVersion" "$max_tls_version"
-
+    
 		test -n "$ss_tls_server_name" &&
 			json_add_string "serverName" "$ss_tls_server_name"
 		json_close_object # realitySettings
@@ -1976,9 +1982,8 @@ add_outbound_setting() {
 		;;
 	esac
 	case "${ss_network:-x}" in
-	"tcp")
-		json_add_object "tcpSettings"
-
+	"raw")
+		json_add_object "rawSettings"
 		if [ -n "$ss_tcp_header_type" ]; then
 			json_add_object "header"
 			json_add_string "type" "$ss_tcp_header_type"
@@ -2185,7 +2190,7 @@ add_outbound_setting() {
 		test -n "$real_spiderX" &&
 			json_add_string "spiderX" "$real_spiderX"
 		test -n "$real_publicKey" &&
-			json_add_string "publicKey" "$real_publicKey"
+			json_add_string "password" "$real_publicKey"
 		test -n "$real_fingerprint" &&
 			json_add_string "fingerprint" "$real_fingerprint"
 		json_close_object # realitySettings
