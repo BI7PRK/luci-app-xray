@@ -1443,7 +1443,7 @@ msgid "Sampling"
 msgstr ""
 
 #: package/htdocs/luci-static/resources/view/xray/outbound.js:504
-msgid "Mldsa65Seed"
+msgid "Mldsa65"
 msgstr ""
 
 #: package/htdocs/luci-static/resources/view/xray/outbound.js:505

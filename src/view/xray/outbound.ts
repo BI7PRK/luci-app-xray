@@ -868,8 +868,8 @@ return L.view.extend<string[]>({
     o = s.taboption(
       "stream",
       form.Value,
-      "real_mldsa65Seed",
-      "%s - %s".format("Reality", _("Mldsa65Seed")),
+      "real_mldsa65Verify",
+      "%s - %s".format("Reality", _("Mldsa65")),
       _("Additional quantum-resistant signatures on certificates")
     );
     o.modalonly = true;

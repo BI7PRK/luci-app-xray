@@ -1548,7 +1548,7 @@ msgid "Sampling"
 msgstr "采样次数"
 
 #: package/htdocs/luci-static/resources/view/xray/outbound.js:504
-msgid "Mldsa65Seed"
+msgid "Mldsa65"
 msgstr "抗量子的额外签名"
 
 #: package/htdocs/luci-static/resources/view/xray/outbound.js:505

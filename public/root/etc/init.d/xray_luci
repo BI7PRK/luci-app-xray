@@ -450,7 +450,7 @@ outbound_section_validate() {
 		'wg_endpoint':string \
 		'real_server_name:string' \
 		'real_shortId:string' \
-    'real_mldsa65Seed:string' \
+    'real_mldsa65Verify:string' \
 		'real_spiderX:string' \
 		'real_publicKey:string' \
 		'real_fingerprint:string'
@@ -1954,15 +1954,15 @@ add_outbound_setting() {
 		test -n "$real_shortId" &&
 			json_add_string "shortId" "$real_shortId"
 
-    #real_mldsa65Seed
-    test -n "$real_mldsa65Seed" &&
-      json_add_string "mldsa65Seed" "$real_mldsa65Seed"
+    #real_mldsa65Verify
+    test -n "$real_mldsa65Verify" &&
+      json_add_string "mldsa65Verify" "$real_mldsa65Verify"
 
 		test -n "$real_spiderX" &&
 			json_add_string "spiderX" "$real_spiderX"
 
 		test -n "$real_publicKey" &&
-			json_add_string "publicKey" "$real_publicKey"
+			json_add_string "password" "$real_publicKey"
 
 		test -n "$u_tls_fingerprint" &&
 			json_add_string "fingerprint" "$u_tls_fingerprint"
@@ -2190,7 +2190,7 @@ add_outbound_setting() {
 		test -n "$real_spiderX" &&
 			json_add_string "spiderX" "$real_spiderX"
 		test -n "$real_publicKey" &&
-			json_add_string "publicKey" "$real_publicKey"
+			json_add_string "password" "$real_publicKey"
 		test -n "$real_fingerprint" &&
 			json_add_string "fingerprint" "$real_fingerprint"
 		json_close_object # realitySettings
