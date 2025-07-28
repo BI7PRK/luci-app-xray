@@ -212,7 +212,6 @@ jobs:
     - name: Release and Upload Assets
       uses: softprops/action-gh-release@v1
       with:
-        release_name: "Release ${{ inputs.version }}"
         body: |
           Release of version ${{ inputs.version }} of the Luci App Xray package.
         draft: false
