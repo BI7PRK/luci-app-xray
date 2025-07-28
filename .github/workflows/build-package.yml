@@ -12,7 +12,7 @@ env:
 
 jobs:
   push-and-build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     env:
       SDK_URL_PATH: https://downloads.openwrt.org/releases/21.02.7/targets/x86/64
       SDK_NAME: -sdk-21.02.7-x86-64_
