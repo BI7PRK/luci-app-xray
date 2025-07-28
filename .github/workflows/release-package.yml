@@ -26,7 +26,7 @@ jobs:
       ACTIONS_ALLOW_UNSECURE_COMMANDS: true
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         persist-credentials: false
         fetch-depth: 2
@@ -55,7 +55,7 @@ jobs:
         yarn package
 
     - name: Deploy Package Source
-      uses: peaceiris/actions-gh-pages@v3
+      uses: peaceiris/actions-gh-pages@v4
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./package
@@ -69,7 +69,7 @@ jobs:
       run: echo "timestamp=$(date +"%s")" >> $GITHUB_OUTPUT
 
     - name: Setup OpenWrt Cache
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: ${{ env.CACHE_DIR }}
         key: openwrt-${{ env.PACKAGE_NAME }}-${{ steps.cache_key.outputs.timestamp }}
