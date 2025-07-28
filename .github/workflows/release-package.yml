@@ -193,12 +193,10 @@ jobs:
     - name: Build Package
       run: |
         cd "$SDK_HOME"
-        sed -i 's/^PKG_VERSION:=.*/PKG_VERSION:=${{ inputs.version }}/' package/$PACKAGE_NAME/Makefile
+        sed -i 's/^PKG_VERSION:=.*/PKG_VERSION:=v1.0.8/' ${{ github.workspace }}/package/Makefile
         make defconfig
         make package/${PACKAGE_NAME}/compile V=s
-
         find "$SDK_HOME/bin/" -type f -name "*.ipk" -exec ls -lh {} \;
-
         cd -
 
     - name: Copy Build Results
