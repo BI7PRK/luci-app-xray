@@ -58,7 +58,7 @@ return L.view.extend<string[]>({
     o.datatype = "or(port, portrange)";
 
     o = s.taboption("general", form.ListValue, "protocol", _("Protocol"));
-    o.value("dokodemo-door", "Dokodemo-door");
+    o.value("tunnel", "Tunnel");
     o.value("http", "HTTP");
     o.value("shadowsocks", "Shadowsocks");
     o.value("socks", "Socks");
@@ -66,40 +66,40 @@ return L.view.extend<string[]>({
     // o.value("trojan", "Trojan");// Add Trojan Protocol support
     // o.value("vless", "VLESS"); // Add VLESS Protocol support
 
-    // Settings - Dokodemo-door
+    // Settings - Tunnel
     o = s.taboption(
       "general",
       form.Value,
       "s_dokodemo_door_address",
-      "%s - %s".format("Dokodemo-door", _("Address")),
+      "%s - %s".format("Tunnel", _("Address")),
       _("Address of the destination server.")
     );
     o.modalonly = true;
-    o.depends("protocol", "dokodemo-door");
+    o.depends("protocol", "tunnel");
     o.datatype = "host";
 
     o = s.taboption(
       "general",
       form.Value,
       "s_dokodemo_door_port",
-      "%s - %s".format("Dokodemo-door", _("Port")),
+      "%s - %s".format("Tunnel", _("Port")),
       _("Port of the destination server.")
     );
     o.modalonly = true;
-    o.depends("protocol", "dokodemo-door");
+    o.depends("protocol", "tunnel");
     o.datatype = "port";
 
     o = s.taboption(
       "general",
       form.MultiValue,
       "s_dokodemo_door_network",
-      "%s - %s".format("Dokodemo-door", _("Network")),
+      "%s - %s".format("Tunnel", _("Network")),
       _(
         "If transparent proxy enabled on current inbound, this option will be ignored."
       )
     );
     o.modalonly = true;
-    o.depends("protocol", "dokodemo-door");
+    o.depends("protocol", "tunnel");
     o.value("tcp");
     o.value("udp");
     o.default = "tcp";
@@ -108,11 +108,11 @@ return L.view.extend<string[]>({
       "general",
       form.Value,
       "s_dokodemo_door_timeout",
-      "%s - %s".format("Dokodemo-door", _("Timeout")),
+      "%s - %s".format("Tunnel", _("Timeout")),
       _("Time limit for inbound data(seconds)")
     );
     o.modalonly = true;
-    o.depends("protocol", "dokodemo-door");
+    o.depends("protocol", "tunnel");
     o.datatype = "uinteger";
     o.placeholder = "300";
 
@@ -120,23 +120,23 @@ return L.view.extend<string[]>({
       "general",
       form.Flag,
       "s_dokodemo_door_follow_redirect",
-      "%s - %s".format("Dokodemo-door", _("Follow redirect")),
+      "%s - %s".format("Tunnel", _("Follow redirect")),
       _(
         "If transparent proxy enabled on current inbound, this option will be ignored."
       )
     );
     o.modalonly = true;
-    o.depends("protocol", "dokodemo-door");
+    o.depends("protocol", "tunnel");
 
     o = s.taboption(
       "general",
       form.Value,
       "s_dokodemo_door_user_level",
-      "%s - %s".format("Dokodemo-door", _("User level")),
+      "%s - %s".format("Tunnel", _("User level")),
       _("All connections share this level")
     );
     o.modalonly = true;
-    o.depends("protocol", "dokodemo-door");
+    o.depends("protocol", "tunnel");
     o.datatype = "uinteger";
 
     // Settings - HTTP

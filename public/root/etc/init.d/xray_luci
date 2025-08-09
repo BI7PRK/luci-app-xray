@@ -1212,7 +1212,7 @@ add_inbound_setting() {
 	json_add_string "protocol" "$protocol"
 
 	case "${protocol:-x}" in
-	"dokodemo-door")
+	"tunnel")
 		json_add_object "settings"
 
 		if [ -n "$port" ] && [ "x$port" = "x$TRANSPARENT_PROXY_PORT" ]; then
